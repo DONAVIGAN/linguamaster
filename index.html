@@ -12,7 +12,7 @@
   --accent:#d4a843; --accent2:#f0c060;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:15px;}
 h1,h2,h3{font-family:'Playfair Display',serif;}
 ::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
 .bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
@@ -49,7 +49,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(7,5,13,0.96);border-bott
 /* NAV */
 nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);overflow-x:auto;position:sticky;top:53px;z-index:9;backdrop-filter:blur(20px);}
 .nav-inner{max-width:520px;margin:0 auto;display:flex;}
-.nb{flex:0 0 auto;background:transparent;border:none;color:var(--faint);padding:9px 10px 7px;cursor:pointer;border-bottom:2px solid transparent;font-size:9px;font-family:'Lato',sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:52px;transition:all 0.2s;}
+.nb{flex:0 0 auto;background:transparent;border:none;color:rgba(245,240,232,0.7);padding:10px 10px 8px;cursor:pointer;border-bottom:2px solid transparent;font-size:11px;font-family:'Lato',sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:56px;transition:all 0.2s;}
 .nb.active{border-bottom-color:currentColor;font-weight:700;opacity:1;}
 
 /* CONTENT */
@@ -59,16 +59,16 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 
 /* HOME */
 .home-hero{text-align:center;padding:28px 0 20px;}
-.home-title{font-size:30px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
-.home-sub{color:var(--muted);font-size:13px;line-height:1.7;max-width:360px;margin:0 auto 24px;}
+.home-title{font-size:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.home-sub{color:rgba(245,240,232,0.8);font-size:15px;line-height:1.7;max-width:360px;margin:0 auto 24px;}
 .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 .lang-card{border-radius:20px;padding:20px 16px;cursor:pointer;text-align:center;border:1px solid;transition:all 0.25s;position:relative;overflow:hidden;}
 .lang-card:hover{transform:translateY(-3px);}
 .lang-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:currentColor;opacity:0.4;}
 .lang-flag{font-size:36px;display:block;margin-bottom:8px;animation:pulse 3s ease-in-out infinite;}
-.lang-name{font-size:16px;font-weight:900;font-family:'Playfair Display',serif;margin-bottom:3px;}
-.lang-native{font-size:13px;opacity:0.7;margin-bottom:6px;}
-.lang-level{font-size:10px;background:rgba(255,255,255,0.1);border-radius:99px;padding:3px 10px;display:inline-block;}
+.lang-name{font-size:18px;font-weight:900;font-family:'Playfair Display',serif;margin-bottom:4px;}
+.lang-native{font-size:13px;color:rgba(245,240,232,0.8);margin-bottom:8px;}
+.lang-level{font-size:11px;background:rgba(255,255,255,0.15);border-radius:99px;padding:4px 12px;display:inline-block;color:#fff;font-weight:700;}
 .lang-5th{grid-column:span 2;}
 
 /* LANG SCREENS */
@@ -87,29 +87,29 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .vcard{border-radius:16px;padding:14px 12px;cursor:pointer;min-height:96px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-align:center;transition:all 0.25s;border:1px solid var(--border);background:var(--glass);}
 .vcard.flipped{background:rgba(255,255,255,0.08);}
-.vcard-word{font-size:16px;font-weight:700;line-height:1.3;}
-.vcard-phonetic{font-size:10px;color:var(--muted);font-style:italic;}
-.vcard-hint{font-size:10px;color:var(--faint);}
-.vcard-fr{font-size:14px;font-weight:700;}
-.vcard-ex{font-size:10px;color:var(--muted);font-style:italic;margin-top:2px;}
+.vcard-word{font-size:17px;font-weight:700;line-height:1.3;color:#fff;}
+.vcard-phonetic{font-size:12px;color:rgba(245,240,232,0.75);font-style:italic;}
+.vcard-hint{font-size:12px;color:rgba(245,240,232,0.5);}
+.vcard-fr{font-size:16px;font-weight:700;}
+.vcard-ex{font-size:11px;color:rgba(245,240,232,0.7);font-style:italic;margin-top:2px;}
 
 /* GRAMMAR */
 .lesson-row{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;margin-bottom:8px;transition:all 0.2s;font-family:'Lato',sans-serif;}
-.lesson-title{color:var(--text);font-weight:700;font-size:13px;}
-.lesson-meta{color:var(--faint);font-size:11px;margin-top:2px;}
-table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;}
-th{padding:7px 9px;border:1px solid rgba(255,255,255,0.08);text-align:center;font-weight:700;}
-td{padding:7px 9px;border:1px solid rgba(255,255,255,0.08);text-align:center;color:var(--text);}
-td:first-child{font-weight:700;}
-.ex-row{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;margin-bottom:5px;}
-.ex-native{font-size:14px;font-weight:700;}
-.ex-phonetic{font-size:11px;font-style:italic;}
-.ex-fr{font-size:11px;color:var(--muted);}
+.lesson-title{color:#fff;font-weight:700;font-size:15px;}
+.lesson-meta{color:rgba(245,240,232,0.65);font-size:12px;margin-top:3px;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px;}
+th{padding:9px 10px;border:1px solid rgba(255,255,255,0.12);text-align:center;font-weight:700;font-size:13px;}
+td{padding:9px 10px;border:1px solid rgba(255,255,255,0.1);text-align:center;color:#f0e8ff;font-size:13px;}
+td:first-child{font-weight:700;color:#fff;}
+.ex-row{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:8px;margin-bottom:6px;}
+.ex-native{font-size:15px;font-weight:700;}
+.ex-phonetic{font-size:12px;font-style:italic;color:rgba(245,240,232,0.7);}
+.ex-fr{font-size:13px;color:rgba(245,240,232,0.75);}
 
 /* PRON */
 .pron-card{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
-.pron-rule{font-size:14px;font-weight:700;margin-bottom:5px;}
-.pron-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.pron-rule{font-size:16px;font-weight:700;margin-bottom:6px;color:#fff;}
+.pron-desc{font-size:13px;color:rgba(245,240,232,0.8);line-height:1.65;margin-bottom:12px;}
 .pron-pills{display:flex;flex-wrap:wrap;gap:6px;}
 .pron-pill{border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:'Lato',sans-serif;}
 
@@ -121,31 +121,33 @@ td:first-child{font-weight:700;}
 .b-npc-msg{border-radius:4px 14px 14px 14px;}
 .b-player-msg{border-radius:14px 4px 14px 14px;}
 .b-speaker{font-size:9px;font-weight:700;letter-spacing:1px;margin-bottom:3px;opacity:0.7;}
-.b-text{font-size:13px;line-height:1.55;}
-.b-phonetic{font-size:10px;font-style:italic;margin-top:3px;opacity:0.6;}
-.b-fr{font-size:11px;margin-top:2px;opacity:0.5;}
+.b-text{font-size:14px;line-height:1.6;color:#fff;}
+.b-phonetic{font-size:12px;font-style:italic;margin-top:4px;color:rgba(245,240,232,0.65);}
+.b-fr{font-size:12px;margin-top:3px;color:rgba(245,240,232,0.55);}
 .b-player{display:flex;gap:8px;justify-content:flex-end;}
 .b-player-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
-.choice-hint{font-size:11px;color:var(--muted);text-align:center;margin-bottom:7px;}
-.choice-btn{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;color:var(--text);font-size:12px;text-align:left;margin-bottom:6px;display:flex;flex-direction:column;gap:2px;font-family:'Lato',sans-serif;transition:all 0.2s;}
+.choice-hint{font-size:13px;color:rgba(245,240,232,0.75);text-align:center;margin-bottom:8px;}
+.choice-btn{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--text);font-size:13px;text-align:left;margin-bottom:7px;display:flex;flex-direction:column;gap:3px;font-family:'Lato',sans-serif;transition:all 0.2s;}
 .choice-btn:hover{border-color:var(--accent);}
-.choice-native{font-weight:700;}
-.choice-phonetic{font-size:10px;font-style:italic;opacity:0.6;}
+.choice-native{font-weight:700;color:#fff;font-size:14px;}
+.choice-phonetic{font-size:11px;font-style:italic;color:rgba(245,240,232,0.6);}
 
 /* QUIZ */
 .q-card{border-radius:18px;padding:20px;text-align:center;margin-bottom:14px;background:var(--glass);border:1px solid var(--border);}
-.opt{width:100%;background:var(--glass);border:2px solid var(--border);border-radius:12px;padding:11px 14px;margin-bottom:7px;cursor:pointer;color:var(--text);font-size:12px;text-align:left;transition:all 0.2s;display:flex;flex-direction:column;gap:2px;font-family:'Lato',sans-serif;}
-.opt.ok{background:rgba(22,163,74,0.2);border-color:#16a34a;color:#86efac;}
+.opt{width:100%;background:var(--glass);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:13px 16px;margin-bottom:8px;cursor:pointer;color:#fff;font-size:14px;text-align:left;transition:all 0.2s;display:flex;flex-direction:column;gap:3px;font-family:'Lato',sans-serif;}
+.opt:hover{border-color:var(--accent);background:rgba(255,255,255,0.08);}
+.opt.ok{background:rgba(22,163,74,0.2);border-color:#16a34a;color:#a7f3d0;}
 .opt.nok{background:rgba(192,57,43,0.2);border-color:#c0392b;color:#fca5a5;}
-.opt-main{font-weight:700;font-size:13px;}
-.opt-ph{font-size:10px;font-style:italic;opacity:0.65;}
+.opt-main{font-weight:700;font-size:14px;}
+.opt-ph{font-size:12px;font-style:italic;color:rgba(245,240,232,0.6);}
 
 /* SHARED */
 .pbar{background:rgba(255,255,255,0.06);border-radius:4px;height:4px;overflow:hidden;margin-bottom:16px;}
 .pfill{height:100%;border-radius:4px;transition:width 0.4s;}
-.back-btn{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:13px;margin-bottom:12px;font-family:'Lato',sans-serif;display:flex;align-items:center;gap:4px;}
-.back-btn:hover{color:var(--accent);}
-.tip-box{border-radius:12px;padding:11px 14px;font-size:12px;line-height:1.65;margin-top:8px;}
+.back-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;cursor:pointer;font-size:14px;font-weight:700;margin-bottom:14px;font-family:'Lato',sans-serif;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;transition:all 0.2s;}
+.back-btn:hover{background:rgba(212,168,67,0.2);border-color:var(--accent);color:var(--accent);}
+.module-back{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.tip-box{border-radius:12px;padding:12px 16px;font-size:13px;line-height:1.7;margin-top:8px;}
 .btn{display:block;width:100%;padding:13px;border:none;border-radius:13px;font-size:14px;font-weight:700;font-family:'Lato',sans-serif;cursor:pointer;transition:all 0.2s;text-align:center;}
 .btn:hover{opacity:0.88;transform:translateY(-1px);}
 .result{text-align:center;padding:36px 0;}
@@ -736,8 +738,12 @@ window.speechSynthesis?.addEventListener?.("voiceschanged",()=>window.speechSynt
 ═══════════════════════════════ */
 function renderVocab(L,el){
   const maxFree=isDemo?3:L.vocab.length;
-  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">🃏 Vocabulaire</h3>`;
-  if(isDemo)html+=`<div style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#d4a843;margin-bottom:12px">🔓 Mode démo — ${maxFree} mots sur ${L.vocab.length}. Commandez la licence complète.</div>`;
+  let html=`
+  <div class="module-back">
+    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🃏 Vocabulaire</h3>
+  </div>`;
+  if(isDemo)html+=`<div style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.3);border-radius:10px;padding:10px 14px;font-size:13px;color:#d4a843;margin-bottom:12px">🔓 Mode démo — ${maxFree} mots sur ${L.vocab.length}. Commandez la licence complète.</div>`;
   const rtl=L.rtl?"direction:rtl;":"";
   html+=`<div class="vgrid">`;
   L.vocab.slice(0,maxFree).forEach((w,i)=>{
@@ -775,9 +781,13 @@ function flipVcard(key,el,lang,idx){
 let currentLesson=null;
 function renderGrammar(L,el){
   if(currentLesson){renderLesson(L,el,currentLesson);return;}
-  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">📚 Grammaire</h3>`;
   const done=Object.keys(STATE.gdone).filter(k=>k.startsWith(currentLang+"-")).length;
-  html+=`<p style="color:var(--muted);font-size:12px;margin-bottom:12px">${done}/${L.grammar.length} leçons terminées</p>`;
+  let html=`
+  <div class="module-back">
+    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">📚 Grammaire</h3>
+  </div>
+  <p style="color:rgba(245,240,232,0.7);font-size:13px;margin-bottom:14px">${done}/${L.grammar.length} leçons terminées</p>`;
   L.grammar.forEach(g=>{
     const isDone=STATE.gdone[currentLang+"-"+g.id];
     html+=`<button class="lesson-row" style="${isDone?"border-color:rgba(22,163,74,0.4);background:rgba(22,163,74,0.08)":""}" onclick="openLesson('${g.id}')">
@@ -797,11 +807,14 @@ function openLesson(id){
 function renderLesson(L,el,id){
   const g=L.grammar.find(x=>x.id===id);
   const rtl=L.rtl?"direction:rtl;":"";
-  let html=`<button class="back-btn" onclick="currentLesson=null;renderGrammar(LANGS[currentLang],document.getElementById('mod-content'))">← Retour</button>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-      <span style="font-size:24px">${g.emoji}</span>
-      <h3 style="color:${g.color};font-family:'Playfair Display',serif;font-size:18px">${g.title}</h3>
-    </div>`;
+  let html=`
+  <div class="module-back">
+    <button class="back-btn" onclick="currentLesson=null;renderGrammar(LANGS[currentLang],document.getElementById('mod-content'))">← Grammaire</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+    <span style="font-size:24px">${g.emoji}</span>
+    <h3 style="color:${g.color};font-family:'Playfair Display',serif;font-size:18px">${g.title}</h3>
+  </div>`;
   g.sections.forEach(s=>{
     html+=`<div style="background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px">
       <h4 style="color:${g.color};font-size:13px;margin-bottom:9px">${s.title}</h4>
@@ -845,7 +858,11 @@ function doneLesson(id){
    PRONUNCIATION
 ═══════════════════════════════ */
 function renderPron(L,el){
-  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">🗣️ Prononciation</h3>`;
+  let html=`
+  <div class="module-back">
+    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🗣️ Prononciation</h3>
+  </div>`;
   L.pronunciation.forEach(p=>{
     html+=`<div class="pron-card" style="border-color:${L.borderColor}">
       <div class="pron-rule">${p.emoji} ${p.rule}</div>
@@ -869,9 +886,10 @@ function renderDialogue(L,el){
   const d=L.dialogues[0];
   if(dlgData.done&&dlgData.lang===currentLang){renderDlgResult(L,el);return;}
   if(dlgData.lang!==currentLang){dlgData={turns:d.turns,tidx:0,errors:0,done:false,chosen:{},lang:currentLang};}
-  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+    <button class="back-btn" onclick="showHome()" style="margin:0">← Langues</button>
     <h3 style="color:${L.color};font-family:'Playfair Display',serif">${d.emoji} ${d.title}</h3>
-    <span style="font-size:12px;color:${dlgData.errors>0?"#e74c3c":"#22c55e"}">${dlgData.errors>0?"❌ "+dlgData.errors:"✅ 0"}</span>
+    <span style="font-size:13px;color:${dlgData.errors>0?"#e74c3c":"#22c55e"}">${dlgData.errors>0?"❌ "+dlgData.errors:"✅ 0"}</span>
   </div><div class="chat">`;
   const rtl=L.rtl?"dir='rtl'":"";
   for(let i=0;i<=Math.min(dlgData.tidx,dlgData.turns.length-1);i++){
@@ -953,12 +971,13 @@ function renderQuiz(L,el){
   }
   if(quizData.done){renderQResult(L,el);return;}
   const q=quizData.qs[quizData.idx];
-  let html=`<div style="display:flex;justify-content:space-between;margin-bottom:10px">
-    <h3 style="color:${L.color};font-family:'Playfair Display',serif">🧠 Quiz</h3>
-    <span style="color:var(--muted);font-size:12px">${quizData.idx+1}/${quizData.qs.length} · ${quizData.score} ✅</span>
+  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+    <button class="back-btn" onclick="showHome()" style="margin:0">← Langues</button>
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🧠 Quiz</h3>
+    <span style="color:rgba(245,240,232,0.75);font-size:13px">${quizData.idx+1}/${quizData.qs.length} · ${quizData.score} ✅</span>
   </div>
   <div class="pbar"><div class="pfill" style="background:linear-gradient(90deg,${L.color},${L.color}88);width:${quizData.idx/quizData.qs.length*100}%"></div></div>
-  <div class="q-card" style="border-color:${L.borderColor}"><p style="font-size:15px;font-weight:700;line-height:1.6">${q.q}</p></div>`;
+  <div class="q-card" style="border-color:${L.borderColor}"><p style="font-size:16px;font-weight:700;line-height:1.6;color:#fff">${q.q}</p></div>`;
   q.opts.forEach((opt,i)=>{
     let cls="opt";
     if(quizData.ans!==null){
