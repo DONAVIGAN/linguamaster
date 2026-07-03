@@ -3,494 +3,1024 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LinguaMaster — Apprenez l'anglais & l'espagnol</title>
+<title>LinguaMaster — 5 Langues</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#07050d;
-  --gold:#d4a843;
-  --gold2:#f0c060;
-  --red:#c0392b;
-  --red2:#e74c3c;
-  --green:#16a34a;
-  --green2:#22c55e;
-  --text:#f5f0e8;
-  --muted:rgba(245,240,232,0.65);
-  --faint:rgba(245,240,232,0.35);
+  --bg:#07050d; --text:#f5f0e8; --muted:rgba(245,240,232,0.6); --faint:rgba(245,240,232,0.3);
+  --border:rgba(255,255,255,0.12); --glass:rgba(255,255,255,0.05);
+  --accent:#d4a843; --accent2:#f0c060;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
-h1,h2,h3,h4{font-family:'Playfair Display',serif;}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none;}
-.bg::before{content:'';position:absolute;top:-30%;right:-20%;width:80%;height:80%;background:radial-gradient(circle,rgba(212,168,67,0.07),transparent 65%);border-radius:50%;}
-.bg::after{content:'';position:absolute;bottom:-20%;left:-15%;width:60%;height:60%;background:radial-gradient(circle,rgba(192,57,43,0.06),transparent 65%);border-radius:50%;}
+body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
+.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);}
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-/* HERO */
-.hero{position:relative;z-index:1;text-align:center;padding:64px 20px 50px;}
-.hero-badge{display:inline-block;background:linear-gradient(135deg,var(--red),var(--gold));color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:99px;margin-bottom:22px;}
-.flags{font-size:clamp(38px,7vw,58px);margin-bottom:12px;display:block;animation:pulse 3s ease-in-out infinite;}
-.hero h1{font-size:clamp(30px,6vw,54px);line-height:1.15;margin-bottom:16px;background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite;}
-.hero-sub{font-size:clamp(14px,2.5vw,17px);color:var(--muted);max-width:580px;margin:0 auto 32px;line-height:1.75;}
-.hero-cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-.cta-btn{padding:14px 28px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:'Lato',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}
-.cta-primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050d;}
-.cta-secondary{background:rgba(255,255,255,0.08);color:var(--text);border:1px solid rgba(255,255,255,0.2);}
-.cta-btn:hover{transform:translateY(-2px);opacity:0.9;}
+/* MODAL LICENSE */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px);}
+.modal{background:linear-gradient(160deg,#0d0a14,#160d22);border:1px solid var(--accent);border-radius:24px;padding:32px 24px;max-width:400px;width:100%;text-align:center;position:relative;}
+.modal h2{font-size:22px;color:var(--accent);margin-bottom:8px;}
+.modal p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:20px;}
+.modal-icon{font-size:48px;margin-bottom:14px;display:block;}
+.code-input{width:100%;background:rgba(255,255,255,0.08);border:2px solid var(--border);border-radius:12px;padding:14px;color:var(--text);font-size:18px;text-align:center;letter-spacing:4px;font-family:'Lato',sans-serif;outline:none;margin-bottom:12px;text-transform:uppercase;}
+.code-input:focus{border-color:var(--accent);}
+.code-input.error{border-color:#e74c3c;animation:shake 0.3s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.modal-btn{width:100%;padding:13px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;margin-bottom:8px;}
+.modal-btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07050d;}
+.modal-hint{font-size:12px;color:var(--faint);margin-top:8px;}
+.modal-demo{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:12px;color:var(--muted);margin-top:12px;}
 
-/* STATS */
-.stats{position:relative;z-index:1;display:flex;justify-content:center;flex-wrap:wrap;background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.2);border-radius:20px;overflow:hidden;max-width:700px;margin:0 auto 56px;}
-.stat{flex:1;min-width:130px;padding:22px 16px;text-align:center;border-right:1px solid rgba(212,168,67,0.12);}
-.stat:last-child{border-right:none;}
-.stat-num{font-size:30px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Playfair Display',serif;}
-.stat-label{font-size:11px;color:var(--muted);margin-top:4px;}
+/* HEADER */
+header{position:sticky;top:0;z-index:10;background:rgba(7,5,13,0.96);border-bottom:1px solid rgba(212,168,67,0.2);backdrop-filter:blur(16px);padding:10px 16px;}
+.header-inner{max-width:520px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.logo-text{font-family:'Playfair Display',serif;font-size:17px;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite;}
+.hright{display:flex;align-items:center;gap:10px;}
+.xp-badge{background:rgba(212,168,67,0.15);border:1px solid rgba(212,168,67,0.3);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:var(--accent);}
+.streak-badge{background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700;color:#e74c3c;}
 
-/* DIVIDER */
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,0.3),transparent);margin:0 20px;}
+/* NAV */
+nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);overflow-x:auto;position:sticky;top:53px;z-index:9;backdrop-filter:blur(20px);}
+.nav-inner{max-width:520px;margin:0 auto;display:flex;}
+.nb{flex:0 0 auto;background:transparent;border:none;color:var(--faint);padding:9px 10px 7px;cursor:pointer;border-bottom:2px solid transparent;font-size:9px;font-family:'Lato',sans-serif;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:52px;transition:all 0.2s;}
+.nb.active{border-bottom-color:currentColor;font-weight:700;opacity:1;}
 
-/* SECTION */
-.section{position:relative;z-index:1;padding:56px 20px;max-width:920px;margin:0 auto;}
-.section-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:99px;margin-bottom:14px;}
-.section-title{font-size:clamp(22px,4vw,36px);margin-bottom:12px;line-height:1.25;}
+/* CONTENT */
+.content{max-width:520px;margin:0 auto;padding:14px 14px 30px;position:relative;z-index:1;}
+.screen{display:none;animation:fadeIn 0.3s ease;}
+.screen.active{display:block;}
 
-/* APPS */
-.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-@media(max-width:580px){.apps-grid{grid-template-columns:1fr;}}
-.app-card{border-radius:24px;overflow:hidden;border:1px solid;transition:transform 0.3s;}
-.app-card:hover{transform:translateY(-5px);}
-.app-card-header{padding:26px 22px 16px;position:relative;}
-.app-flag{font-size:46px;margin-bottom:10px;display:block;}
-.app-name{font-size:24px;font-weight:900;margin-bottom:6px;}
-.app-tagline{font-size:13px;opacity:0.75;line-height:1.5;}
-.app-screen{width:100%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;margin:14px 0;}
-.app-screen-mock{width:100%;height:100%;display:flex;flex-direction:column;padding:10px;}
-.mock-header{background:rgba(0,0,0,0.5);border-radius:9px;padding:9px;margin-bottom:7px;display:flex;align-items:center;gap:7px;}
-.mock-nav{display:flex;gap:3px;margin-bottom:7px;}
-.mock-nb{flex:1;background:rgba(255,255,255,0.07);border-radius:5px;padding:5px 2px;text-align:center;font-size:7.5px;}
-.mock-hero{background:rgba(255,255,255,0.05);border-radius:9px;padding:11px;text-align:center;margin-bottom:5px;}
-.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
-.mock-card{background:rgba(255,255,255,0.07);border-radius:7px;padding:7px 5px;display:flex;flex-direction:column;gap:2px;}
-.app-features{padding:0 22px 20px;}
-.feat-item{display:flex;gap:9px;margin-bottom:9px;align-items:flex-start;}
-.feat-text{font-size:13px;color:var(--muted);line-height:1.5;}
-.app-link{display:block;text-align:center;padding:12px;border-radius:11px;font-weight:700;font-size:13px;text-decoration:none;margin:0 22px 22px;transition:all 0.2s;}
-.app-link:hover{opacity:0.85;}
-.app-card-en{background:linear-gradient(160deg,#0a0e1a,#111827);border-color:rgba(212,168,67,0.35);}
-.app-card-en .app-card-header{background:linear-gradient(135deg,rgba(212,168,67,0.14),rgba(37,99,235,0.09));}
-.app-card-en .app-name{color:var(--gold);}
-.app-link-en{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050d;}
-.app-card-es{background:linear-gradient(160deg,#0d0a0f,#140f1a);border-color:rgba(192,57,43,0.4);}
-.app-card-es .app-card-header{background:linear-gradient(135deg,rgba(192,57,43,0.17),rgba(243,156,18,0.09));}
-.app-card-es .app-name{background:linear-gradient(135deg,var(--red2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.app-link-es{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;}
+/* HOME */
+.home-hero{text-align:center;padding:28px 0 20px;}
+.home-title{font-size:30px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.home-sub{color:var(--muted);font-size:13px;line-height:1.7;max-width:360px;margin:0 auto 24px;}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+.lang-card{border-radius:20px;padding:20px 16px;cursor:pointer;text-align:center;border:1px solid;transition:all 0.25s;position:relative;overflow:hidden;}
+.lang-card:hover{transform:translateY(-3px);}
+.lang-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:currentColor;opacity:0.4;}
+.lang-flag{font-size:36px;display:block;margin-bottom:8px;animation:pulse 3s ease-in-out infinite;}
+.lang-name{font-size:16px;font-weight:900;font-family:'Playfair Display',serif;margin-bottom:3px;}
+.lang-native{font-size:13px;opacity:0.7;margin-bottom:6px;}
+.lang-level{font-size:10px;background:rgba(255,255,255,0.1);border-radius:99px;padding:3px 10px;display:inline-block;}
+.lang-5th{grid-column:span 2;}
 
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
-.feature-card{background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.14);border-radius:18px;padding:22px;transition:all 0.2s;}
-.feature-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(212,168,67,0.35);}
-.feature-icon{font-size:30px;margin-bottom:10px;}
-.feature-title{font-size:15px;font-weight:700;margin-bottom:7px;color:var(--gold);}
-.feature-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+/* LANG SCREENS */
+.lang-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.lang-header-flag{font-size:32px;}
+.lang-header-info h2{font-size:20px;margin-bottom:2px;}
+.lang-header-info p{font-size:12px;color:var(--muted);}
 
-/* LICENSE SECTION */
-.license-section{position:relative;z-index:1;padding:56px 20px;background:linear-gradient(180deg,transparent,rgba(192,57,43,0.04),transparent);}
-.license-inner{max-width:720px;margin:0 auto;}
-.license-steps{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
-.license-step{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.15);border-radius:16px;padding:18px 20px;}
-.step-num{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0;color:#fff;}
-.step-content h4{color:var(--gold);font-size:14px;margin-bottom:4px;}
-.step-content p{color:var(--muted);font-size:13px;line-height:1.6;}
-.lock-warning{background:linear-gradient(135deg,rgba(192,57,43,0.15),rgba(192,57,43,0.05));border:1px solid rgba(192,57,43,0.4);border-radius:16px;padding:18px 20px;margin-top:20px;display:flex;gap:14px;align-items:flex-start;}
-.lock-icon{font-size:28px;flex-shrink:0;}
-.lock-text h4{color:var(--red2);font-size:14px;font-weight:700;margin-bottom:5px;}
-.lock-text p{color:var(--muted);font-size:13px;line-height:1.6;}
+/* MODULE TABS */
+.mod-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px;}
+.mtab{flex:0 0 auto;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:99px;padding:6px 14px;cursor:pointer;font-size:12px;font-family:'Lato',sans-serif;color:var(--muted);transition:all 0.2s;white-space:nowrap;}
+.mtab.active{font-weight:700;color:#fff;}
+.mod-content{animation:fadeIn 0.3s ease;}
 
-/* PRICING */
-.pricing-section{position:relative;z-index:1;padding:56px 20px;}
-.pricing-inner{max-width:920px;margin:0 auto;}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:40px;}
-.plan{border-radius:22px;padding:30px 22px;position:relative;transition:transform 0.3s;border:1px solid;}
-.plan:hover{transform:translateY(-4px);}
-.plan-popular{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050d;font-size:10px;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:99px;white-space:nowrap;}
-.plan-name{font-size:17px;font-weight:700;margin-bottom:3px;}
-.plan-target{font-size:12px;color:var(--muted);margin-bottom:18px;}
-.plan-amount{font-size:36px;font-weight:900;font-family:'Playfair Display',serif;}
-.plan-currency{font-size:13px;color:var(--muted);margin-left:3px;}
-.plan-period{font-size:12px;color:var(--muted);margin-bottom:22px;}
-.plan-features{list-style:none;margin-bottom:26px;}
-.plan-features li{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:13px;color:var(--muted);}
-.plan-features li:last-child{border-bottom:none;}
-.plan-btn{display:block;text-align:center;padding:13px;border-radius:11px;font-weight:700;font-size:14px;cursor:pointer;border:none;font-family:'Lato',sans-serif;transition:all 0.2s;text-decoration:none;}
-.plan-btn:hover{opacity:0.88;transform:translateY(-1px);}
-.plan-student{background:linear-gradient(160deg,rgba(22,163,74,0.12),rgba(22,163,74,0.04));border-color:rgba(22,163,74,0.35);}
-.plan-student .plan-amount{color:var(--green2);}
-.plan-student .plan-btn{background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;}
-.plan-pro{background:linear-gradient(160deg,rgba(212,168,67,0.14),rgba(212,168,67,0.04));border-color:rgba(212,168,67,0.5);box-shadow:0 0 40px rgba(212,168,67,0.08);}
-.plan-pro .plan-amount{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.plan-pro .plan-btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#07050d;}
-.plan-school{background:linear-gradient(160deg,rgba(192,57,43,0.12),rgba(192,57,43,0.04));border-color:rgba(192,57,43,0.4);}
-.plan-school .plan-amount{color:var(--red2);}
-.plan-school .plan-btn{background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;}
+/* VOCAB */
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.vcard{border-radius:16px;padding:14px 12px;cursor:pointer;min-height:96px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;text-align:center;transition:all 0.25s;border:1px solid var(--border);background:var(--glass);}
+.vcard.flipped{background:rgba(255,255,255,0.08);}
+.vcard-word{font-size:16px;font-weight:700;line-height:1.3;}
+.vcard-phonetic{font-size:10px;color:var(--muted);font-style:italic;}
+.vcard-hint{font-size:10px;color:var(--faint);}
+.vcard-fr{font-size:14px;font-weight:700;}
+.vcard-ex{font-size:10px;color:var(--muted);font-style:italic;margin-top:2px;}
 
-/* PAYMENT METHODS */
-.payment-box{background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.2);border-radius:16px;padding:22px;text-align:center;margin-top:28px;}
-.payment-title{color:var(--gold);font-weight:700;font-size:14px;margin-bottom:16px;}
-.payment-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
-.pm{border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;}
+/* GRAMMAR */
+.lesson-row{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;margin-bottom:8px;transition:all 0.2s;font-family:'Lato',sans-serif;}
+.lesson-title{color:var(--text);font-weight:700;font-size:13px;}
+.lesson-meta{color:var(--faint);font-size:11px;margin-top:2px;}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:10px;}
+th{padding:7px 9px;border:1px solid rgba(255,255,255,0.08);text-align:center;font-weight:700;}
+td{padding:7px 9px;border:1px solid rgba(255,255,255,0.08);text-align:center;color:var(--text);}
+td:first-child{font-weight:700;}
+.ex-row{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;margin-bottom:5px;}
+.ex-native{font-size:14px;font-weight:700;}
+.ex-phonetic{font-size:11px;font-style:italic;}
+.ex-fr{font-size:11px;color:var(--muted);}
 
-/* TESTIMONIALS */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px;}
-.testi{background:rgba(255,255,255,0.04);border:1px solid rgba(212,168,67,0.14);border-radius:18px;padding:22px;}
-.testi-stars{color:var(--gold);font-size:13px;margin-bottom:10px;}
-.testi-text{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;font-style:italic;}
-.testi-author{display:flex;align-items:center;gap:10px;}
-.testi-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+/* PRON */
+.pron-card{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
+.pron-rule{font-size:14px;font-weight:700;margin-bottom:5px;}
+.pron-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:10px;}
+.pron-pills{display:flex;flex-wrap:wrap;gap:6px;}
+.pron-pill{border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:'Lato',sans-serif;}
 
-/* CTA FINAL */
-.cta-final{position:relative;z-index:1;text-align:center;padding:64px 20px;}
-.cta-final h2{font-size:clamp(24px,4vw,40px);margin-bottom:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.cta-final p{color:var(--muted);font-size:15px;max-width:480px;margin:0 auto 28px;line-height:1.7;}
-.whatsapp-box{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:16px;padding:18px 24px;display:inline-flex;align-items:center;gap:12px;max-width:400px;margin-top:16px;}
+/* DIALOGUE */
+.chat{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.b-npc{display:flex;gap:8px;align-items:flex-start;}
+.b-npc-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.b-msg{border:1px solid var(--border);padding:9px 12px;max-width:82%;background:rgba(255,255,255,0.04);}
+.b-npc-msg{border-radius:4px 14px 14px 14px;}
+.b-player-msg{border-radius:14px 4px 14px 14px;}
+.b-speaker{font-size:9px;font-weight:700;letter-spacing:1px;margin-bottom:3px;opacity:0.7;}
+.b-text{font-size:13px;line-height:1.55;}
+.b-phonetic{font-size:10px;font-style:italic;margin-top:3px;opacity:0.6;}
+.b-fr{font-size:11px;margin-top:2px;opacity:0.5;}
+.b-player{display:flex;gap:8px;justify-content:flex-end;}
+.b-player-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.choice-hint{font-size:11px;color:var(--muted);text-align:center;margin-bottom:7px;}
+.choice-btn{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;color:var(--text);font-size:12px;text-align:left;margin-bottom:6px;display:flex;flex-direction:column;gap:2px;font-family:'Lato',sans-serif;transition:all 0.2s;}
+.choice-btn:hover{border-color:var(--accent);}
+.choice-native{font-weight:700;}
+.choice-phonetic{font-size:10px;font-style:italic;opacity:0.6;}
 
-footer{position:relative;z-index:1;text-align:center;padding:28px 20px;border-top:1px solid rgba(255,255,255,0.07);}
-footer p{color:var(--faint);font-size:12px;line-height:1.8;}
-.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:10px;}
-.footer-links a{color:var(--muted);font-size:12px;text-decoration:none;}
-.footer-links a:hover{color:var(--gold);}
+/* QUIZ */
+.q-card{border-radius:18px;padding:20px;text-align:center;margin-bottom:14px;background:var(--glass);border:1px solid var(--border);}
+.opt{width:100%;background:var(--glass);border:2px solid var(--border);border-radius:12px;padding:11px 14px;margin-bottom:7px;cursor:pointer;color:var(--text);font-size:12px;text-align:left;transition:all 0.2s;display:flex;flex-direction:column;gap:2px;font-family:'Lato',sans-serif;}
+.opt.ok{background:rgba(22,163,74,0.2);border-color:#16a34a;color:#86efac;}
+.opt.nok{background:rgba(192,57,43,0.2);border-color:#c0392b;color:#fca5a5;}
+.opt-main{font-weight:700;font-size:13px;}
+.opt-ph{font-size:10px;font-style:italic;opacity:0.65;}
+
+/* SHARED */
+.pbar{background:rgba(255,255,255,0.06);border-radius:4px;height:4px;overflow:hidden;margin-bottom:16px;}
+.pfill{height:100%;border-radius:4px;transition:width 0.4s;}
+.back-btn{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:13px;margin-bottom:12px;font-family:'Lato',sans-serif;display:flex;align-items:center;gap:4px;}
+.back-btn:hover{color:var(--accent);}
+.tip-box{border-radius:12px;padding:11px 14px;font-size:12px;line-height:1.65;margin-top:8px;}
+.btn{display:block;width:100%;padding:13px;border:none;border-radius:13px;font-size:14px;font-weight:700;font-family:'Lato',sans-serif;cursor:pointer;transition:all 0.2s;text-align:center;}
+.btn:hover{opacity:0.88;transform:translateY(-1px);}
+.result{text-align:center;padding:36px 0;}
+.result-emoji{font-size:58px;margin-bottom:10px;}
+.result-title{font-size:22px;margin-bottom:8px;}
+.result-score{color:var(--muted);margin-bottom:18px;}
+.result-score strong{font-size:22px;}
+.result-bar{background:rgba(255,255,255,0.05);border-radius:99px;height:9px;margin:0 20px 20px;overflow:hidden;}
+.result-fill{height:100%;border-radius:99px;transition:width 1s ease;}
+.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);border-radius:99px;padding:7px 18px;font-weight:700;font-size:13px;z-index:999;display:none;white-space:nowrap;}
+.spk{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all 0.2s;vertical-align:middle;}
+.spk:hover{background:rgba(212,168,67,0.25);border-color:var(--accent);}
 </style>
 </head>
 <body>
-<div class="bg"></div>
 
-<!-- HERO -->
-<div class="hero">
-  <span class="hero-badge">🌍 Formation Linguistique Professionnelle</span>
-  <span class="flags">🇬🇧 🇪🇸</span>
-  <h1>LinguaMaster</h1>
-  <p class="hero-sub">Les meilleures applications pour apprendre l'anglais et l'espagnol. Vocabulaire, grammaire, dialogues professionnels, prononciation et quiz — tout en français, sur votre mobile.</p>
-  <div class="hero-cta">
-    <a href="https://donavigan.github.io/english-master" target="_blank" class="cta-btn cta-primary">🇬🇧 Voir English Master</a>
-    <a href="https://donavigan.github.io/espanol-master" target="_blank" class="cta-btn cta-secondary">🇪🇸 Voir Español Master</a>
+<div class="bg-fx">
+  <div class="orb" style="width:500px;height:500px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(212,168,67,0.08),transparent 65%)"></div>
+  <div class="orb" style="width:400px;height:400px;bottom:-150px;left:-100px;background:radial-gradient(circle,rgba(192,57,43,0.07),transparent 65%)"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- LICENSE MODAL -->
+<div class="overlay" id="license-overlay" style="display:none">
+  <div class="modal">
+    <span class="modal-icon">🔐</span>
+    <h2>Activation requise</h2>
+    <p>Cette section est réservée aux utilisateurs sous licence. Entrez votre code d'activation reçu sur WhatsApp après paiement.</p>
+    <input type="text" class="code-input" id="code-input" placeholder="CODE-XXXX" maxlength="12" oninput="this.value=this.value.toUpperCase()"/>
+    <div id="code-error" style="color:#e74c3c;font-size:12px;margin-bottom:8px;display:none">❌ Code invalide. Vérifiez et réessayez.</div>
+    <button class="modal-btn modal-btn-primary" onclick="validateCode()">Activer ma licence →</button>
+    <div class="modal-hint">Pas encore de code ? Contactez-nous sur WhatsApp pour commander.</div>
+    <div class="modal-demo">
+      <strong style="color:var(--accent)">Code de démonstration :</strong> DEMO-2025<br>
+      <span style="font-size:11px">Accès limité à 3 mots par catégorie</span>
+    </div>
   </div>
 </div>
 
-<!-- STATS -->
-<div style="padding:0 20px;position:relative;z-index:1;margin-bottom:50px">
-<div class="stats">
-  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Langues</div></div>
-  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Modules / app</div></div>
-  <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Mots & leçons</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">En français</div></div>
-</div>
-</div>
-
-<div class="divider"></div>
-
-<!-- APPS -->
-<div class="section">
-  <div style="text-align:center;margin-bottom:38px">
-    <div class="section-tag" style="background:rgba(212,168,67,0.13);color:var(--gold);border:1px solid rgba(212,168,67,0.3)">Nos Applications</div>
-    <h2 class="section-title">Deux apps, une mission :<br>vous faire progresser</h2>
-    <p style="color:var(--muted);font-size:14px;max-width:500px;margin:0 auto;line-height:1.7">Chaque application fonctionne sur smartphone, avec prononciation audio et progression sauvegardée.</p>
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo" onclick="showHome()">
+      <span style="font-size:22px">🌍</span>
+      <div>
+        <div class="logo-text">LinguaMaster</div>
+        <div style="font-size:9px;color:var(--faint);letter-spacing:1.5px">5 LANGUES · TOUT EN FRANÇAIS</div>
+      </div>
+    </div>
+    <div class="hright">
+      <div class="streak-badge">🔥 <span id="h-streak">0</span>j</div>
+      <div class="xp-badge">⭐ <span id="h-xp">0</span></div>
+    </div>
   </div>
-  <div class="apps-grid">
+</header>
 
-    <!-- ENGLISH -->
-    <div class="app-card app-card-en">
-      <div class="app-card-header">
-        <span class="app-flag">🇬🇧</span>
-        <div class="app-name">English Master</div>
-        <div class="app-tagline">L'anglais professionnel pour francophones</div>
-        <div class="app-screen">
-          <div class="app-screen-mock" style="background:linear-gradient(160deg,#0a0e1a,#111827)">
-            <div class="mock-header" style="background:rgba(212,168,67,0.15)">
-              <span style="font-size:14px">🇬🇧</span>
-              <div style="font-size:10px;font-weight:700;color:#f0c060">English Master</div>
-              <div style="margin-left:auto;font-size:9px">🔥<span style="color:#e74c3c">1j</span></div>
-            </div>
-            <div class="mock-nav">
-              <div class="mock-nb" style="background:rgba(212,168,67,0.3);color:#f0c060">🏠<br>Accueil</div>
-              <div class="mock-nb">📖<br>Vocab</div>
-              <div class="mock-nb">📐<br>Gram.</div>
-              <div class="mock-nb">✍️<br>Écrit.</div>
-              <div class="mock-nb">🗣️<br>Pron.</div>
-              <div class="mock-nb">💬<br>Dial.</div>
-              <div class="mock-nb">🧠<br>Quiz</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,rgba(212,168,67,0.12),rgba(37,99,235,0.08));margin-bottom:5px">
-              <div style="font-size:28px;margin-bottom:4px">🇬🇧</div>
-              <div style="font-size:13px;font-weight:700;color:#f0c060;font-family:'Playfair Display',serif">English Master</div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:2px">La meilleure façon d'apprendre</div>
-              <div style="display:flex;gap:5px;justify-content:center;margin-top:7px">
-                <div style="background:rgba(255,255,255,0.08);border-radius:5px;padding:3px 7px;font-size:8px">🎯 A1</div>
-                <div style="background:rgba(255,255,255,0.08);border-radius:5px;padding:3px 7px;font-size:8px">⭐ 0 XP</div>
-              </div>
-            </div>
-            <div class="mock-grid">
-              <div class="mock-card" style="background:rgba(212,168,67,0.15)"><span style="font-size:12px">📖</span><span style="font-size:8px;font-weight:700;color:#f0c060">Vocabulaire</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">5 catégories</span></div>
-              <div class="mock-card" style="background:rgba(37,99,235,0.15)"><span style="font-size:12px">📐</span><span style="font-size:8px;font-weight:700;color:#60a5fa">Grammaire</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">6 leçons</span></div>
-              <div class="mock-card" style="background:rgba(22,163,74,0.15)"><span style="font-size:12px">✍️</span><span style="font-size:8px;font-weight:700;color:#22c55e">Traduction</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">8 exercices</span></div>
-              <div class="mock-card" style="background:rgba(224,92,58,0.15)"><span style="font-size:12px">💬</span><span style="font-size:8px;font-weight:700;color:#f87c5a">Dialogues</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">3 situations</span></div>
-            </div>
+<!-- NAV (hidden on home) -->
+<nav id="lang-nav" style="display:none">
+  <div class="nav-inner" id="nav-inner"></div>
+</nav>
+
+<div class="content">
+
+<!-- HOME -->
+<div class="screen active" id="screen-home">
+  <div class="home-hero">
+    <div style="font-size:44px;margin-bottom:12px;animation:pulse 3s ease-in-out infinite">🌍</div>
+    <h1 class="home-title">LinguaMaster</h1>
+    <p class="home-sub">5 langues, une seule app. Apprenez l'anglais, l'espagnol, le chinois, le russe et l'arabe — tout en français, sur votre mobile.</p>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(212,168,67,0.15),rgba(212,168,67,0.05));border-color:rgba(212,168,67,0.4);color:var(--accent)" onclick="openLang('en')">
+      <span class="lang-flag">🇬🇧</span>
+      <div class="lang-name" style="color:var(--accent)">English</div>
+      <div class="lang-native" style="color:var(--muted)">Anglais</div>
+      <div class="lang-level">A1 → B2</div>
+    </div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(192,57,43,0.15),rgba(243,156,18,0.05));border-color:rgba(192,57,43,0.4);color:#e74c3c" onclick="openLang('es')">
+      <span class="lang-flag">🇪🇸</span>
+      <div class="lang-name" style="color:#e74c3c">Español</div>
+      <div class="lang-native" style="color:var(--muted)">Espagnol</div>
+      <div class="lang-level">A1 → B2</div>
+    </div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.15),rgba(255,215,0,0.05));border-color:rgba(220,38,38,0.4);color:#ef4444" onclick="openLang('zh')">
+      <span class="lang-flag">🇨🇳</span>
+      <div class="lang-name" style="color:#ef4444">中文</div>
+      <div class="lang-native" style="color:var(--muted)">Chinois (Mandarin)</div>
+      <div class="lang-level">HSK 1 → HSK 3</div>
+    </div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.15),rgba(220,38,38,0.08));border-color:rgba(37,99,235,0.4);color:#60a5fa" onclick="openLang('ru')">
+      <span class="lang-flag">🇷🇺</span>
+      <div class="lang-name" style="color:#60a5fa">Русский</div>
+      <div class="lang-native" style="color:var(--muted)">Russe</div>
+      <div class="lang-level">A1 → B1</div>
+    </div>
+    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(22,163,74,0.15),rgba(212,168,67,0.05));border-color:rgba(22,163,74,0.4);color:#22c55e" onclick="openLang('ar')">
+      <span class="lang-flag">🌙</span>
+      <div class="lang-name" style="color:#22c55e">العربية</div>
+      <div class="lang-native" style="color:var(--muted)">Arabe Standard Moderne</div>
+      <div class="lang-level">Débutant → Intermédiaire</div>
+    </div>
+  </div>
+  <div style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:14px;padding:14px 16px;text-align:center">
+    <div style="color:var(--accent);font-weight:700;font-size:13px;margin-bottom:6px">🔐 Accès par licence</div>
+    <p style="color:var(--muted);font-size:12px;line-height:1.6">L'aperçu est gratuit. L'accès complet nécessite un code d'activation. Contactez-nous sur WhatsApp pour commander — <strong style="color:var(--accent)">3 000 FCFA / langue</strong>.</p>
+  </div>
+</div>
+
+<!-- LANG SCREEN -->
+<div class="screen" id="screen-lang">
+  <div class="lang-header" id="lang-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="mod-content"></div>
+</div>
+
+</div><!-- /content -->
+
+<script>
+/* ═══════════════════════════════
+   DATA — ALL 5 LANGUAGES
+═══════════════════════════════ */
+const LANGS = {
+
+/* ─── ENGLISH ─── */
+en: {
+  name:"English", native:"Anglais", flag:"🇬🇧", level:"A1→B2",
+  color:"#d4a843", bg:"rgba(212,168,67,0.15)", borderColor:"rgba(212,168,67,0.4)",
+  speechLang:"en-US",
+  vocab:[
+    {w:"Hello",ph:"HÈ-lo",fr:"Bonjour",ex:"Hello! How are you?",exFr:"Bonjour ! Comment vas-tu ?"},
+    {w:"Thank you",ph:"THAN-kyou",fr:"Merci",ex:"Thank you very much!",exFr:"Merci beaucoup !"},
+    {w:"Please",ph:"PLIZ",fr:"S'il vous plaît",ex:"A coffee, please.",exFr:"Un café, s'il vous plaît."},
+    {w:"Work",ph:"WEURK",fr:"Travail",ex:"I go to work at 8.",exFr:"Je vais au travail à 8h."},
+    {w:"Money",ph:"MÂ-ni",fr:"Argent",ex:"Money is important.",exFr:"L'argent est important."},
+    {w:"Meeting",ph:"MI-ting",fr:"Réunion",ex:"We have a meeting.",exFr:"Nous avons une réunion."},
+    {w:"Partnership",ph:"PART-ner-chip",fr:"Partenariat",ex:"A great partnership.",exFr:"Un excellent partenariat."},
+    {w:"Opportunity",ph:"op-or-TYOU-ni-ti",fr:"Opportunité",ex:"A great opportunity.",exFr:"Une grande opportunité."},
+    {w:"Good morning",ph:"GOUD MOR-ning",fr:"Bonjour (matin)",ex:"Good morning everyone!",exFr:"Bonjour tout le monde !"},
+    {w:"Goodbye",ph:"GOUD-baï",fr:"Au revoir",ex:"Goodbye! See you soon.",exFr:"Au revoir ! À bientôt."},
+    {w:"Family",ph:"FÈM-i-li",fr:"Famille",ex:"My family is big.",exFr:"Ma famille est grande."},
+    {w:"Friend",ph:"FRÈND",fr:"Ami(e)",ex:"She is my best friend.",exFr:"C'est ma meilleure amie."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"🔑",title:"To Be — Être",color:"#16a34a",
+     sections:[
+       {title:"Conjugaison au présent",
+        table:[["Pronom","Forme","Traduction"],["I","I'm","Je suis"],["You","You're","Tu es"],["He/She","He's / She's","Il/Elle est"],["We","We're","Nous sommes"],["They","They're","Ils/Elles sont"]],
+        examples:[{w:"I'm a student.",ph:"",fr:"Je suis étudiant(e)."},{w:"She's a doctor.",ph:"",fr:"Elle est médecin."}]},
+     ],tip:"💡 'I'm 25 years old' — To be = avoir pour l'âge en anglais !"},
+    {id:"g2",emoji:"⏰",title:"Présent Simple",color:"#2563eb",
+     sections:[
+       {title:"Structure et usage",
+        table:[["Sujet","Verbe","Exemple"],["I/You/We","work","I work every day."],["He/She/It","works (-s!)","She works here."]],
+        examples:[{w:"I speak English.",ph:"",fr:"Je parle anglais."},{w:"He doesn't smoke.",ph:"",fr:"Il ne fume pas."}]},
+     ],tip:"💡 Pour he/she/it → ajoute toujours -s : speak → speaks !"},
+    {id:"g3",emoji:"❓",title:"Les Questions",color:"#d4a843",
+     sections:[
+       {title:"Mots interrogatifs",
+        table:[["Mot","Sens","Exemple"],["What","Quoi/Que","What do you do?"],["Where","Où","Where do you live?"],["When","Quand","When did you arrive?"],["How much","Combien","How much does it cost?"]],
+        examples:[{w:"Where do you work?",ph:"",fr:"Où travaillez-vous ?"},{w:"How much does it cost?",ph:"",fr:"Combien ça coûte ?"}]},
+     ],tip:"💡 Structure : Wh- + auxiliaire (do/is/are) + sujet + verbe."},
+  ],
+  pronunciation:[
+    {rule:"Le TH",emoji:"👅",desc:"Langue entre les dents. Sonore (this, that) ou sourd (think, three). Jamais un 'z' ou 's' français !",words:["this","that","think","three","the","through"]},
+    {rule:"Le W",emoji:"💨",desc:"Lèvres arrondies, soufflez doucement. Jamais comme un 'v' français ! 'Work' ≠ 'vork'.",words:["work","water","world","we","where","what"]},
+    {rule:"Le R américain",emoji:"🌀",desc:"Langue relevée sans toucher le palais. Le son est 'avalé'. Très différent du R français.",words:["red","run","river","right","road","great"]},
+  ],
+  dialogues:[{
+    title:"Réunion professionnelle",emoji:"💼",
+    turns:[
+      {role:"npc",name:"Mr. Johnson",text:"Good morning! Welcome.",ph:"GOUD MOR-ning, WEL-com",fr:"Bonjour ! Bienvenue."},
+      {role:"player",options:[{w:"Good morning! Thank you for having me.",ph:"",fr:"Bonjour ! Merci de me recevoir."},{w:"Hello. Me here.",ph:"",fr:"❌ Incorrect"},{w:"Yes. Good.",ph:"",fr:"❌ Trop vague"}],correct:0,hint:"Saluez et remerciez l'accueil"},
+      {role:"npc",name:"Mr. Johnson",text:"Tell me about your company.",ph:"",fr:"Parlez-moi de votre entreprise."},
+      {role:"player",options:[{w:"We provide professional services with proven results.",ph:"",fr:"Nous offrons des services professionnels avec des résultats prouvés."},{w:"My company is big.",ph:"",fr:"❌ Trop vague"},{w:"I work.",ph:"",fr:"❌ Incomplet"}],correct:0,hint:"Décrivez votre activité professionnellement"},
+    ]
+  }],
+  quiz:[
+    {q:"'Thank you' signifie ?",opts:["S'il vous plaît","Bonjour","Merci","Au revoir"],a:2},
+    {q:"'She ___ a doctor.' (to be)",opts:["am","is","are","be"],a:1},
+    {q:"Comment dit-on 'Où ?' en anglais ?",opts:["What","When","Who","Where"],a:3},
+    {q:"Présent de WORK à 'he' ?",opts:["work","works","worked","working"],a:1},
+    {q:"'Meeting' signifie ?",opts:["Rencontre/Réunion","Matin","Merci","Montagne"],a:0},
+    {q:"'I don't understand' = ?",opts:["Je ne sais pas","Je ne comprends pas","Je n'aime pas","Je ne veux pas"],a:1},
+    {q:"Article avant 'apple' ?",opts:["a","an","the","—"],a:1},
+    {q:"'How much does it cost?' = ?",opts:["Où est-ce ?","Quand est-ce ?","Combien ça coûte ?","Qui est-ce ?"],a:2},
+  ],
+},
+
+/* ─── SPANISH ─── */
+es: {
+  name:"Español", native:"Espagnol", flag:"🇪🇸", level:"A1→B2",
+  color:"#e74c3c", bg:"rgba(192,57,43,0.15)", borderColor:"rgba(192,57,43,0.4)",
+  speechLang:"es-ES",
+  vocab:[
+    {w:"¡Hola!",ph:"O-la",fr:"Bonjour !",ex:"¡Hola! ¿Cómo estás?",exFr:"Bonjour ! Comment vas-tu ?"},
+    {w:"Gracias",ph:"GRA-thyas",fr:"Merci",ex:"Muchas gracias.",exFr:"Merci beaucoup."},
+    {w:"Por favor",ph:"por fa-VOR",fr:"S'il vous plaît",ex:"Un café, por favor.",exFr:"Un café, s'il vous plaît."},
+    {w:"el trabajo",ph:"el tra-BA-kho",fr:"le travail",ex:"Me gusta mi trabajo.",exFr:"J'aime mon travail."},
+    {w:"la empresa",ph:"la em-PRE-sa",fr:"l'entreprise",ex:"La empresa crece.",exFr:"L'entreprise grandit."},
+    {w:"la reunión",ph:"la re-u-NYON",fr:"la réunion",ex:"Tenemos una reunión.",exFr:"Nous avons une réunion."},
+    {w:"Buenos días",ph:"BWEH-nos DEE-as",fr:"Bonjour (matin)",ex:"¡Buenos días a todos!",exFr:"Bonjour à tous !"},
+    {w:"¡Hasta luego!",ph:"AS-ta LWEH-go",fr:"À bientôt !",ex:"¡Hasta luego! ¡Cuídate!",exFr:"À bientôt ! Prends soin de toi !"},
+    {w:"Lo siento",ph:"lo SYEN-to",fr:"Je suis désolé(e)",ex:"Lo siento mucho.",exFr:"Je suis vraiment désolé(e)."},
+    {w:"el dinero",ph:"el di-NÉ-ro",fr:"l'argent",ex:"No tengo dinero.",exFr:"Je n'ai pas d'argent."},
+    {w:"la familia",ph:"la fa-MI-lya",fr:"la famille",ex:"Mi familia es grande.",exFr:"Ma famille est grande."},
+    {w:"el amigo",ph:"el a-MI-go",fr:"l'ami",ex:"Es mi mejor amigo.",exFr:"C'est mon meilleur ami."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"⚖️",title:"SER vs ESTAR",color:"#27ae60",
+     sections:[
+       {title:"SER — identité permanente",
+        table:[["Pronom","SER"],["yo","soy"],["tú","eres"],["él/ella","es"],["nosotros","somos"],["ellos","son"]],
+        examples:[{w:"Soy francés.",ph:"SOY fran-THÉS",fr:"Je suis français."},{w:"Ella es médica.",ph:"É-ya es MÉ-di-ka",fr:"Elle est médecin."}]},
+       {title:"ESTAR — état temporaire",
+        table:[["Pronom","ESTAR"],["yo","estoy"],["tú","estás"],["él/ella","está"],["nosotros","estamos"],["ellos","están"]],
+        examples:[{w:"Estoy cansado.",ph:"es-TOY kan-SA-do",fr:"Je suis fatigué."},{w:"¿Dónde estás?",ph:"DÓN-de es-TAS",fr:"Où es-tu ?"}]},
+     ],tip:"💡 SER = permanent (identité). ESTAR = temporaire (état, lieu, émotion)."},
+    {id:"g2",emoji:"⚡",title:"Présent de l'indicatif",color:"#2980b9",
+     sections:[
+       {title:"Verbes en -AR (HABLAR)",
+        table:[["Pronom","HABLAR"],["yo","hablo"],["tú","hablas"],["él","habla"],["nosotros","hablamos"],["ellos","hablan"]],
+        examples:[{w:"Hablo español.",ph:"A-blo es-pa-NYOL",fr:"Je parle espagnol."},{w:"¿Hablas francés?",ph:"A-blas fran-THÉS",fr:"Tu parles français ?"}]},
+     ],tip:"💡 Pour 'yo' : toujours -o ! hablo, como, vivo. La règle d'or !"},
+  ],
+  pronunciation:[
+    {rule:"La Jota (J)",emoji:"🔥",desc:"Prononcez un 'h' très aspiré, comme de la buée sur un miroir. Jamais comme le 'j' français !",words:["jefe","hijo","trabajar","viaje","joven","mujer"]},
+    {rule:"La Ñ",emoji:"🎯",desc:"Comme 'gn' en français (montagne). Nasale et mouillée. Unique à l'espagnol !",words:["niño","mañana","español","señor","año","baño"]},
+    {rule:"La R et RR",emoji:"🌀",desc:"'r' simple = une vibration. 'rr' = plusieurs vibrations roulées. La différence change le sens !",words:["pero","perro","caro","carro","para","parra"]},
+  ],
+  dialogues:[{
+    title:"Au marché",emoji:"🛒",
+    turns:[
+      {role:"npc",name:"Vendedor",text:"¡Buenos días! ¿Qué desea?",ph:"BWEH-nos DEE-as, ké de-SÉ-a",fr:"Bonjour ! Que désirez-vous ?"},
+      {role:"player",options:[{w:"Buenos días. ¿Cuánto cuestan estas manzanas?",ph:"KWÁ-nto KWES-tan",fr:"Bonjour. Combien coûtent ces pommes ?"},{w:"Manzanas.",ph:"",fr:"❌ Trop court"},{w:"Quiero mucho.",ph:"",fr:"❌ Incomplet"}],correct:0,hint:"Saluez et demandez le prix"},
+      {role:"npc",name:"Vendedor",text:"Son dos euros el kilo. ¿Cuántos kilos?",ph:"son DOS EU-ros el KI-lo",fr:"C'est deux euros le kilo. Combien de kilos ?"},
+      {role:"player",options:[{w:"Quiero dos kilos, por favor.",ph:"KYEH-ro dos KI-los",fr:"Je voudrais deux kilos, s'il vous plaît."},{w:"Dos.",ph:"",fr:"❌ Incomplet"},{w:"No sé.",ph:"",fr:"❌ Incorrect"}],correct:0,hint:"Commandez deux kilos poliment"},
+    ]
+  }],
+  quiz:[
+    {q:"'Gracias' signifie ?",opts:["S'il vous plaît","Bonjour","Au revoir","Merci"],a:3},
+    {q:"SER à 'yo' ?",opts:["estoy","soy","es","somos"],a:1},
+    {q:"'¿Dónde?' signifie ?",opts:["Quand ?","Qui ?","Où ?","Pourquoi ?"],a:2},
+    {q:"La Jota (J) se prononce comme ?",opts:["Le j français","Le h aspiré","Le ch français","Le g doux"],a:1},
+    {q:"HABLAR à 'él' ?",opts:["hablo","hablas","habla","hablamos"],a:2},
+    {q:"'Lo siento' signifie ?",opts:["Je te sens","Je suis désolé","Je ne sais pas","Je l'aime"],a:1},
+    {q:"Que signifie 'la empresa' ?",opts:["L'emploi","L'emprunt","L'entreprise","L'espace"],a:2},
+    {q:"ESTAR à 'nosotros' ?",opts:["estoy","estás","está","estamos"],a:3},
+  ],
+},
+
+/* ─── CHINESE ─── */
+zh: {
+  name:"中文", native:"Chinois (Mandarin)", flag:"🇨🇳", level:"HSK 1→3",
+  color:"#ef4444", bg:"rgba(220,38,38,0.15)", borderColor:"rgba(220,38,38,0.4)",
+  speechLang:"zh-CN",
+  vocab:[
+    {w:"你好",ph:"Ni hao (ni-HAO)",fr:"Bonjour",ex:"你好！你好吗？",exFr:"Bonjour ! Comment vas-tu ?"},
+    {w:"谢谢",ph:"Xiè xie (SYEH-syeh)",fr:"Merci",ex:"谢谢你的帮助。",exFr:"Merci de ton aide."},
+    {w:"对不起",ph:"Duì bu qǐ (DWAY-bou-CHI)",fr:"Pardon / Désolé",ex:"对不起，我迟到了。",exFr:"Désolé, je suis en retard."},
+    {w:"再见",ph:"Zài jiàn (DZAY-JYEN)",fr:"Au revoir",ex:"再见！明天见！",exFr:"Au revoir ! À demain !"},
+    {w:"我",ph:"Wǒ (WO)",fr:"Je / Moi",ex:"我是法国人。",exFr:"Je suis français(e)."},
+    {w:"你",ph:"Nǐ (NI)",fr:"Tu / Toi",ex:"你叫什么名字？",exFr:"Comment tu t'appelles ?"},
+    {w:"是",ph:"Shì (CHEU)",fr:"Être / Oui (c'est)",ex:"我是学生。",exFr:"Je suis étudiant(e)."},
+    {w:"不",ph:"Bù (BOU)",fr:"Non / Pas",ex:"我不懂。",exFr:"Je ne comprends pas."},
+    {w:"钱",ph:"Qián (TCHYEN)",fr:"Argent",ex:"这个多少钱？",exFr:"Combien ça coûte ?"},
+    {w:"朋友",ph:"Péngyǒu (PÉNG-yo)",fr:"Ami(e)",ex:"他是我的朋友。",exFr:"Il est mon ami."},
+    {w:"工作",ph:"Gōngzuò (KONG-dzwo)",fr:"Travail / Travailler",ex:"我喜欢我的工作。",exFr:"J'aime mon travail."},
+    {w:"家",ph:"Jiā (DJIA)",fr:"Maison / Famille",ex:"我家有四口人。",exFr:"Ma famille compte 4 personnes."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"📌",title:"Structure de base",color:"#ef4444",
+     sections:[
+       {title:"Sujet + Verbe + Objet (SVO)",
+        table:[["Élément","Exemple","Traduction"],["Sujet","我 (wǒ)","Je"],["Verbe","喜欢 (xǐhuān)","aimer"],["Objet","中文 (zhōngwén)","le chinois"]],
+        examples:[{w:"我喜欢中文。",ph:"Wǒ xǐhuān zhōngwén.",fr:"J'aime le chinois."},{w:"你吃饭吗？",ph:"Nǐ chī fàn ma?",fr:"Est-ce que tu manges ?"}]},
+     ],tip:"💡 En chinois, pas de conjugaison ! Le verbe ne change jamais selon le sujet. 我是 / 你是 / 他是 → toujours 是 !"},
+    {id:"g2",emoji:"🔢",title:"Les Tons du Mandarin",color:"#f59e0b",
+     sections:[
+       {title:"Les 4 tons essentiels",
+        table:[["Ton","Symbole","Description","Exemple"],["1er ton","ā","Haut et plat","妈 (mā) = maman"],["2e ton","á","Montant","麻 (má) = chanvre"],["3e ton","ǎ","Bas puis montant","马 (mǎ) = cheval"],["4e ton","à","Descendant","骂 (mà) = gronder"]],
+        examples:[{w:"你好！",ph:"Nǐ hǎo (3e + 3e ton)",fr:"Bonjour !"},{w:"谢谢！",ph:"Xiè xie (4e + ton neutre)",fr:"Merci !"}]},
+     ],tip:"💡 Les tons changent complètement le sens ! 'mā/má/mǎ/mà' = 4 mots différents. Écoutez et répétez !"},
+    {id:"g3",emoji:"❓",title:"Poser des Questions",color:"#22c55e",
+     sections:[
+       {title:"Les particules interrogatives",
+        table:[["Mot","Pinyin","Sens","Exemple"],["吗","ma","Oui/Non ?","你好吗？"],["什么","shénme","Quoi/Que ?","你叫什么？"],["哪里","nǎlǐ","Où ?","你在哪里？"],["多少","duōshǎo","Combien ?","多少钱？"],["为什么","wèishéme","Pourquoi ?","为什么？"]],
+        examples:[{w:"你好吗？",ph:"Nǐ hǎo ma?",fr:"Comment vas-tu ?"},{w:"多少钱？",ph:"Duōshǎo qián?",fr:"Combien ça coûte ?"}]},
+     ],tip:"💡 Mettez 吗 (ma) à la fin d'une phrase pour en faire une question oui/non. Très simple !"},
+  ],
+  pronunciation:[
+    {rule:"Les 4 tons",emoji:"🎵",desc:"Le mandarin a 4 tons + un ton neutre. Le même son avec un ton différent = un mot différent ! Indispensable.",words:["mā (maman)","má (chanvre)","mǎ (cheval)","mà (gronder)"]},
+    {rule:"Le X et Q",emoji:"🌟",desc:"'X' = comme 'ss' doux (xiè = ssyeh). 'Q' = comme 'tch' (qián = tchyen). Pas comme en français !",words:["xiè","xuě","qián","qǐng","xiǎo","qù"]},
+    {rule:"Le ZH, CH, SH",emoji:"🌀",desc:"Sons rétroflexes : langue recourbée vers le haut. 'ZH' = dj, 'CH' = tch, 'SH' = ch comme dans 'chat'.",words:["zhōng","chī","shì","zhè","chéng","shū"]},
+  ],
+  dialogues:[{
+    title:"Se présenter",emoji:"🤝",
+    turns:[
+      {role:"npc",name:"李明 (Lǐ Míng)",text:"你好！我叫李明。你叫什么名字？",ph:"Nǐ hǎo! Wǒ jiào Lǐ Míng. Nǐ jiào shénme míngzì?",fr:"Bonjour ! Je m'appelle Li Ming. Comment tu t'appelles ?"},
+      {role:"player",options:[{w:"你好！我叫 [votre nom]。很高兴认识你！",ph:"Nǐ hǎo! Wǒ jiào... Hěn gāoxìng rènshi nǐ!",fr:"Bonjour ! Je m'appelle... Enchanté(e) !"},{w:"你好。",ph:"Nǐ hǎo.",fr:"❌ Trop court"},{w:"我不知道。",ph:"Wǒ bù zhīdào.",fr:"❌ Je ne sais pas — hors sujet"}],correct:0,hint:"Saluez et présentez-vous"},
+      {role:"npc",name:"李明",text:"你是哪国人？",ph:"Nǐ shì nǎ guó rén?",fr:"Tu es de quel pays ?"},
+      {role:"player",options:[{w:"我是法国人。你呢？",ph:"Wǒ shì Fǎguó rén. Nǐ ne?",fr:"Je suis français(e). Et toi ?"},{w:"是。",ph:"Shì.",fr:"❌ Trop vague"},{w:"不知道。",ph:"Bù zhīdào.",fr:"❌ Je ne sais pas — incorret"}],correct:0,hint:"Dites votre nationalité et posez la question en retour"},
+    ]
+  }],
+  quiz:[
+    {q:"'你好' se prononce comment ?",opts:["Wǒ hǎo","Nǐ hǎo (ni-HAO)","Nǐ hèn","Wǒ hǎo ma"],a:1},
+    {q:"'谢谢' signifie ?",opts:["Bonjour","Au revoir","Merci","Désolé"],a:2},
+    {q:"Comment dit-on 'Non / Pas' en chinois ?",opts:["是 (shì)","我 (wǒ)","不 (bù)","你 (nǐ)"],a:2},
+    {q:"Combien de tons a le mandarin ?",opts:["2","3","4","5"],a:2},
+    {q:"'多少钱？' signifie ?",opts:["Comment vas-tu ?","Où es-tu ?","Combien ça coûte ?","Qui es-tu ?"],a:2},
+    {q:"En chinois, les verbes se conjuguent ?",opts:["Oui, comme en français","Oui, mais différemment","Non, jamais","Seulement au passé"],a:2},
+    {q:"'再见' (zài jiàn) signifie ?",opts:["Bonjour","Merci","S'il vous plaît","Au revoir"],a:3},
+    {q:"Le ton '4e ton (à)' est ?",opts:["Haut et plat","Montant","Bas","Descendant"],a:3},
+  ],
+},
+
+/* ─── RUSSIAN ─── */
+ru: {
+  name:"Русский", native:"Russe", flag:"🇷🇺", level:"A1→B1",
+  color:"#60a5fa", bg:"rgba(37,99,235,0.15)", borderColor:"rgba(37,99,235,0.4)",
+  speechLang:"ru-RU",
+  vocab:[
+    {w:"Привет",ph:"Pri-VYÈT",fr:"Bonjour / Salut",ex:"Привет! Как дела?",exFr:"Salut ! Comment ça va ?"},
+    {w:"Здравствуйте",ph:"ZDRAS-tvouï-tié",fr:"Bonjour (formel)",ex:"Здравствуйте! Рад вас видеть.",exFr:"Bonjour ! Ravi de vous voir."},
+    {w:"Спасибо",ph:"Spa-SI-bo",fr:"Merci",ex:"Большое спасибо!",exFr:"Grand merci !"},
+    {w:"Пожалуйста",ph:"Pa-JA-louis-ta",fr:"S'il vous plaît / De rien",ex:"Пожалуйста, помогите.",exFr:"S'il vous plaît, aidez-moi."},
+    {w:"Да / Нет",ph:"Da / Nyèt",fr:"Oui / Non",ex:"Да, я понимаю.",exFr:"Oui, je comprends."},
+    {w:"Я",ph:"Ya",fr:"Je / Moi",ex:"Я студент.",exFr:"Je suis étudiant(e)."},
+    {w:"Работа",ph:"Ra-BO-ta",fr:"Travail",ex:"Мне нравится моя работа.",exFr:"J'aime mon travail."},
+    {w:"Деньги",ph:"DYÈ-n'-gui",fr:"Argent",ex:"У меня нет денег.",exFr:"Je n'ai pas d'argent."},
+    {w:"Друг",ph:"Droug",fr:"Ami",ex:"Он мой лучший друг.",exFr:"C'est mon meilleur ami."},
+    {w:"До свидания",ph:"Da svi-DA-ni-ya",fr:"Au revoir (formel)",ex:"До свидания! До завтра!",exFr:"Au revoir ! À demain !"},
+    {w:"Семья",ph:"Si-MYA",fr:"Famille",ex:"Моя семья большая.",exFr:"Ma famille est grande."},
+    {w:"Понимаю",ph:"Pa-ni-MA-you",fr:"Je comprends",ex:"Да, я понимаю вас.",exFr:"Oui, je vous comprends."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"🔤",title:"L'Alphabet Cyrillique",color:"#60a5fa",
+     sections:[
+       {title:"Lettres essentielles avec équivalents français",
+        table:[["Cyrillique","Phonétique","Exemple"],["А а","a (comme dans 'pâte')","Апельсин (a-pyèl-SIN) = orange"],["Б б","b","Банк (bank) = banque"],["В в","v","Вода (va-DA) = eau"],["Г г","g","Город (GO-rod) = ville"],["Д д","d","Да (da) = oui"],["Е е","yé","Есть (yèst') = manger"],["З з","z","Завтра (ZAV-tra) = demain"],["И и","i","Имя (I-mya) = prénom"],["К к","k","Как (kak) = comment"],["Л л","l","Лето (LYÈ-to) = été"],["М м","m","Мама (MA-ma) = maman"],["Н н","n","Нет (nyèt) = non"],["О о","o","Очень (O-tchen') = très"],["П п","p","Привет (pri-VYÈT) = salut"],["Р р","r (roulé)","Работа (ra-BO-ta) = travail"],["С с","s","Спасибо (spa-SI-bo) = merci"],["Т т","t","Ты (ty) = tu"],["У у","ou","Улица (OU-li-tsa) = rue"],["Х х","kh (aspiré)","Хорошо (kha-ra-CHO) = bien"],["Я я","ya","Я (ya) = je/moi"]],
+        examples:[{w:"Привет!",ph:"Pri-VYÈT",fr:"Salut !"},{w:"Спасибо.",ph:"Spa-SI-bo",fr:"Merci."}]},
+     ],tip:"💡 Le russe s'écrit en cyrillique, mais beaucoup de lettres ressemblent au grec ou au latin ! Commencez par reconnaître А, О, Е, М, Т, К."},
+    {id:"g2",emoji:"⚡",title:"Phrases Essentielles",color:"#2563eb",
+     sections:[
+       {title:"Structures de base",
+        table:[["Russe","Phonétique","Français"],["Меня зовут...","Mé-nya za-VOUT","Je m'appelle..."],["Я из Франции","Ya iz FRAN-tsyi","Je viens de France"],["Я не понимаю","Ya nyè pa-ni-MA-you","Je ne comprends pas"],["Говорите медленнее","Ga-va-RÏ-tyé MYÈD-lyen-nyèyé","Parlez plus lentement"],["Сколько стоит?","SKOL'-ka STO-it","Combien ça coûte ?"]],
+        examples:[{w:"Меня зовут Виктор.",ph:"Mé-nya za-VOUT Vik-tor",fr:"Je m'appelle Victor."},{w:"Я не понимаю.",ph:"Ya nyè pa-ni-MA-you",fr:"Je ne comprends pas."}]},
+     ],tip:"💡 En russe, on omet souvent le verbe 'être' au présent ! 'Я студент' = littéralement 'Je étudiant', mais ça signifie 'Je suis étudiant'."},
+  ],
+  pronunciation:[
+    {rule:"Le Р roulé",emoji:"🌀",desc:"Le R russe est fortement roulé avec la langue qui vibre. Beaucoup plus fort qu'en espagnol ou en français !",words:["Россия","работа","рад","рыба","ресторан","Привет"]},
+    {rule:"Le Ы (y dur)",emoji:"🎯",desc:"Son unique au russe ! Entre 'i' et 'ou', prononcé au fond de la gorge. Ex: ты (ty) = tu",words:["ты","мы","сын","рыба","быть","дым"]},
+    {rule:"Les consonnes douces",emoji:"✨",desc:"L'apostrophe ' indique une consonne 'mouillée' (douce). 'Нет' (nyèt) : le N est mouillé avant le è.",words:["нет","есть","Мать","день","пять","семь"]},
+  ],
+  dialogues:[{
+    title:"Faire connaissance",emoji:"🤝",
+    turns:[
+      {role:"npc",name:"Наташа (Natacha)",text:"Привет! Меня зовут Наташа. А тебя?",ph:"Pri-VYÈT! Mé-nya za-VOUT Na-ta-cha. A té-BYA?",fr:"Salut ! Je m'appelle Natacha. Et toi ?"},
+      {role:"player",options:[{w:"Привет! Меня зовут [имя]. Очень приятно!",ph:"Pri-VYÈT! Mé-nya za-VOUT... O-tchen' pri-YAT-no!",fr:"Salut ! Je m'appelle... Enchanté(e) !"},{w:"Привет.",ph:"Pri-VYÈT",fr:"❌ Trop court"},{w:"Не знаю.",ph:"Nyè ZNA-you",fr:"❌ Je ne sais pas — hors sujet"}],correct:0,hint:"Saluez et présentez-vous"},
+      {role:"npc",name:"Наташа",text:"Ты откуда?",ph:"Ty at-KOU-da?",fr:"Tu viens d'où ?"},
+      {role:"player",options:[{w:"Я из Франции. А ты?",ph:"Ya iz FRAN-tsyi. A ty?",fr:"Je viens de France. Et toi ?"},{w:"Франция.",ph:"FRAN-tsya",fr:"❌ Trop court"},{w:"Я не знаю.",ph:"Ya nyè ZNA-you",fr:"❌ Hors sujet"}],correct:0,hint:"Dites d'où vous venez et posez la question en retour"},
+    ]
+  }],
+  quiz:[
+    {q:"'Спасибо' signifie ?",opts:["Bonjour","Au revoir","S'il vous plaît","Merci"],a:3},
+    {q:"'Да' signifie ?",opts:["Non","Oui","Peut-être","Jamais"],a:1},
+    {q:"Comment dit-on 'Je ne comprends pas' ?",opts:["Я понимаю","Я не понимаю","Спасибо","Пожалуйста"],a:1},
+    {q:"La lettre russe 'Р' se prononce ?",opts:["Comme le P français","Comme un R roulé fort","Comme le L","Comme le V"],a:1},
+    {q:"'До свидания' signifie ?",opts:["Bonjour","Merci","Au revoir (formel)","S'il vous plaît"],a:2},
+    {q:"En russe, le verbe 'être' au présent est souvent ?",opts:["Obligatoire","Très long","Omis (sous-entendu)","Invariable"],a:2},
+    {q:"'Деньги' (DYÈ-n'-gui) signifie ?",opts:["Amour","Famille","Travail","Argent"],a:3},
+    {q:"'Привет' est utilisé pour ?",opts:["Un salut formel","Un salut informel/familier","Remercier","S'excuser"],a:1},
+  ],
+},
+
+/* ─── ARABIC ─── */
+ar: {
+  name:"العربية", native:"Arabe Standard Moderne", flag:"🌙", level:"Débutant→Intermédiaire",
+  color:"#22c55e", bg:"rgba(22,163,74,0.15)", borderColor:"rgba(22,163,74,0.4)",
+  speechLang:"ar-SA",
+  rtl:true,
+  vocab:[
+    {w:"مرحبا",ph:"Mar-ha-ban",fr:"Bonjour / Bienvenue",ex:"مرحبا! كيف حالك؟",exFr:"Bonjour ! Comment vas-tu ?"},
+    {w:"السلام عليكم",ph:"As-sala-mou a-lay-koum",fr:"Paix sur vous (salutation islamique)",ex:"السلام عليكم ورحمة الله",exFr:"Que la paix et la grâce de Dieu soient sur vous."},
+    {w:"شكراً",ph:"Chouk-ran",fr:"Merci",ex:"شكراً جزيلاً!",exFr:"Merci beaucoup !"},
+    {w:"من فضلك",ph:"Min fad-lik",fr:"S'il vous plaît",ex:"قهوة من فضلك.",exFr:"Un café, s'il vous plaît."},
+    {w:"نعم / لا",ph:"Na-am / Laa",fr:"Oui / Non",ex:"نعم، أنا أفهم.",exFr:"Oui, je comprends."},
+    {w:"أنا",ph:"A-na",fr:"Je / Moi",ex:"أنا طالب.",exFr:"Je suis étudiant(e)."},
+    {w:"عمل",ph:"A-mal",fr:"Travail",ex:"عملي مهم جداً.",exFr:"Mon travail est très important."},
+    {w:"مال",ph:"Maal",fr:"Argent",ex:"كم هذا؟",exFr:"Combien ça coûte ?"},
+    {w:"صديق",ph:"Sa-diiq",fr:"Ami",ex:"هو صديقي.",exFr:"C'est mon ami."},
+    {w:"مع السلامة",ph:"Ma-as-sa-la-ma",fr:"Au revoir",ex:"مع السلامة! إلى اللقاء!",exFr:"Au revoir ! À la prochaine !"},
+    {w:"عائلة",ph:"A-i-la",fr:"Famille",ex:"عائلتي كبيرة.",exFr:"Ma famille est grande."},
+    {w:"أفهم",ph:"Af-ham",fr:"Je comprends",ex:"نعم، أفهم ذلك.",exFr:"Oui, je comprends cela."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"🔤",title:"L'Alphabet Arabe",color:"#22c55e",
+     sections:[
+       {title:"Lettres essentielles et leur prononciation",
+        table:[["Lettre","Nom","Phonétique","Exemple"],["ا","Alif","a / â","أنا (a-na) = je"],["ب","Ba","b","بيت (bayt) = maison"],["ت","Ta","t","تمر (tamar) = dattes"],["ث","Tha","th (anglais)","ثلاثة (tha-la-tha) = trois"],["ج","Jiim","dj","جميل (dja-miil) = beau"],["ح","Haa","h aspiré fort","حسن (ha-san) = bon"],["خ","Khaa","kh (comme jota)","خبز (khubz) = pain"],["د","Dal","d","دار (dâr) = maison"],["ر","Ra","r roulé","رجل (ra-djoul) = homme"],["س","Siin","s","سلام (sa-lâm) = paix"],["ع","Ayn","voyelle gutturale","عمل (a-mal) = travail"],["م","Miim","m","مال (mâl) = argent"],["ن","Nuun","n","نعم (na-am) = oui"],["ه","Ha","h doux","هو (hou-wa) = il"],["و","Waaw","w / ou","وقت (waqt) = temps"],["ي","Ya","y / i","يوم (yawm) = jour"]],
+        examples:[{w:"مرحبا",ph:"Mar-ha-ban",fr:"Bonjour"},{w:"شكراً",ph:"Chouk-ran",fr:"Merci"}]},
+     ],tip:"💡 L'arabe s'écrit de DROITE à GAUCHE. Les lettres changent de forme selon leur position dans le mot (initiale, médiane, finale, isolée)."},
+    {id:"g2",emoji:"📖",title:"Phrases Essentielles",color:"#16a34a",
+     sections:[
+       {title:"Expressions de base",
+        table:[["Arabe","Phonétique","Français"],["اسمي...","Ismi...","Je m'appelle..."],["أنا من فرنسا","Ana min Faransa","Je viens de France"],["لا أفهم","Laa afham","Je ne comprends pas"],["تكلم ببطء","Takallam bi-but'","Parlez lentement"],["كم الثمن؟","Kam ath-thaman?","Combien ça coûte ?"],["أين...؟","Ayna...?","Où est... ?"]],
+        examples:[{w:"اسمي مارك.",ph:"Ismi Mark.",fr:"Je m'appelle Mark."},{w:"لا أفهم.",ph:"Laa afham.",fr:"Je ne comprends pas."}]},
+     ],tip:"💡 En arabe standard, il n'y a pas de verbe 'être' au présent ! 'أنا طالب' = littéralement 'Moi étudiant' = 'Je suis étudiant'."},
+  ],
+  pronunciation:[
+    {rule:"Le ع (Ayn)",emoji:"🎵",desc:"Son unique à l'arabe ! Une voyelle gutturale produite en contractant le pharynx. Aucun équivalent français.",words:["عمل (a-mal)","عائلة (a-ila)","عين (ayn)","عربي (a-ra-bi)"]},
+    {rule:"Le ح et خ",emoji:"🌬️",desc:"ح = h très aspiré fort (du fond de la gorge). خ = comme la jota espagnole ou le 'ch' allemand. Deux sons très différents !",words:["حسن (ha-san)","خبز (khubz)","حياة (ha-yat)","خير (khayr)"]},
+    {rule:"Les emphatiques",emoji:"🔊",desc:"L'arabe a des consonnes emphatiques (ص، ض، ط، ظ) prononcées avec la langue appuyée au palais. Le son est plus grave et 'lourd'.",words:["صديق (sa-diiq)","ضرب (da-raba)","طريق (ta-riiq)","ظهر (za-har)"]},
+  ],
+  dialogues:[{
+    title:"Se présenter",emoji:"🤝",
+    turns:[
+      {role:"npc",name:"أحمد (Ahmad)",text:"السلام عليكم! اسمي أحمد. وأنت؟",ph:"As-sala-mou a-lay-koum! Ismi Ahmad. Wa anta?",fr:"Que la paix soit sur vous ! Je m'appelle Ahmad. Et toi ?"},
+      {role:"player",options:[{w:"وعليكم السلام! اسمي [اسمك]. تشرفنا!",ph:"Wa a-lay-koum as-salam! Ismi... Tacharra-fna!",fr:"Et sur toi la paix ! Je m'appelle... Enchanté(e) !"},{w:"مرحبا.",ph:"Mar-ha-ban.",fr:"❌ Trop court"},{w:"لا أعرف.",ph:"Laa a-rif.",fr:"❌ Je ne sais pas — hors sujet"}],correct:0,hint:"Répondez à la salutation et présentez-vous"},
+      {role:"npc",name:"أحمد",text:"من أين أنت؟",ph:"Min ayna anta?",fr:"Tu viens d'où ?"},
+      {role:"player",options:[{w:"أنا من فرنسا. وأنت؟",ph:"Ana min Faransa. Wa anta?",fr:"Je viens de France. Et toi ?"},{w:"فرنسا.",ph:"Faransa.",fr:"❌ Trop court"},{w:"لا أفهم.",ph:"Laa afham.",fr:"❌ Hors sujet"}],correct:0,hint:"Dites votre pays d'origine et posez la question en retour"},
+    ]
+  }],
+  quiz:[
+    {q:"'شكراً' (chouk-ran) signifie ?",opts:["Bonjour","Au revoir","S'il vous plaît","Merci"],a:3},
+    {q:"'نعم' (na-am) signifie ?",opts:["Non","Peut-être","Oui","Jamais"],a:2},
+    {q:"L'arabe s'écrit dans quel sens ?",opts:["Gauche à droite","Droite à gauche","De haut en bas","En spirale"],a:1},
+    {q:"'أنا' (a-na) signifie ?",opts:["Tu","Il","Je / Moi","Nous"],a:2},
+    {q:"Comment dit-on 'Je ne comprends pas' en arabe ?",opts:["أنا أفهم","لا أفهم","شكراً","مرحبا"],a:1},
+    {q:"Le verbe 'être' au présent en arabe est ?",opts:["Obligatoire","Souvent omis","Très complexe","Toujours visible"],a:1},
+    {q:"'مع السلامة' signifie ?",opts:["Bonjour","Merci","S'il vous plaît","Au revoir"],a:3},
+    {q:"La salutation islamique 'السلام عليكم' signifie ?",opts:["Bonjour le matin","Paix sur vous","Bonne nuit","À bientôt"],a:1},
+  ],
+},
+
+}; // end LANGS
+
+/* ═══════════════════════════════
+   STATE & STORAGE
+═══════════════════════════════ */
+const STORE_KEY = "linguamaster_v1";
+let STATE = {xp:0,streak:0,lastPlay:"",license:null,gdone:{},vflipped:{}};
+function loadState(){try{const d=localStorage.getItem(STORE_KEY);if(d)STATE=JSON.parse(d);}catch(e){}}
+function saveState(){try{localStorage.setItem(STORE_KEY,JSON.stringify(STATE));}catch(e){}}
+
+const VALID_CODES = ["LINGUA-2025","MASTER-PRO","LINGUA-001","DEMO-2025"];
+const DEMO_CODE = "DEMO-2025";
+let isDemo = false;
+let pendingAction = null;
+
+function addXP(n,label){
+  STATE.xp+=n;saveState();
+  document.getElementById("h-xp").textContent=STATE.xp;
+  showToast(`+${n} XP — ${label}`);
+}
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;
+  t.style.background="linear-gradient(135deg,#d4a843,#f0c060)";
+  t.style.color="#07050d";
+  t.style.display="block";
+  setTimeout(()=>t.style.display="none",2200);
+}
+function updateHeader(){
+  document.getElementById("h-xp").textContent=STATE.xp;
+  document.getElementById("h-streak").textContent=STATE.streak;
+}
+
+/* ═══════════════════════════════
+   LICENSE SYSTEM
+═══════════════════════════════ */
+function requireLicense(action){
+  if(STATE.license){action();return;}
+  pendingAction=action;
+  document.getElementById("license-overlay").style.display="flex";
+}
+
+function validateCode(){
+  const code=document.getElementById("code-input").value.trim().toUpperCase();
+  const errEl=document.getElementById("code-error");
+  if(VALID_CODES.includes(code)){
+    isDemo=(code===DEMO_CODE);
+    STATE.license=code;
+    saveState();
+    document.getElementById("license-overlay").style.display="none";
+    document.getElementById("code-error").style.display="none";
+    document.getElementById("code-input").className="code-input";
+    showToast(isDemo?"🔓 Mode démo activé !":"✅ Licence activée ! Bienvenue !");
+    if(pendingAction){pendingAction();pendingAction=null;}
+  }else{
+    errEl.style.display="block";
+    document.getElementById("code-input").className="code-input error";
+    setTimeout(()=>document.getElementById("code-input").className="code-input",400);
+  }
+}
+
+/* ═══════════════════════════════
+   NAVIGATION
+═══════════════════════════════ */
+let currentLang=null;
+let currentMod="vocab";
+let quizData={qs:[],idx:0,score:0,ans:null,done:false};
+let dlgData={turns:[],tidx:0,errors:0,done:false,chosen:{}};
+let wdata={idx:0,status:null};
+
+function showHome(){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen-home").classList.add("active");
+  document.getElementById("lang-nav").style.display="none";
+  currentLang=null;
+}
+
+function openLang(langKey){
+  requireLicense(()=>_openLang(langKey));
+}
+
+function _openLang(langKey){
+  currentLang=langKey;
+  const L=LANGS[langKey];
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen-lang").classList.add("active");
+
+  // Header
+  document.getElementById("lang-header").innerHTML=`
+    <button class="back-btn" onclick="showHome()" style="margin:0">←</button>
+    <span style="font-size:28px">${L.flag}</span>
+    <div class="lang-header-info">
+      <h2 style="color:${L.color}">${L.name}</h2>
+      <p>${L.native} · ${L.level}</p>
+    </div>`;
+
+  // Nav
+  document.getElementById("lang-nav").style.display="block";
+  const mods=[
+    {id:"vocab",label:"Vocab",icon:"🃏"},
+    {id:"grammar",label:"Grammaire",icon:"📚"},
+    {id:"pron",label:"Pronon.",icon:"🗣️"},
+    {id:"dialogue",label:"Dialogue",icon:"💬"},
+    {id:"quiz",label:"Quiz",icon:"🧠"},
+  ];
+  document.getElementById("nav-inner").innerHTML=mods.map(m=>`
+    <button class="nb${m.id===currentMod?" active":""}" style="${m.id===currentMod?`border-bottom-color:${L.color};color:${L.color}`:""}" onclick="switchMod('${m.id}')">
+      <span class="nb-icon">${m.icon}</span>${m.label}
+    </button>`).join("");
+
+  switchMod("vocab");
+}
+
+function switchMod(mod){
+  currentMod=mod;
+  const L=LANGS[currentLang];
+  // Update nav
+  document.querySelectorAll(".nb").forEach((b,i)=>{
+    const mods=["vocab","grammar","pron","dialogue","quiz"];
+    const isActive=mods[i]===mod;
+    b.classList.toggle("active",isActive);
+    b.style.borderBottomColor=isActive?L.color:"transparent";
+    b.style.color=isActive?L.color:"";
+  });
+  // Render content
+  const el=document.getElementById("mod-content");
+  el.innerHTML="";
+  if(mod==="vocab") renderVocab(L,el);
+  else if(mod==="grammar") renderGrammar(L,el);
+  else if(mod==="pron") renderPron(L,el);
+  else if(mod==="dialogue") renderDialogue(L,el);
+  else if(mod==="quiz") renderQuiz(L,el);
+}
+
+/* ═══════════════════════════════
+   SPEECH
+═══════════════════════════════ */
+function spk(text,lang){
+  if(!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang=lang||"fr-FR"; u.rate=0.82;
+  const voices=window.speechSynthesis.getVoices();
+  const v=voices.find(v=>v.lang.startsWith(lang?.substring(0,2)||"fr"));
+  if(v)u.voice=v;
+  window.speechSynthesis.speak(u);
+}
+window.speechSynthesis?.addEventListener?.("voiceschanged",()=>window.speechSynthesis.getVoices());
+
+/* ═══════════════════════════════
+   VOCAB
+═══════════════════════════════ */
+function renderVocab(L,el){
+  const maxFree=isDemo?3:L.vocab.length;
+  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">🃏 Vocabulaire</h3>`;
+  if(isDemo)html+=`<div style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.3);border-radius:10px;padding:10px 14px;font-size:12px;color:#d4a843;margin-bottom:12px">🔓 Mode démo — ${maxFree} mots sur ${L.vocab.length}. Commandez la licence complète.</div>`;
+  const rtl=L.rtl?"direction:rtl;":"";
+  html+=`<div class="vgrid">`;
+  L.vocab.slice(0,maxFree).forEach((w,i)=>{
+    const key=currentLang+"-"+i;
+    const fl=STATE.vflipped[key];
+    html+=`<div class="vcard${fl?" flipped":""}" style="${fl?`border-color:${L.color};background:${L.bg}`:""}" onclick="flipVcard('${key}',this,'${currentLang}',${i})">`;
+    if(!fl){
+      html+=`<div class="vcard-word" style="color:${L.color};${rtl}">${w.w}</div>
+        <div class="vcard-phonetic">${w.ph}</div>
+        <div class="vcard-hint">Toucher →</div>`;
+    }else{
+      html+=`<div class="vcard-word" style="font-size:13px;color:var(--muted);${rtl}">${w.w}</div>
+        <div class="vcard-fr" style="color:${L.color}">${w.fr}</div>
+        <div class="vcard-phonetic">${w.ph}</div>
+        <button class="spk" onclick="event.stopPropagation();spk('${w.w.replace(/'/g,"\\'")}','${L.speechLang}')">🔊</button>
+        <div class="vcard-ex" style="${rtl}">${w.ex}</div>
+        <div class="vcard-ex">${w.exFr}</div>`;
+    }
+    html+=`</div>`;
+  });
+  html+=`</div>`;
+  el.innerHTML=html;
+}
+
+function flipVcard(key,el,lang,idx){
+  STATE.vflipped[key]=!STATE.vflipped[key];
+  saveState();
+  if(STATE.vflipped[key]) addXP(2,"🃏 Mot découvert");
+  renderVocab(LANGS[lang],document.getElementById("mod-content"));
+}
+
+/* ═══════════════════════════════
+   GRAMMAR
+═══════════════════════════════ */
+let currentLesson=null;
+function renderGrammar(L,el){
+  if(currentLesson){renderLesson(L,el,currentLesson);return;}
+  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">📚 Grammaire</h3>`;
+  const done=Object.keys(STATE.gdone).filter(k=>k.startsWith(currentLang+"-")).length;
+  html+=`<p style="color:var(--muted);font-size:12px;margin-bottom:12px">${done}/${L.grammar.length} leçons terminées</p>`;
+  L.grammar.forEach(g=>{
+    const isDone=STATE.gdone[currentLang+"-"+g.id];
+    html+=`<button class="lesson-row" style="${isDone?"border-color:rgba(22,163,74,0.4);background:rgba(22,163,74,0.08)":""}" onclick="openLesson('${g.id}')">
+      <span style="font-size:20px">${g.emoji}</span>
+      <div><div class="lesson-title">${g.title}</div><div class="lesson-meta">${g.sections.length} partie(s)</div></div>
+      <span style="margin-left:auto;font-size:16px">${isDone?"✅":"›"}</span>
+    </button>`;
+  });
+  el.innerHTML=html;
+}
+
+function openLesson(id){
+  currentLesson=id;
+  renderGrammar(LANGS[currentLang],document.getElementById("mod-content"));
+}
+
+function renderLesson(L,el,id){
+  const g=L.grammar.find(x=>x.id===id);
+  const rtl=L.rtl?"direction:rtl;":"";
+  let html=`<button class="back-btn" onclick="currentLesson=null;renderGrammar(LANGS[currentLang],document.getElementById('mod-content'))">← Retour</button>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+      <span style="font-size:24px">${g.emoji}</span>
+      <h3 style="color:${g.color};font-family:'Playfair Display',serif;font-size:18px">${g.title}</h3>
+    </div>`;
+  g.sections.forEach(s=>{
+    html+=`<div style="background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px">
+      <h4 style="color:${g.color};font-size:13px;margin-bottom:9px">${s.title}</h4>
+      <div style="overflow-x:auto;margin-bottom:10px"><table>`;
+    s.table.forEach((row,ri)=>{
+      html+=`<tr style="background:${ri===0?g.color+"22":"transparent"}">`;
+      row.forEach((cell,ci)=>html+=ri===0?`<th style="color:${g.color}">${cell}</th>`:`<td style="${rtl}">${cell}</td>`);
+      html+=`</tr>`;
+    });
+    html+=`</table></div>`;
+    if(s.examples){
+      html+=`<div style="font-size:10px;color:var(--accent);font-weight:700;margin-bottom:6px;letter-spacing:1px">EXEMPLES</div>`;
+      s.examples.forEach(ex=>{
+        html+=`<div class="ex-row" style="background:${g.color}11">
+          <div style="display:flex;align-items:center;gap:7px">
+            <button class="spk" onclick="spk('${ex.w.replace(/'/g,"\\'")}','${L.speechLang}')">🔊</button>
+            <span class="ex-native" style="color:${g.color};${rtl}">${ex.w}</span>
+            ${ex.ph?`<span class="ex-phonetic">${ex.ph}</span>`:""}
           </div>
+          <div class="ex-fr">${ex.fr}</div>
+        </div>`;
+      });
+    }
+    html+=`</div>`;
+  });
+  if(g.tip)html+=`<div class="tip-box" style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);color:var(--accent);margin-bottom:12px">${g.tip}</div>`;
+  const isDone=STATE.gdone[currentLang+"-"+id];
+  if(!isDone){
+    html+=`<button class="btn" style="background:linear-gradient(135deg,#16a34a,#22c55e);color:#fff" onclick="doneLesson('${id}')">✅ Leçon comprise — +25 XP</button>`;
+  }
+  el.innerHTML=html;
+}
+
+function doneLesson(id){
+  STATE.gdone[currentLang+"-"+id]=true;saveState();addXP(25,"📚 Leçon maîtrisée");
+  currentLesson=null;
+  renderGrammar(LANGS[currentLang],document.getElementById("mod-content"));
+}
+
+/* ═══════════════════════════════
+   PRONUNCIATION
+═══════════════════════════════ */
+function renderPron(L,el){
+  let html=`<h3 style="color:${L.color};margin-bottom:12px;font-family:'Playfair Display',serif">🗣️ Prononciation</h3>`;
+  L.pronunciation.forEach(p=>{
+    html+=`<div class="pron-card" style="border-color:${L.borderColor}">
+      <div class="pron-rule">${p.emoji} ${p.rule}</div>
+      <div class="pron-desc">${p.desc}</div>
+      <div class="pron-pills">`;
+    p.words.forEach(w=>{
+      html+=`<button class="pron-pill" style="background:${L.bg};border:1px solid ${L.borderColor};color:var(--text)" onclick="spk('${w.split('(')[0].trim().replace(/'/g,"\\'")}','${L.speechLang}')">
+        🔊 <span${L.rtl?" dir='rtl'":""}>${w}</span>
+      </button>`;
+    });
+    html+=`</div></div>`;
+  });
+  html+=`<div class="tip-box" style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);color:var(--accent)">🏆 Méthode : Écoute → Répète → Enregistre → Compare → Corrige</div>`;
+  el.innerHTML=html;
+}
+
+/* ═══════════════════════════════
+   DIALOGUE
+═══════════════════════════════ */
+function renderDialogue(L,el){
+  const d=L.dialogues[0];
+  if(dlgData.done&&dlgData.lang===currentLang){renderDlgResult(L,el);return;}
+  if(dlgData.lang!==currentLang){dlgData={turns:d.turns,tidx:0,errors:0,done:false,chosen:{},lang:currentLang};}
+  let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif">${d.emoji} ${d.title}</h3>
+    <span style="font-size:12px;color:${dlgData.errors>0?"#e74c3c":"#22c55e"}">${dlgData.errors>0?"❌ "+dlgData.errors:"✅ 0"}</span>
+  </div><div class="chat">`;
+  const rtl=L.rtl?"dir='rtl'":"";
+  for(let i=0;i<=Math.min(dlgData.tidx,dlgData.turns.length-1);i++){
+    const t=dlgData.turns[i];
+    if(t.role==="npc"){
+      html+=`<div class="b-npc">
+        <div class="b-npc-av" style="background:${L.bg};border:1px solid ${L.borderColor}">${L.flag}</div>
+        <div class="b-msg b-npc-msg" style="border-color:${L.borderColor}">
+          <div class="b-speaker" style="color:${L.color}">${t.name}</div>
+          <div class="b-text" ${rtl}>${t.text}</div>
+          ${t.ph?`<div class="b-phonetic">${t.ph}</div>`:""}
+          ${t.fr?`<div class="b-fr">${t.fr}</div>`:""}
+          <button class="spk" onclick="spk('${t.text.replace(/'/g,"\\'")}','${L.speechLang}')" style="margin-top:5px">🔊</button>
         </div>
-      </div>
-      <div class="app-features">
-        <div class="feat-item"><span>📖</span><span class="feat-text">60+ mots essentiels avec audio 🔊</span></div>
-        <div class="feat-item"><span>📐</span><span class="feat-text">6 leçons de grammaire complètes</span></div>
-        <div class="feat-item"><span>💬</span><span class="feat-text">Dialogues : réunion, appel, networking</span></div>
-        <div class="feat-item"><span>🧠</span><span class="feat-text">Quiz 20 questions A1→B2</span></div>
-        <div class="feat-item"><span>🔁</span><span class="feat-text">Répétition espacée SM-2 (algorithme Anki)</span></div>
-      </div>
-      <a href="https://donavigan.github.io/english-master" target="_blank" class="app-link app-link-en">🇬🇧 Accéder à English Master →</a>
-    </div>
-
-    <!-- ESPAÑOL -->
-    <div class="app-card app-card-es">
-      <div class="app-card-header">
-        <span class="app-flag">🇪🇸</span>
-        <div class="app-name">Español Master</div>
-        <div class="app-tagline">L'espagnol complet A1→B2 pour francophones</div>
-        <div class="app-screen">
-          <div class="app-screen-mock" style="background:linear-gradient(160deg,#0d0a0f,#140f1a)">
-            <div class="mock-header" style="background:rgba(192,57,43,0.2)">
-              <span style="font-size:14px">🇪🇸</span>
-              <div style="font-size:10px;font-weight:700;color:#f39c12">Español Master</div>
-              <div style="margin-left:auto;font-size:9px">🔥<span style="color:#e74c3c">1j</span></div>
-            </div>
-            <div class="mock-nav">
-              <div class="mock-nb" style="background:rgba(192,57,43,0.3);color:#f39c12">🏠<br>Accueil</div>
-              <div class="mock-nb">🃏<br>Vocab</div>
-              <div class="mock-nb">📚<br>Gram.</div>
-              <div class="mock-nb">✍️<br>Écrit.</div>
-              <div class="mock-nb">🗣️<br>Pron.</div>
-              <div class="mock-nb">💬<br>Dial.</div>
-              <div class="mock-nb">🧠<br>Quiz</div>
-            </div>
-            <div class="mock-hero" style="background:linear-gradient(135deg,rgba(192,57,43,0.15),rgba(243,156,18,0.1));margin-bottom:5px">
-              <div style="font-size:28px;margin-bottom:4px">🇪🇸</div>
-              <div style="font-size:13px;font-weight:700;color:#f39c12;font-family:'Playfair Display',serif">Español Master</div>
-              <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:2px">Apprends l'espagnol comme un pro</div>
-              <div style="display:flex;gap:5px;justify-content:center;margin-top:7px">
-                <div style="background:rgba(255,255,255,0.08);border-radius:5px;padding:3px 7px;font-size:8px">🎯 A1</div>
-                <div style="background:rgba(255,255,255,0.08);border-radius:5px;padding:3px 7px;font-size:8px">⭐ 0 XP</div>
-              </div>
-            </div>
-            <div class="mock-grid">
-              <div class="mock-card" style="background:rgba(243,156,18,0.15)"><span style="font-size:12px">🃏</span><span style="font-size:8px;font-weight:700;color:#f39c12">Vocabulaire</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">6 catégories</span></div>
-              <div class="mock-card" style="background:rgba(41,128,185,0.15)"><span style="font-size:12px">📚</span><span style="font-size:8px;font-weight:700;color:#3498db">Grammaire</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">7 leçons</span></div>
-              <div class="mock-card" style="background:rgba(39,174,96,0.15)"><span style="font-size:12px">✍️</span><span style="font-size:8px;font-weight:700;color:#27ae60">Traduction</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">8 exercices</span></div>
-              <div class="mock-card" style="background:rgba(142,68,173,0.15)"><span style="font-size:12px">💬</span><span style="font-size:8px;font-weight:700;color:#9b59b6">Dialogues</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">3 situations</span></div>
-            </div>
-          </div>
+      </div>`;
+    } else if(dlgData.chosen[i]!==undefined){
+      const c=dlgData.chosen[i];
+      const ok=c===t.correct;
+      html+=`<div class="b-player">
+        <div class="b-msg b-player-msg" style="background:${ok?"rgba(22,163,74,0.15)":"rgba(192,57,43,0.12)"};border-color:${ok?"rgba(22,163,74,0.4)":"rgba(192,57,43,0.4)"}">
+          <div class="b-text" style="font-style:italic" ${rtl}>${t.options[c].w}</div>
+          ${t.options[c].ph?`<div class="b-phonetic">${t.options[c].ph}</div>`:""}
+          <div class="b-fr">${t.options[c].fr}</div>
+          ${!ok?`<div style="color:#fca5a5;font-size:11px;margin-top:3px">✓ ${t.options[t.correct].w}</div>`:""}
         </div>
-      </div>
-      <div class="app-features">
-        <div class="feat-item"><span>🃏</span><span class="feat-text">70+ mots avec exemples et audio 🔊</span></div>
-        <div class="feat-item"><span>📚</span><span class="feat-text">7 leçons : SER/ESTAR, passé, futur...</span></div>
-        <div class="feat-item"><span>💬</span><span class="feat-text">Dialogues : marché, restaurant, présentation</span></div>
-        <div class="feat-item"><span>🗣️</span><span class="feat-text">Prononciation : Jota, Ñ, RR, accents</span></div>
-        <div class="feat-item"><span>🔁</span><span class="feat-text">Répétition espacée SM-2 et système XP</span></div>
-      </div>
-      <a href="https://donavigan.github.io/espanol-master" target="_blank" class="app-link app-link-es">🇪🇸 Accéder à Español Master →</a>
-    </div>
+        <div class="b-player-av">😊</div>
+      </div>`;
+    }
+  }
+  html+=`</div>`;
+  const curTurn=dlgData.turns[dlgData.tidx];
+  if(curTurn&&curTurn.role==="player"&&dlgData.chosen[dlgData.tidx]===undefined){
+    html+=`<div class="choice-hint">💡 ${curTurn.hint}</div>`;
+    curTurn.options.forEach((opt,oi)=>{
+      html+=`<button class="choice-btn" onclick="chooseDlg(${oi})">
+        <span class="choice-native" ${rtl}>${["A","B","C"][oi]}. ${opt.w}</span>
+        ${opt.ph?`<span class="choice-phonetic">${opt.ph}</span>`:""}
+        <span style="font-size:10px;color:var(--faint);margin-top:1px">${opt.fr}</span>
+      </button>`;
+    });
+  }
+  el.innerHTML=html;
+  el.scrollTop=el.scrollHeight;
+}
 
+function chooseDlg(oi){
+  const L=LANGS[currentLang];
+  const turn=dlgData.turns[dlgData.tidx];
+  dlgData.chosen[dlgData.tidx]=oi;
+  const ok=oi===turn.correct;
+  if(!ok)dlgData.errors++;
+  else addXP(15,"💬 Bonne réplique !");
+  dlgData.tidx++;
+  if(dlgData.tidx>=dlgData.turns.length){
+    dlgData.done=true;
+    addXP(dlgData.errors===0?40:15,dlgData.errors===0?"⭐ Sans faute !":"💬 Dialogue fini");
+  }
+  renderDialogue(L,document.getElementById("mod-content"));
+}
+
+function renderDlgResult(L,el){
+  const e=dlgData.errors;
+  el.innerHTML=`<div class="result">
+    <div class="result-emoji">${e===0?"🌟":e<=1?"👏":"💪"}</div>
+    <h2 class="result-title" style="color:${L.color}">${e===0?"Parfait !":e<=1?"Excellent !":"Bien joué !"}</h2>
+    <p class="result-score">${e} erreur${e!==1?"s":""}</p>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:16px">
+      <button class="btn" style="background:${L.bg};border:1px solid ${L.borderColor};color:${L.color};width:auto;padding:12px 20px" onclick="dlgData={};renderDialogue(LANGS[currentLang],document.getElementById('mod-content'))">🔄 Rejouer</button>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════
+   QUIZ
+═══════════════════════════════ */
+function renderQuiz(L,el){
+  if(!quizData.qs.length||quizData.lang!==currentLang){
+    quizData={qs:[...L.quiz].sort(()=>Math.random()-0.5),idx:0,score:0,ans:null,done:false,lang:currentLang};
+  }
+  if(quizData.done){renderQResult(L,el);return;}
+  const q=quizData.qs[quizData.idx];
+  let html=`<div style="display:flex;justify-content:space-between;margin-bottom:10px">
+    <h3 style="color:${L.color};font-family:'Playfair Display',serif">🧠 Quiz</h3>
+    <span style="color:var(--muted);font-size:12px">${quizData.idx+1}/${quizData.qs.length} · ${quizData.score} ✅</span>
   </div>
-</div>
+  <div class="pbar"><div class="pfill" style="background:linear-gradient(90deg,${L.color},${L.color}88);width:${quizData.idx/quizData.qs.length*100}%"></div></div>
+  <div class="q-card" style="border-color:${L.borderColor}"><p style="font-size:15px;font-weight:700;line-height:1.6">${q.q}</p></div>`;
+  q.opts.forEach((opt,i)=>{
+    let cls="opt";
+    if(quizData.ans!==null){
+      if(i===q.a)cls+=" ok";
+      else if(i===quizData.ans)cls+=" nok";
+    }
+    html+=`<button class="${cls}" onclick="pickQ(${i})">
+      <span class="opt-main">${["A","B","C","D"][i]}. ${opt}</span>
+    </button>`;
+  });
+  if(quizData.ans!==null){
+    html+=`<button class="btn" style="background:linear-gradient(135deg,${L.color},${L.color}cc);color:#fff;margin-top:6px" onclick="nextQ()">
+      ${quizData.idx+1>=quizData.qs.length?"Résultats 🏁":"Suivant →"}
+    </button>`;
+  }
+  el.innerHTML=html;
+}
 
-<div class="divider"></div>
+function pickQ(i){
+  if(quizData.ans!==null)return;
+  quizData.ans=i;
+  const q=quizData.qs[quizData.idx];
+  if(i===q.a){quizData.score++;addXP(8,"🧠 Bonne réponse !");}
+  renderQuiz(LANGS[currentLang],document.getElementById("mod-content"));
+}
 
-<!-- FEATURES -->
-<div class="section">
-  <div style="text-align:center;margin-bottom:36px">
-    <div class="section-tag" style="background:rgba(22,163,74,0.13);color:#22c55e;border:1px solid rgba(22,163,74,0.3)">Pourquoi LinguaMaster ?</div>
-    <h2 class="section-title">Une méthode qui fonctionne vraiment</h2>
-  </div>
-  <div class="features-grid">
-    <div class="feature-card"><div class="feature-icon">🔁</div><div class="feature-title">Répétition espacée SM-2</div><div class="feature-desc">L'algorithme utilisé par Anki et Duolingo. Les mots difficiles reviennent plus souvent, les mots maîtrisés s'espacent.</div></div>
-    <div class="feature-card"><div class="feature-icon">🔊</div><div class="feature-title">Prononciation audio</div><div class="feature-desc">Chaque mot et chaque phrase se prononcent avec une vraie voix native. Écoute, répète, progresse.</div></div>
-    <div class="feature-card"><div class="feature-icon">💬</div><div class="feature-title">Dialogues réels</div><div class="feature-desc">Pratique de vraies conversations professionnelles : réunions, appels, marchés, restaurants.</div></div>
-    <div class="feature-card"><div class="feature-icon">📱</div><div class="feature-title">100% mobile</div><div class="feature-desc">Optimisé pour smartphone. Apprends partout, à tout moment, même avec une connexion limitée.</div></div>
-    <div class="feature-card"><div class="feature-icon">🇫🇷</div><div class="feature-title">Tout en français</div><div class="feature-desc">Les explications, la grammaire et les traductions sont toutes en français. Parfait pour les francophones.</div></div>
-    <div class="feature-card"><div class="feature-icon">🔥</div><div class="feature-title">Gamification motivante</div><div class="feature-desc">Système XP, niveaux A1→B2, série quotidienne et quiz compétitifs. Rester motivé est clé.</div></div>
-  </div>
-</div>
+function nextQ(){
+  if(quizData.idx+1>=quizData.qs.length){
+    quizData.done=true;
+    if(quizData.score/quizData.qs.length>=0.8)addXP(50,"🏆 Excellence !");
+  }else{
+    quizData.idx++;quizData.ans=null;
+  }
+  renderQuiz(LANGS[currentLang],document.getElementById("mod-content"));
+}
 
-<div class="divider"></div>
+function renderQResult(L,el){
+  const p=quizData.score/quizData.qs.length;
+  el.innerHTML=`<div class="result">
+    <div class="result-emoji">${p===1?"🏆":p>=0.8?"🌟":p>=0.6?"👍":"💪"}</div>
+    <h2 class="result-title" style="color:${L.color}">${p===1?"Parfait !":p>=0.8?"Excellent !":p>=0.6?"Bien joué !":"Continue !"}</h2>
+    <p class="result-score">Score : <strong style="color:${L.color}">${quizData.score}/${quizData.qs.length}</strong></p>
+    <div class="result-bar"><div class="result-fill" id="qrbar" style="background:linear-gradient(90deg,${L.color},${L.color}88);width:0%"></div></div>
+    ${p>=0.8?`<p style="color:${L.color};font-size:13px;margin-bottom:14px">+50 XP bonus !</p>`:""}
+    <button class="btn" style="background:linear-gradient(135deg,${L.color},${L.color}cc);color:#fff;margin:0 auto;width:auto;padding:12px 24px" onclick="quizData={};renderQuiz(LANGS[currentLang],document.getElementById('mod-content'))">🔄 Nouveau quiz</button>
+  </div>`;
+  setTimeout(()=>{const b=document.getElementById("qrbar");if(b)b.style.width=(p*100)+"%";},100);
+}
 
-<!-- LICENCE SYSTEM -->
-<div class="license-section">
-  <div class="license-inner">
-    <div style="text-align:center;margin-bottom:8px">
-      <div class="section-tag" style="background:rgba(192,57,43,0.13);color:var(--red2);border:1px solid rgba(192,57,43,0.3);display:inline-block;margin-bottom:14px">🔐 Système de Licence</div>
-      <h2 class="section-title" style="text-align:center">Comment accéder à l'application ?</h2>
-      <p style="color:var(--muted);font-size:14px;max-width:500px;margin:10px auto 0;line-height:1.7">L'accès est sécurisé par un code de licence unique, personnel et non transférable.</p>
-    </div>
-    <div class="license-steps">
-      <div class="license-step">
-        <div class="step-num">1</div>
-        <div class="step-content"><h4>Effectuez votre paiement</h4><p>Payez via l'un de nos modes de paiement acceptés (MTN Money, Moov Money, Nita, Amana). Mentionnez l'application choisie.</p></div>
-      </div>
-      <div class="license-step">
-        <div class="step-num">2</div>
-        <div class="step-content"><h4>Recevez votre code sur WhatsApp</h4><p>Après confirmation du paiement, vous recevez un code d'activation unique sur WhatsApp dans les 24h.</p></div>
-      </div>
-      <div class="license-step">
-        <div class="step-num">3</div>
-        <div class="step-content"><h4>Activez votre licence</h4><p>Ouvrez l'application, cliquez sur n'importe quel module, entrez votre code. L'accès est immédiatement débloqué.</p></div>
-      </div>
-      <div class="license-step">
-        <div class="step-num">4</div>
-        <div class="step-content"><h4>Profitez à vie !</h4><p>Votre licence est activée définitivement sur votre appareil. Accès illimité à tous les modules, mises à jour incluses.</p></div>
-      </div>
-    </div>
-    <div class="lock-warning">
-      <div class="lock-icon">🔒</div>
-      <div class="lock-text">
-        <h4>Licence unique et personnelle</h4>
-        <p>Chaque code d'activation est unique et lié à un seul appareil. Il ne peut pas être partagé, transféré ou utilisé sur un autre téléphone. Toute tentative de partage désactivera automatiquement l'accès.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- PRICING -->
-<div class="pricing-section">
-  <div class="pricing-inner">
-    <div style="text-align:center">
-      <div class="section-tag" style="background:rgba(212,168,67,0.13);color:var(--gold);border:1px solid rgba(212,168,67,0.3);display:inline-block;margin-bottom:14px">Tarifs — Accès à Vie</div>
-      <h2 class="section-title" style="text-align:center">Investissez une fois,<br>progressez pour toujours</h2>
-      <p style="color:var(--muted);font-size:14px;max-width:480px;margin:10px auto 0;line-height:1.7">Paiement unique, accès illimité et définitif. Aucun abonnement mensuel.</p>
-    </div>
-
-    <div class="pricing-grid">
-
-      <!-- ÉTUDIANT -->
-      <div class="plan plan-student">
-        <div class="plan-name">🎓 Étudiant</div>
-        <div class="plan-target">Lycéens · Étudiants · Jeunes</div>
-        <div><span class="plan-amount">3 000</span><span class="plan-currency">FCFA</span></div>
-        <div class="plan-period">Accès à vie · 1 application au choix</div>
-        <ul class="plan-features">
-          <li><span>✅</span><span>1 app : anglais OU espagnol</span></li>
-          <li><span>✅</span><span>Tous les modules inclus</span></li>
-          <li><span>✅</span><span>Mises à jour gratuites</span></li>
-          <li><span>✅</span><span>Code d'activation WhatsApp</span></li>
-          <li><span>✅</span><span>Support par WhatsApp</span></li>
-          <li><span>❌</span><span style="opacity:0.5">2ème application</span></li>
-        </ul>
-        <a href="#contact" class="plan-btn">Commander →</a>
-      </div>
-
-      <!-- DUO -->
-      <div class="plan plan-pro">
-        <div class="plan-popular">⭐ MEILLEURE OFFRE</div>
-        <div class="plan-name">💼 Pack Duo</div>
-        <div class="plan-target">Professionnels · Entrepreneurs · Cadres</div>
-        <div><span class="plan-amount">5 000</span><span class="plan-currency">FCFA</span></div>
-        <div class="plan-period">Accès à vie · Les 2 applications</div>
-        <ul class="plan-features">
-          <li><span>✅</span><span>2 apps : anglais + espagnol</span></li>
-          <li><span>✅</span><span>Tous les modules premium</span></li>
-          <li><span>✅</span><span>Dialogues professionnels</span></li>
-          <li><span>✅</span><span>2 codes d'activation WhatsApp</span></li>
-          <li><span>✅</span><span>Mises à jour à vie</span></li>
-          <li><span>✅</span><span>Support prioritaire</span></li>
-        </ul>
-        <a href="#contact" class="plan-btn">Commander →</a>
-      </div>
-
-      <!-- ÉCOLE -->
-      <div class="plan plan-school">
-        <div class="plan-name">🏫 École / Entreprise</div>
-        <div class="plan-target">Établissements · ONG · Sociétés</div>
-        <div><span class="plan-amount">Sur devis</span></div>
-        <div class="plan-period">À partir de 10 utilisateurs</div>
-        <ul class="plan-features">
-          <li><span>✅</span><span>Licences multi-utilisateurs</span></li>
-          <li><span>✅</span><span>Les 2 applications incluses</span></li>
-          <li><span>✅</span><span>Codes d'activation individuels</span></li>
-          <li><span>✅</span><span>Formation des formateurs</span></li>
-          <li><span>✅</span><span>Tarif dégressif selon volume</span></li>
-          <li><span>✅</span><span>Facture officielle fournie</span></li>
-        </ul>
-        <a href="#contact" class="plan-btn">Demander un devis →</a>
-      </div>
-
-    </div>
-
-    <!-- PAYMENT METHODS -->
-    <div class="payment-box">
-      <div class="payment-title">💳 Modes de paiement acceptés</div>
-      <div class="payment-methods">
-        <div class="pm" style="background:rgba(255,204,0,0.12);border:1px solid rgba(255,204,0,0.3)">📱 <strong>MTN Mobile Money</strong></div>
-        <div class="pm" style="background:rgba(0,100,255,0.1);border:1px solid rgba(0,100,255,0.25)">📱 <strong>Moov Money</strong></div>
-        <div class="pm" style="background:rgba(212,168,67,0.12);border:1px solid rgba(212,168,67,0.3)">💳 <strong>Nita</strong></div>
-        <div class="pm" style="background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.3)">🏦 <strong>Amana</strong></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- TESTIMONIALS -->
-<div class="section">
-  <div style="text-align:center;margin-bottom:10px">
-    <div class="section-tag" style="background:rgba(142,68,173,0.13);color:#9b59b6;border:1px solid rgba(142,68,173,0.3);display:inline-block;margin-bottom:14px">Témoignages</div>
-    <h2 class="section-title" style="text-align:center">Ce que disent nos apprenants</h2>
-  </div>
-  <div class="testi-grid">
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"En 3 semaines, j'ai pu tenir une vraie conversation en anglais avec un partenaire américain. Le système de répétition espacée est bluffant !"</div>
-      <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#2563eb,#60a5fa)">👔</div><div><div style="font-size:13px;font-weight:700">Ibrahim M.</div><div style="font-size:11px;color:var(--muted)">Directeur commercial</div></div></div>
-    </div>
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"Les dialogues professionnels sont exactement ce qu'il me fallait pour mes négociations avec des partenaires hispanophones."</div>
-      <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#c0392b,#f39c12)">👩‍💼</div><div><div style="font-size:13px;font-weight:700">Fatima A.</div><div style="font-size:11px;color:var(--muted)">Responsable export</div></div></div>
-    </div>
-    <div class="testi">
-      <div class="testi-stars">★★★★★</div>
-      <div class="testi-text">"10 minutes par jour suffit. Après 1 mois, mes professeurs ont remarqué mon progrès. L'interface est belle et motivante !"</div>
-      <div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#16a34a,#22c55e)">🎓</div><div><div style="font-size:13px;font-weight:700">Moussa K.</div><div style="font-size:11px;color:var(--muted)">Étudiant BTS</div></div></div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- CTA FINAL -->
-<div class="cta-final" id="contact">
-  <h2>Prêt à commencer ?</h2>
-  <p>Testez gratuitement l'aperçu des applications. Pour obtenir votre code d'activation, contactez-nous sur WhatsApp après paiement.</p>
-  <div class="hero-cta" style="margin-bottom:20px">
-    <a href="https://donavigan.github.io/english-master" target="_blank" class="cta-btn cta-primary">🇬🇧 Tester English Master</a>
-    <a href="https://donavigan.github.io/espanol-master" target="_blank" class="cta-btn cta-secondary">🇪🇸 Tester Español Master</a>
-  </div>
-  <div class="whatsapp-box">
-    <span style="font-size:28px">📱</span>
-    <div style="text-align:left">
-      <div style="font-weight:700;font-size:14px;color:#22c55e">Commander sur WhatsApp</div>
-      <div style="font-size:13px;color:var(--muted)">Réponse et code d'activation sous 24h</div>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 LinguaMaster · Tous droits réservés</p>
-  <p>Conçu pour les apprenants francophones · Accès par licence unique et personnelle</p>
-  <div class="footer-links">
-    <a href="https://donavigan.github.io/english-master" target="_blank">🇬🇧 English Master</a>
-    <a href="https://donavigan.github.io/espanol-master" target="_blank">🇪🇸 Español Master</a>
-  </div>
-</footer>
-
+/* ═══════════════════════════════
+   INIT
+═══════════════════════════════ */
+loadState();
+const today=new Date().toDateString();
+if(STATE.lastPlay!==today){
+  const yest=new Date(Date.now()-86400000).toDateString();
+  STATE.streak=STATE.lastPlay===yest?(STATE.streak||0)+1:1;
+  STATE.lastPlay=today;saveState();
+}
+if(STATE.license&&STATE.license===DEMO_CODE)isDemo=true;
+updateHeader();
+window.speechSynthesis?.getVoices();
+</script>
 </body>
 </html>
