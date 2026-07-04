@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<meta name="version" content="2.1"/>
 <title>LinguaMaster — 5 Langues</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
 <style>
@@ -1037,7 +1041,7 @@ function renderQResult(L,el){
 }
 
 /* ═══════════════════════════════
-   INIT
+   INIT + HISTORY API (back button)
 ═══════════════════════════════ */
 loadState();
 const today=new Date().toDateString();
@@ -1049,6 +1053,89 @@ if(STATE.lastPlay!==today){
 if(STATE.license&&STATE.license===DEMO_CODE)isDemo=true;
 updateHeader();
 window.speechSynthesis?.getVoices();
+
+/* ── History API : gestion du bouton retour natif ── */
+// État initial = accueil
+history.replaceState({page:"home"}, "", "");
+
+// Quand on ouvre une langue, on pousse un état
+const _origOpenLang = _openLang;
+function _openLang(langKey){
+  history.pushState({page:"lang", lang:langKey, mod:"vocab"}, "", "");
+  _origOpenLang_real(langKey);
+}
+function _origOpenLang_real(langKey){
+  currentLang=langKey;
+  const L=LANGS[langKey];
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen-lang").classList.add("active");
+  const logoStyles={en:"background:linear-gradient(135deg,#1d4ed8,#3b82f6)",es:"background:linear-gradient(135deg,#dc2626,#ea580c)",zh:"background:linear-gradient(135deg,#b91c1c,#dc2626)",ru:"background:linear-gradient(135deg,#1e3a8a,#2563eb)",ar:"background:linear-gradient(135deg,#15803d,#16a34a)"};
+  const logoIcons={en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳",ru:"🇷🇺",ar:"🕌"};
+  document.getElementById("lang-header").innerHTML=`
+    <button class="back-btn" onclick="goBackToHome()" style="margin:0">← Accueil</button>
+    <div style="width:48px;height:48px;border-radius:12px;${logoStyles[langKey]};display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,0.4);flex-shrink:0">${logoIcons[langKey]}</div>
+    <div class="lang-header-info">
+      <h2 style="color:${L.color};font-size:18px">${L.name}</h2>
+      <p style="font-size:12px;color:rgba(245,240,232,0.6)">${L.native} · ${L.level}</p>
+    </div>`;
+  document.getElementById("lang-nav").style.display="block";
+  const mods=[{id:"vocab",label:"Vocab",icon:"🃏"},{id:"grammar",label:"Grammaire",icon:"📚"},{id:"pron",label:"Pronon.",icon:"🗣️"},{id:"dialogue",label:"Dialogue",icon:"💬"},{id:"quiz",label:"Quiz",icon:"🧠"}];
+  document.getElementById("nav-inner").innerHTML=mods.map(m=>`
+    <button class="nb${m.id===currentMod?" active":""}" style="${m.id===currentMod?`border-bottom-color:${L.color};color:${L.color}`:""}" onclick="switchMod('${m.id}')">
+      <span class="nb-icon">${m.icon}</span>${m.label}
+    </button>`).join("");
+  switchMod("vocab");
+}
+
+// Quand on change de module, on pousse un état
+const _origSwitchMod = switchMod;
+function switchMod(mod){
+  currentMod=mod;
+  if(currentLang) history.pushState({page:"lang",lang:currentLang,mod:mod},"","");
+  const L=LANGS[currentLang];
+  document.querySelectorAll(".nb").forEach((b,i)=>{
+    const mods=["vocab","grammar","pron","dialogue","quiz"];
+    const isActive=mods[i]===mod;
+    b.classList.toggle("active",isActive);
+    b.style.borderBottomColor=isActive?L.color:"transparent";
+    b.style.color=isActive?L.color:"";
+  });
+  const el=document.getElementById("mod-content");
+  el.innerHTML="";
+  if(mod==="vocab") renderVocab(L,el);
+  else if(mod==="grammar") renderGrammar(L,el);
+  else if(mod==="pron") renderPron(L,el);
+  else if(mod==="dialogue") renderDialogue(L,el);
+  else if(mod==="quiz") renderQuiz(L,el);
+}
+
+// Retour à l'accueil (propre)
+function goBackToHome(){
+  currentLesson=null;
+  showHome();
+}
+
+// Écouter le bouton retour du navigateur/téléphone
+window.addEventListener("popstate", function(e){
+  const state = e.state;
+  if(!state || state.page === "home"){
+    // Retour à l'accueil
+    currentLang=null; currentLesson=null;
+    showHome();
+  } else if(state.page === "lang"){
+    // Retour dans une langue
+    if(currentLesson){
+      currentLesson=null;
+      renderGrammar(LANGS[currentLang],document.getElementById("mod-content"));
+    } else if(currentLang !== state.lang){
+      _origOpenLang_real(state.lang);
+    } else {
+      // Juste changer de module
+      currentMod = state.mod || "vocab";
+      _origSwitchMod(currentMod);
+    }
+  }
+});
 </script>
 </body>
 </html>
