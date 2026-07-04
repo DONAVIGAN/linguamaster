@@ -65,6 +65,7 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 .lang-card{border-radius:20px;padding:20px 16px;cursor:pointer;text-align:center;border:1px solid;transition:all 0.25s;position:relative;overflow:hidden;}
 .lang-card:hover{transform:translateY(-3px);}
 .lang-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:currentColor;opacity:0.4;}
+.lang-logo{width:72px;height:72px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 12px;box-shadow:0 6px 20px rgba(0,0,0,0.4);}
 .lang-flag{font-size:36px;display:block;margin-bottom:8px;animation:pulse 3s ease-in-out infinite;}
 .lang-name{font-size:18px;font-weight:900;font-family:'Playfair Display',serif;margin-bottom:4px;}
 .lang-native{font-size:13px;color:rgba(245,240,232,0.8);margin-bottom:8px;}
@@ -221,34 +222,34 @@ td:first-child{font-weight:700;color:#fff;}
     <p class="home-sub">5 langues, une seule app. Apprenez l'anglais, l'espagnol, le chinois, le russe et l'arabe — tout en français, sur votre mobile.</p>
   </div>
   <div class="lang-grid">
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(212,168,67,0.15),rgba(212,168,67,0.05));border-color:rgba(212,168,67,0.4);color:var(--accent)" onclick="openLang('en')">
-      <span class="lang-flag">🇬🇧</span>
-      <div class="lang-name" style="color:var(--accent)">English</div>
-      <div class="lang-native" style="color:var(--muted)">Anglais</div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(29,78,216,0.18),rgba(29,78,216,0.06));border-color:rgba(29,78,216,0.5);color:#60a5fa" onclick="openLang('en')">
+      <div class="lang-logo" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">🇬🇧</div>
+      <div class="lang-name" style="color:#93c5fd">English</div>
+      <div class="lang-native">Anglais</div>
       <div class="lang-level">A1 → B2</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(192,57,43,0.15),rgba(243,156,18,0.05));border-color:rgba(192,57,43,0.4);color:#e74c3c" onclick="openLang('es')">
-      <span class="lang-flag">🇪🇸</span>
-      <div class="lang-name" style="color:#e74c3c">Español</div>
-      <div class="lang-native" style="color:var(--muted)">Espagnol</div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(234,88,12,0.18),rgba(220,38,38,0.08));border-color:rgba(234,88,12,0.5);color:#fb923c" onclick="openLang('es')">
+      <div class="lang-logo" style="background:linear-gradient(135deg,#dc2626,#ea580c)">🇪🇸</div>
+      <div class="lang-name" style="color:#fca5a5">Español</div>
+      <div class="lang-native">Espagnol</div>
       <div class="lang-level">A1 → B2</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.15),rgba(255,215,0,0.05));border-color:rgba(220,38,38,0.4);color:#ef4444" onclick="openLang('zh')">
-      <span class="lang-flag">🇨🇳</span>
-      <div class="lang-name" style="color:#ef4444">中文</div>
-      <div class="lang-native" style="color:var(--muted)">Chinois (Mandarin)</div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.18),rgba(234,179,8,0.08));border-color:rgba(220,38,38,0.5);color:#f87171" onclick="openLang('zh')">
+      <div class="lang-logo" style="background:linear-gradient(135deg,#b91c1c,#dc2626)">🇨🇳</div>
+      <div class="lang-name" style="color:#fca5a5">中文</div>
+      <div class="lang-native">Chinois Mandarin</div>
       <div class="lang-level">HSK 1 → HSK 3</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.15),rgba(220,38,38,0.08));border-color:rgba(37,99,235,0.4);color:#60a5fa" onclick="openLang('ru')">
-      <span class="lang-flag">🇷🇺</span>
-      <div class="lang-name" style="color:#60a5fa">Русский</div>
-      <div class="lang-native" style="color:var(--muted)">Russe</div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(239,68,68,0.08));border-color:rgba(37,99,235,0.5);color:#93c5fd" onclick="openLang('ru')">
+      <div class="lang-logo" style="background:linear-gradient(135deg,#1e3a8a,#2563eb)">🇷🇺</div>
+      <div class="lang-name" style="color:#bfdbfe">Русский</div>
+      <div class="lang-native">Russe</div>
       <div class="lang-level">A1 → B1</div>
     </div>
-    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(22,163,74,0.15),rgba(212,168,67,0.05));border-color:rgba(22,163,74,0.4);color:#22c55e" onclick="openLang('ar')">
-      <span class="lang-flag">🌙</span>
-      <div class="lang-name" style="color:#22c55e">العربية</div>
-      <div class="lang-native" style="color:var(--muted)">Arabe Standard Moderne</div>
+    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(22,163,74,0.18),rgba(234,179,8,0.06));border-color:rgba(22,163,74,0.5);color:#4ade80" onclick="openLang('ar')">
+      <div class="lang-logo" style="background:linear-gradient(135deg,#15803d,#16a34a)">🕌</div>
+      <div class="lang-name" style="color:#86efac">العربية</div>
+      <div class="lang-native">Arabe Standard Moderne</div>
       <div class="lang-level">Débutant → Intermédiaire</div>
     </div>
   </div>
@@ -672,12 +673,20 @@ function _openLang(langKey){
   document.getElementById("screen-lang").classList.add("active");
 
   // Header
+  const logoStyles = {
+    en:"background:linear-gradient(135deg,#1d4ed8,#3b82f6)",
+    es:"background:linear-gradient(135deg,#dc2626,#ea580c)",
+    zh:"background:linear-gradient(135deg,#b91c1c,#dc2626)",
+    ru:"background:linear-gradient(135deg,#1e3a8a,#2563eb)",
+    ar:"background:linear-gradient(135deg,#15803d,#16a34a)",
+  };
+  const logoIcons = {en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳",ru:"🇷🇺",ar:"🕌"};
   document.getElementById("lang-header").innerHTML=`
-    <button class="back-btn" onclick="showHome()" style="margin:0">←</button>
-    <span style="font-size:28px">${L.flag}</span>
+    <button class="back-btn" onclick="showHome()" style="margin:0">← Accueil</button>
+    <div style="width:48px;height:48px;border-radius:12px;${logoStyles[langKey]};display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,0.4);flex-shrink:0">${logoIcons[langKey]}</div>
     <div class="lang-header-info">
-      <h2 style="color:${L.color}">${L.name}</h2>
-      <p>${L.native} · ${L.level}</p>
+      <h2 style="color:${L.color};font-size:18px">${L.name}</h2>
+      <p style="font-size:12px;color:rgba(245,240,232,0.6)">${L.native} · ${L.level}</p>
     </div>`;
 
   // Nav
