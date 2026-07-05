@@ -226,40 +226,89 @@ td:first-child{font-weight:700;color:#fff;}
     <p class="home-sub">5 langues, une seule app. Apprenez l'anglais, l'espagnol, le chinois, le russe et l'arabe — tout en français, sur votre mobile.</p>
   </div>
   <div class="lang-grid">
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(29,78,216,0.18),rgba(29,78,216,0.06));border-color:rgba(29,78,216,0.5);color:#60a5fa" onclick="openLang('en')">
-      <div class="lang-logo" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">🇬🇧</div>
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(29,78,216,0.18),rgba(29,78,216,0.06));border-color:rgba(29,78,216,0.5)" onclick="openLang('en')">
+      <div class="lang-logo">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);position:relative;background:#012169">
+          <div style="position:absolute;top:0;left:50%;width:12px;height:100%;background:#fff;transform:translateX(-50%)"></div>
+          <div style="position:absolute;top:50%;left:0;width:100%;height:12px;background:#fff;transform:translateY(-50%)"></div>
+          <div style="position:absolute;top:0;left:50%;width:6px;height:100%;background:#C8102E;transform:translateX(-50%)"></div>
+          <div style="position:absolute;top:50%;left:0;width:100%;height:6px;background:#C8102E;transform:translateY(-50%)"></div>
+          <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 24px,#C8102E 24px,#C8102E 28px),repeating-linear-gradient(-45deg,transparent,transparent 24px,#C8102E 24px,#C8102E 28px);opacity:0.5"></div>
+        </div>
+      </div>
       <div class="lang-name" style="color:#93c5fd">English</div>
       <div class="lang-native">Anglais</div>
       <div class="lang-level">A1 → B2</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(234,88,12,0.18),rgba(220,38,38,0.08));border-color:rgba(234,88,12,0.5);color:#fb923c" onclick="openLang('es')">
-      <div class="lang-logo" style="background:linear-gradient(135deg,#dc2626,#ea580c)">🇪🇸</div>
+
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(234,88,12,0.18),rgba(220,38,38,0.08));border-color:rgba(234,88,12,0.5)" onclick="openLang('es')">
+      <div class="lang-logo">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);display:flex;flex-direction:column">
+          <div style="flex:1;background:#c60b1e"></div>
+          <div style="flex:2;background:#ffc400"></div>
+          <div style="flex:1;background:#c60b1e"></div>
+        </div>
+      </div>
       <div class="lang-name" style="color:#fca5a5">Español</div>
       <div class="lang-native">Espagnol</div>
       <div class="lang-level">A1 → B2</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.18),rgba(234,179,8,0.08));border-color:rgba(220,38,38,0.5);color:#f87171" onclick="openLang('zh')">
-      <div class="lang-logo" style="background:linear-gradient(135deg,#b91c1c,#dc2626)">🇨🇳</div>
+
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.18),rgba(234,179,8,0.08));border-color:rgba(220,38,38,0.5)" onclick="openLang('zh')">
+      <div class="lang-logo">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);background:#DE2910;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:30px;filter:drop-shadow(0 0 3px rgba(0,0,0,0.3))">⭐</span>
+          <span style="font-size:12px;color:#FFDE00;margin-top:-16px;margin-left:-4px">✦✦✦✦</span>
+        </div>
+      </div>
       <div class="lang-name" style="color:#fca5a5">中文</div>
       <div class="lang-native">Chinois Mandarin</div>
       <div class="lang-level">HSK 1 → HSK 3</div>
     </div>
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(239,68,68,0.08));border-color:rgba(37,99,235,0.5);color:#93c5fd" onclick="openLang('ru')">
-      <div class="lang-logo" style="background:linear-gradient(135deg,#1e3a8a,#2563eb)">🇷🇺</div>
+
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(239,68,68,0.08));border-color:rgba(37,99,235,0.5)" onclick="openLang('ru')">
+      <div class="lang-logo">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);display:flex;flex-direction:column">
+          <div style="flex:1;background:#fff"></div>
+          <div style="flex:1;background:#0039a6"></div>
+          <div style="flex:1;background:#d52b1e"></div>
+        </div>
+      </div>
       <div class="lang-name" style="color:#bfdbfe">Русский</div>
       <div class="lang-native">Russe</div>
       <div class="lang-level">A1 → B1</div>
     </div>
-    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(22,163,74,0.18),rgba(234,179,8,0.06));border-color:rgba(22,163,74,0.5);color:#4ade80" onclick="openLang('ar')">
-      <div class="lang-logo" style="background:linear-gradient(135deg,#15803d,#16a34a)">🕌</div>
+
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(22,163,74,0.18),rgba(234,179,8,0.06));border-color:rgba(22,163,74,0.5)" onclick="openLang('ar')">
+      <div class="lang-logo">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);background:#006c35;display:flex;align-items:center;justify-content:center;font-size:28px">
+          ☪️
+        </div>
+      </div>
       <div class="lang-name" style="color:#86efac">العربية</div>
       <div class="lang-native">Arabe Standard Moderne</div>
       <div class="lang-level">Débutant → Intermédiaire</div>
     </div>
+
+    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(249,115,22,0.18),rgba(234,179,8,0.08));border-color:rgba(249,115,22,0.5)" onclick="openLang('ha')">
+      <div class="lang-logo" style="margin:0 auto">
+        <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.4);display:flex;flex-direction:row">
+          <div style="flex:1;background:#e05206"></div>
+          <div style="flex:1;background:#fff;display:flex;align-items:center;justify-content:center;font-size:20px">🌙</div>
+          <div style="flex:1;background:#228b22"></div>
+        </div>
+      </div>
+      <div class="lang-name" style="color:#fed7aa">Haoussa</div>
+      <div class="lang-native">Harshen Hausa · Niger · Nigeria</div>
+      <div class="lang-level" style="background:rgba(249,115,22,0.3);color:#fff">🌍 Exclusivité Africaine</div>
+    </div>
   </div>
   <div style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:14px;padding:14px 16px;text-align:center">
-    <div style="color:var(--accent);font-weight:700;font-size:13px;margin-bottom:6px">🔐 Accès par licence</div>
-    <p style="color:var(--muted);font-size:12px;line-height:1.6">L'aperçu est gratuit. L'accès complet nécessite un code d'activation. Contactez-nous sur WhatsApp pour commander — <strong style="color:var(--accent)">3 000 FCFA / langue</strong>.</p>
+    <div style="color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px">🔐 Accès par licence</div>
+    <p style="color:var(--muted);font-size:12px;line-height:1.8">L'aperçu est gratuit. L'accès complet nécessite un code d'activation.<br>
+    <strong style="color:var(--accent)">2 000 FCFA / langue · 30 jours</strong><br>
+    <strong style="color:var(--accent2)">8 000 FCFA · Toutes les langues</strong><br>
+    Contactez-nous sur WhatsApp pour commander.</p>
   </div>
 </div>
 
@@ -586,6 +635,95 @@ ar: {
     {q:"Le verbe 'être' au présent en arabe est ?",opts:["Obligatoire","Souvent omis","Très complexe","Toujours visible"],a:1},
     {q:"'مع السلامة' signifie ?",opts:["Bonjour","Merci","S'il vous plaît","Au revoir"],a:3},
     {q:"La salutation islamique 'السلام عليكم' signifie ?",opts:["Bonjour le matin","Paix sur vous","Bonne nuit","À bientôt"],a:1},
+  ],
+},
+
+/* ─── HAUSA ─── */
+ha: {
+  name:"Haoussa", native:"Haoussa (Harshen Hausa)", flag:"🇳🇪", level:"Débutant→Intermédiaire",
+  color:"#f97316", bg:"rgba(249,115,22,0.15)", borderColor:"rgba(249,115,22,0.4)",
+  speechLang:"ha",
+  vocab:[
+    {w:"Sannu",ph:"SAN-nou",fr:"Bonjour / Salut",ex:"Sannu! Ina kwana?",exFr:"Bonjour ! Comment as-tu dormi ?"},
+    {w:"Na gode",ph:"na GO-dé",fr:"Merci",ex:"Na gode ƙwarai!",exFr:"Merci beaucoup !"},
+    {w:"Lafiya lau",ph:"la-FI-ya LAO",fr:"Très bien (réponse à comment ça va)",ex:"Lafiya lau, na gode.",exFr:"Très bien, merci."},
+    {w:"Yauwa / Ee",ph:"YAO-wa / EH",fr:"Oui",ex:"Yauwa, na fahimta.",exFr:"Oui, je comprends."},
+    {w:"A'a",ph:"A-a",fr:"Non",ex:"A'a, ban san ba.",exFr:"Non, je ne sais pas."},
+    {w:"Aiki",ph:"AÏ-ki",fr:"Travail",ex:"Ina da aiki da yawa.",exFr:"J'ai beaucoup de travail."},
+    {w:"Kudi",ph:"KOU-di",fr:"Argent",ex:"Nawa ne kudinsa?",exFr:"Combien ça coûte ?"},
+    {w:"Abinci",ph:"a-BIN-tchi",fr:"Nourriture / Repas",ex:"Abincin nan yana da dadi.",exFr:"Cette nourriture est délicieuse."},
+    {w:"Gida",ph:"GI-da",fr:"Maison",ex:"Ina gida yanzun.",exFr:"Je suis à la maison maintenant."},
+    {w:"Aboki",ph:"a-BO-ki",fr:"Ami (masc.)",ex:"Shi ne abokina.",exFr:"C'est mon ami."},
+    {w:"Uwa",ph:"OU-wa",fr:"Mère",ex:"Uwata tana gida.",exFr:"Ma mère est à la maison."},
+    {w:"Sai an jima",ph:"saï an JI-ma",fr:"À bientôt",ex:"Sai an jima, aboki!",exFr:"À bientôt, ami !"},
+    {w:"Ina kwana?",ph:"I-na KWA-na",fr:"Comment as-tu dormi ? (matin)",ex:"Sannu! Ina kwana?",exFr:"Bonjour ! Comment as-tu dormi ?"},
+    {w:"Sunana...",ph:"SOU-na-na",fr:"Je m'appelle...",ex:"Sunana Ibrahim.",exFr:"Je m'appelle Ibrahim."},
+  ],
+  grammar:[
+    {id:"g1",emoji:"👋",title:"Salutations & Réponses",color:"#f97316",
+     sections:[
+       {title:"Les salutations selon le moment",
+        table:[["Haoussa","Phonétique","Français","Moment"],["Ina kwana?","I-na KWA-na","Comment as-tu dormi ?","Matin"],["Ina wuni?","I-na WOU-ni","Bonne journée ?","Après-midi"],["Ina yini?","I-na YI-ni","Comment se passe la journée ?","Fin de journée"],["Barka da rana","bar-ka da RA-na","Bonjour (formel)","Journée"],["Barka da dare","bar-ka da DA-ré","Bonsoir","Soir"]],
+        examples:[{w:"Sannu! Ina kwana?",ph:"SAN-nou! I-na KWA-na?",fr:"Bonjour ! Comment as-tu dormi ?"},{w:"Lafiya lau, na gode.",ph:"la-FI-ya LAO, na GO-dé",fr:"Très bien, merci."}]},
+       {title:"Réponses aux salutations",
+        table:[["Salutation","Réponse","Traduction réponse"],["Ina kwana?","Lafiya lau","Très bien"],["Yaya dai?","To, lafiya","Bien, ça va"],["Ina aiki?","Aiki dai","Le travail, c'est le travail"]],
+        examples:[{w:"Ina aiki?",ph:"I-na AÏ-ki",fr:"Comment va le travail ?"},{w:"Aiki dai.",ph:"AÏ-ki daï",fr:"Le travail, c'est le travail (ça va)."}]},
+     ],tip:"💡 En haoussa, on salue différemment selon le moment de la journée ET selon l'activité de la personne. C'est une marque de respect !"},
+    {id:"g2",emoji:"🔢",title:"Les Nombres",color:"#eab308",
+     sections:[
+       {title:"Nombres de 1 à 20",
+        table:[["Nombre","Haoussa","Phonétique"],["1","Ɗaya","DA-ya"],["2","Biyu","bi-YOU"],["3","Uku","OU-kou"],["4","Huɗu","HOU-du"],["5","Biyar","bi-YAR"],["6","Shida","CHI-da"],["7","Bakwai","bak-WAÏ"],["8","Takwas","tak-OUASS"],["9","Tara","TA-ra"],["10","Goma","GO-ma"],["20","Ashirin","a-CHI-rin"],["100","Ɗari","DA-ri"]],
+        examples:[{w:"Nawa ne? — Naira biyar.",ph:"NA-wa né? — NAÏ-ra bi-YAR",fr:"Combien ? — Cinq nairas."},{w:"Yana da shekara goma sha biyu.",ph:"",fr:"Il a douze ans."}]},
+     ],tip:"💡 Pour les nombres composés, on dit '10 et 1' : Goma sha ɗaya (11), Goma sha biyu (12). 'Sha' = 'et' pour les nombres de 11 à 19."},
+    {id:"g3",emoji:"📌",title:"Structure de la Phrase",color:"#22c55e",
+     sections:[
+       {title:"Sujet + Verbe + Objet",
+        table:[["Élément","Haoussa","Traduction"],["Sujet","Ni / Ka / Ki / Shi / Ita","Je / Tu(m) / Tu(f) / Il / Elle"],["Verbe","ina / kana / kina / yana / tana","(être en train de)"],["Exemple","Ina tafiya","Je suis en train d'y aller"]],
+        examples:[{w:"Ina tafiya kasuwa.",ph:"I-na ta-FI-ya ka-SOU-wa",fr:"Je vais au marché."},{w:"Kana son abinci?",ph:"KA-na son a-BIN-tchi",fr:"Est-ce que tu veux manger ?"}]},
+       {title:"Pronoms personnels",
+        table:[["Pronom","Haoussa","Usage"],["Je/Moi","Ni","Neutre"],["Tu (masc.)","Kai","Pour un homme"],["Tu (fém.)","Ke","Pour une femme"],["Il","Shi","Masculin"],["Elle","Ita","Féminin"],["Nous","Mu","Pluriel"],["Vous","Ku","Pluriel"],["Ils/Elles","Su","Pluriel"]],
+        examples:[{w:"Ni ɗan Nijar ne.",ph:"Ni DAN ni-JAR né",fr:"Je suis Nigérien(ne)."},{w:"Mu masu aiki ne.",ph:"mou MA-sou AÏ-ki né",fr:"Nous sommes des travailleurs."}]},
+     ],tip:"💡 En haoussa, le genre grammatical existe (masculin/féminin). Le verbe change selon le sujet : Ina (moi), kana (toi masc.), kina (toi fém.), yana (lui), tana (elle)."},
+  ],
+  pronunciation:[
+    {rule:"Les tons (Intonation)",emoji:"🎵",desc:"Le haoussa est une langue à tons : haut (´), bas (`) et descendant (^). Le même mot avec un ton différent change de sens ! Ex: màlam (maître) vs málam.",words:["màlam (maître)","gàri (ville)","kàsuwā (marché)","àbinci (nourriture)","tāfiyā (voyage)","rānā (soleil)"]},
+    {rule:"Les consonnes spéciales",emoji:"🔤",desc:"Le haoussa a des consonnes uniques : Ɓ (b implosif), Ɗ (d implosif), Ƙ (k éjectif), TS (affriquée). Ces sons n'existent pas en français !",words:["Ɓera (souris)","Ɗan (fils de)","Ƙasa (terre/pays)","Tsaya (arrête-toi)","Ƙarfi (force)","Ɓoye (cacher)"]},
+    {rule:"Les voyelles longues",emoji:"⏱️",desc:"En haoussa, les voyelles longues (ā, ē, ī, ō, ū) durent deux fois plus longtemps que les courtes. Cette distinction change le sens du mot !",words:["bāki (bouche)","baki (étranger)","dāki (chambre)","daki (maison)","fāɗi (largeur)","fadi (tomber)"]},
+  ],
+  dialogues:[{
+    title:"Au marché",emoji:"🛒",
+    turns:[
+      {role:"npc",name:"Dan kasuwa (Marchand)",text:"Sannu! Yaya dai? Mene ne kake so?",ph:"SAN-nou! YA-ya daï? MÉ-né né KA-ké so?",fr:"Bonjour ! Comment ça va ? Qu'est-ce que tu veux ?"},
+      {role:"player",options:[
+        {w:"Sannu! Lafiya lau. Ina son 'ya'yan itace.",ph:"SAN-nou! la-FI-ya LAO. I-na son ya-yan i-TA-tché",fr:"Bonjour ! Très bien. Je veux des fruits."},
+        {w:"Sannu.",ph:"SAN-nou",fr:"❌ Trop court"},
+        {w:"A'a, na gode.",ph:"",fr:"❌ Hors sujet"}
+      ],correct:0,hint:"Saluez et dites ce que vous voulez"},
+      {role:"npc",name:"Dan kasuwa",text:"Mango ko ayaba? Nawa ne kake so?",ph:"MAN-go ko a-YA-ba? NA-wa né KA-ké so?",fr:"Mangues ou bananes ? Combien en veux-tu ?"},
+      {role:"player",options:[
+        {w:"Mango, don Allah. Nawa ne kudinsa?",ph:"MAN-go, don AL-la. NA-wa né KOU-din-sa?",fr:"Des mangues, s'il vous plaît. Combien ça coûte ?"},
+        {w:"Mango.",ph:"",fr:"❌ Incomplet"},
+        {w:"Ban san ba.",ph:"",fr:"❌ Hors sujet"}
+      ],correct:0,hint:"Choisissez et demandez le prix"},
+      {role:"npc",name:"Dan kasuwa",text:"Naira ɗari biyu ne kawai!",ph:"NAÏ-ra DA-ri bi-YOU né ka-WAÏ",fr:"C'est seulement deux cents nairas !"},
+      {role:"player",options:[
+        {w:"To, ina karɓa. Na gode ƙwarai!",ph:"TO, i-na kar-BA. na GO-dé KWA-raï",fr:"D'accord, je prends. Merci beaucoup !"},
+        {w:"A'a.",ph:"",fr:"❌ Trop négatif"},
+        {w:"Ban fahimta ba.",ph:"",fr:"❌ Incorrect"}
+      ],correct:0,hint:"Acceptez et remerciez"},
+    ]
+  }],
+  quiz:[
+    {q:"'Na gode' signifie ?",opts:["Bonjour","Au revoir","S'il vous plaît","Merci"],a:3},
+    {q:"'A'a' signifie ?",opts:["Oui","Peut-être","Non","D'accord"],a:2},
+    {q:"Comment dit-on 'Bonjour/Salut' en haoussa ?",opts:["Na gode","Sannu","Lafiya","Sai an jima"],a:1},
+    {q:"'Kudi' signifie ?",opts:["Travail","Nourriture","Maison","Argent"],a:3},
+    {q:"'Gida' signifie ?",opts:["Marché","Maison","Ami","Mère"],a:1},
+    {q:"Comment dit-on 'À bientôt' en haoussa ?",opts:["Sannu","Lafiya lau","Sai an jima","Na gode"],a:2},
+    {q:"'Ɗaya' signifie ?",opts:["Dix","Cinq","Deux","Un"],a:3},
+    {q:"'Goma' signifie ?",opts:["Cinq","Trois","Dix","Vingt"],a:2},
+    {q:"En haoussa, 'Kai' est le pronom de ?",opts:["Je","Tu (masculin)","Il","Nous"],a:1},
+    {q:"'Sunana...' signifie ?",opts:["Je viens de...","J'aime...","Je m'appelle...","Je comprends..."],a:2},
   ],
 },
 
