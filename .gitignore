@@ -1,0 +1,4 @@
+# L'outil admin ne doit JAMAIS être committé ici :
+# ce repo est servi publiquement par GitHub Pages.
+admin*.html
+linguamaster_admin*.html

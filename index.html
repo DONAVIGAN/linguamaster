@@ -6,9 +6,15 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
-<meta name="version" content="2.1"/>
-<title>LinguaMaster — 5 Langues</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<meta name="version" content="3.0"/>
+<title>LinguaMaster — Apprenez 6 langues depuis votre téléphone</title>
+<meta name="description" content="Apprenez l'anglais, l'espagnol, le chinois, le russe, l'arabe et le haoussa — tout en français, sur votre téléphone. Leçons, vocabulaire, prononciation et exercices. Essai gratuit, puis 2 000 FCFA la langue ou 8 000 FCFA pour les 6."/>
+<meta property="og:title" content="LinguaMaster — Apprenez 6 langues depuis votre téléphone"/>
+<meta property="og:description" content="6 langues, une seule app, tout en français. Essayez gratuitement."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#07050d; --text:#f5f0e8; --muted:rgba(245,240,232,0.6); --faint:rgba(245,240,232,0.3);
@@ -16,7 +22,7 @@
   --accent:#d4a843; --accent2:#f0c060;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:15px;}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:15px;}
 h1,h2,h3{font-family:'Playfair Display',serif;}
 ::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
 .bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
@@ -32,11 +38,11 @@ h1,h2,h3{font-family:'Playfair Display',serif;}
 .modal h2{font-size:22px;color:var(--accent);margin-bottom:8px;}
 .modal p{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:20px;}
 .modal-icon{font-size:48px;margin-bottom:14px;display:block;}
-.code-input{width:100%;background:rgba(255,255,255,0.08);border:2px solid var(--border);border-radius:12px;padding:14px;color:var(--text);font-size:18px;text-align:center;letter-spacing:4px;font-family:'Lato',sans-serif;outline:none;margin-bottom:12px;text-transform:uppercase;}
+.code-input{width:100%;background:rgba(255,255,255,0.08);border:2px solid var(--border);border-radius:12px;padding:14px;color:var(--text);font-size:18px;text-align:center;letter-spacing:4px;font-family:'Inter',system-ui,sans-serif;outline:none;margin-bottom:12px;text-transform:uppercase;}
 .code-input:focus{border-color:var(--accent);}
 .code-input.error{border-color:#e74c3c;animation:shake 0.3s ease;}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-.modal-btn{width:100%;padding:13px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Lato',sans-serif;margin-bottom:8px;}
+.modal-btn{width:100%;padding:13px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',system-ui,sans-serif;margin-bottom:8px;}
 .modal-btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07050d;}
 .modal-hint{font-size:12px;color:var(--faint);margin-top:8px;}
 .modal-demo{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:10px;font-size:12px;color:var(--muted);margin-top:12px;}
@@ -53,7 +59,7 @@ header{position:sticky;top:0;z-index:10;background:rgba(7,5,13,0.96);border-bott
 /* NAV */
 nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);overflow-x:auto;position:sticky;top:53px;z-index:9;backdrop-filter:blur(20px);}
 .nav-inner{max-width:520px;margin:0 auto;display:flex;}
-.nb{flex:0 0 auto;background:transparent;border:none;color:rgba(245,240,232,0.7);padding:10px 10px 8px;cursor:pointer;border-bottom:2px solid transparent;font-size:11px;font-family:'Lato',sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:56px;transition:all 0.2s;}
+.nb{flex:0 0 auto;background:transparent;border:none;color:rgba(245,240,232,0.7);padding:10px 10px 8px;cursor:pointer;border-bottom:2px solid transparent;font-size:11px;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:56px;transition:all 0.2s;}
 .nb.active{border-bottom-color:currentColor;font-weight:700;opacity:1;}
 
 /* CONTENT */
@@ -63,7 +69,7 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 
 /* HOME */
 .home-hero{text-align:center;padding:28px 0 20px;}
-.home-title{font-size:34px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
+.home-title{font-size:34px;color:var(--accent2);margin-bottom:8px;}
 .home-sub{color:rgba(245,240,232,0.8);font-size:15px;line-height:1.7;max-width:360px;margin:0 auto 24px;}
 .lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
 .lang-card{border-radius:20px;padding:20px 16px;cursor:pointer;text-align:center;border:1px solid;transition:all 0.25s;position:relative;overflow:hidden;}
@@ -74,7 +80,7 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 .lang-name{font-size:18px;font-weight:900;font-family:'Playfair Display',serif;margin-bottom:4px;}
 .lang-native{font-size:13px;color:rgba(245,240,232,0.8);margin-bottom:8px;}
 .lang-level{font-size:11px;background:rgba(255,255,255,0.15);border-radius:99px;padding:4px 12px;display:inline-block;color:#fff;font-weight:700;}
-.lang-5th{grid-column:span 2;}
+.lang-wide{grid-column:span 2;}   /* carte Haoussa, sur toute la largeur */
 
 /* LANG SCREENS */
 .lang-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);}
@@ -83,10 +89,7 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 .lang-header-info p{font-size:12px;color:var(--muted);}
 
 /* MODULE TABS */
-.mod-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px;}
-.mtab{flex:0 0 auto;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:99px;padding:6px 14px;cursor:pointer;font-size:12px;font-family:'Lato',sans-serif;color:var(--muted);transition:all 0.2s;white-space:nowrap;}
-.mtab.active{font-weight:700;color:#fff;}
-.mod-content{animation:fadeIn 0.3s ease;}
+/* (les onglets .mtab ont été retirés : la nav sticky #lang-nav les remplace) */
 
 /* VOCAB */
 .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -99,7 +102,7 @@ nav{background:rgba(7,5,13,0.97);border-bottom:1px solid rgba(212,168,67,0.15);o
 .vcard-ex{font-size:11px;color:rgba(245,240,232,0.7);font-style:italic;margin-top:2px;}
 
 /* GRAMMAR */
-.lesson-row{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;margin-bottom:8px;transition:all 0.2s;font-family:'Lato',sans-serif;}
+.lesson-row{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;text-align:left;margin-bottom:8px;transition:all 0.2s;font-family:'Inter',system-ui,sans-serif;}
 .lesson-title{color:#fff;font-weight:700;font-size:15px;}
 .lesson-meta{color:rgba(245,240,232,0.65);font-size:12px;margin-top:3px;}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:10px;}
@@ -116,7 +119,7 @@ td:first-child{font-weight:700;color:#fff;}
 .pron-rule{font-size:16px;font-weight:700;margin-bottom:6px;color:#fff;}
 .pron-desc{font-size:13px;color:rgba(245,240,232,0.8);line-height:1.65;margin-bottom:12px;}
 .pron-pills{display:flex;flex-wrap:wrap;gap:6px;}
-.pron-pill{border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:'Lato',sans-serif;}
+.pron-pill{border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:'Inter',system-ui,sans-serif;}
 
 /* DIALOGUE */
 .chat{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
@@ -132,14 +135,14 @@ td:first-child{font-weight:700;color:#fff;}
 .b-player{display:flex;gap:8px;justify-content:flex-end;}
 .b-player-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
 .choice-hint{font-size:13px;color:rgba(245,240,232,0.75);text-align:center;margin-bottom:8px;}
-.choice-btn{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--text);font-size:13px;text-align:left;margin-bottom:7px;display:flex;flex-direction:column;gap:3px;font-family:'Lato',sans-serif;transition:all 0.2s;}
+.choice-btn{width:100%;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;color:var(--text);font-size:13px;text-align:left;margin-bottom:7px;display:flex;flex-direction:column;gap:3px;font-family:'Inter',system-ui,sans-serif;transition:all 0.2s;}
 .choice-btn:hover{border-color:var(--accent);}
 .choice-native{font-weight:700;color:#fff;font-size:14px;}
 .choice-phonetic{font-size:11px;font-style:italic;color:rgba(245,240,232,0.6);}
 
 /* QUIZ */
 .q-card{border-radius:18px;padding:20px;text-align:center;margin-bottom:14px;background:var(--glass);border:1px solid var(--border);}
-.opt{width:100%;background:var(--glass);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:13px 16px;margin-bottom:8px;cursor:pointer;color:#fff;font-size:14px;text-align:left;transition:all 0.2s;display:flex;flex-direction:column;gap:3px;font-family:'Lato',sans-serif;}
+.opt{width:100%;background:var(--glass);border:2px solid rgba(255,255,255,0.15);border-radius:12px;padding:13px 16px;margin-bottom:8px;cursor:pointer;color:#fff;font-size:14px;text-align:left;transition:all 0.2s;display:flex;flex-direction:column;gap:3px;font-family:'Inter',system-ui,sans-serif;}
 .opt:hover{border-color:var(--accent);background:rgba(255,255,255,0.08);}
 .opt.ok{background:rgba(22,163,74,0.2);border-color:#16a34a;color:#a7f3d0;}
 .opt.nok{background:rgba(192,57,43,0.2);border-color:#c0392b;color:#fca5a5;}
@@ -149,11 +152,11 @@ td:first-child{font-weight:700;color:#fff;}
 /* SHARED */
 .pbar{background:rgba(255,255,255,0.06);border-radius:4px;height:4px;overflow:hidden;margin-bottom:16px;}
 .pfill{height:100%;border-radius:4px;transition:width 0.4s;}
-.back-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;cursor:pointer;font-size:14px;font-weight:700;margin-bottom:14px;font-family:'Lato',sans-serif;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;transition:all 0.2s;}
+.back-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;cursor:pointer;font-size:14px;font-weight:700;margin-bottom:14px;font-family:'Inter',system-ui,sans-serif;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:99px;transition:all 0.2s;}
 .back-btn:hover{background:rgba(212,168,67,0.2);border-color:var(--accent);color:var(--accent);}
 .module-back{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
 .tip-box{border-radius:12px;padding:12px 16px;font-size:13px;line-height:1.7;margin-top:8px;}
-.btn{display:block;width:100%;padding:13px;border:none;border-radius:13px;font-size:14px;font-weight:700;font-family:'Lato',sans-serif;cursor:pointer;transition:all 0.2s;text-align:center;}
+.btn{display:block;width:100%;padding:13px;border:none;border-radius:13px;font-size:14px;font-weight:700;font-family:'Inter',system-ui,sans-serif;cursor:pointer;transition:all 0.2s;text-align:center;}
 .btn:hover{opacity:0.88;transform:translateY(-1px);}
 .result{text-align:center;padding:36px 0;}
 .result-emoji{font-size:58px;margin-bottom:10px;}
@@ -165,6 +168,66 @@ td:first-child{font-weight:700;color:#fff;}
 .toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);border-radius:99px;padding:7px 18px;font-weight:700;font-size:13px;z-index:999;display:none;white-space:nowrap;}
 .spk{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:50%;width:28px;height:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;transition:all 0.2s;vertical-align:middle;}
 .spk:hover{background:rgba(212,168,67,0.25);border-color:var(--accent);}
+
+/* ═══════════════════════════════
+   LANDING PAGE (écran d'entrée)
+═══════════════════════════════ */
+.lp-hero{text-align:center;padding:22px 0 6px;}
+.lp-globe{font-size:44px;margin-bottom:10px;}
+.lp-title{font-family:'Playfair Display',serif;font-size:31px;font-weight:900;letter-spacing:1px;color:var(--accent2);margin-bottom:10px;line-height:1.1;}
+.lp-claim{font-size:18px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px;}
+.lp-langline{font-size:13px;color:var(--accent);line-height:1.8;margin-bottom:16px;}
+.lp-lead{font-size:14px;color:rgba(245,240,232,0.78);line-height:1.7;max-width:340px;margin:0 auto 22px;}
+
+/* CTA — cible tactile ≥ 52px */
+.cta-main{display:block;width:100%;padding:17px 16px;border:none;border-radius:14px;font-size:16px;font-weight:900;font-family:'Inter',system-ui,sans-serif;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07050d;box-shadow:0 3px 10px rgba(0,0,0,0.45);margin-bottom:10px;text-align:center;}
+.cta-ghost{display:block;width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,0.04);color:var(--text);font-size:14px;font-weight:700;font-family:'Inter',system-ui,sans-serif;cursor:pointer;text-align:center;}
+
+/* Sections */
+.lp-sec{margin:30px 0;}
+.lp-sec-title{font-size:12px;font-weight:900;letter-spacing:1.6px;color:var(--accent);text-align:center;margin-bottom:14px;}
+.lp-langs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.lp-lang{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:13px 4px;text-align:center;}
+.lp-lang-fl{font-size:23px;display:block;margin-bottom:5px;}
+.lp-lang-nm{font-size:12px;font-weight:700;color:#fff;}
+.lp-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.lp-feat{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:13px 10px;font-size:13px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;}
+
+/* FORMULES — la carte bundle domine */
+.price-card{border-radius:18px;padding:16px;border:1px solid var(--border);background:var(--glass);margin-bottom:14px;position:relative;text-align:center;}
+.price-hero{border:2px solid var(--accent);background:linear-gradient(160deg,rgba(212,168,67,0.17),rgba(212,168,67,0.04));padding:26px 18px 20px;box-shadow:0 4px 16px rgba(0,0,0,0.5);margin-top:20px;}
+.price-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07050d;font-size:10px;font-weight:900;letter-spacing:1.2px;padding:5px 15px;border-radius:99px;white-space:nowrap;}
+.price-name{font-size:14px;font-weight:900;color:#fff;letter-spacing:0.5px;}
+.price-hero .price-name{font-size:17px;color:var(--accent2);}
+.price-amount{font-family:'Playfair Display',serif;font-size:25px;font-weight:900;color:#fff;margin:7px 0 2px;}
+.price-hero .price-amount{font-size:37px;color:var(--accent);}
+.price-per{font-size:12px;color:var(--muted);}
+.price-note{font-size:12px;color:rgba(245,240,232,0.72);margin-top:9px;line-height:1.6;}
+
+/* WHATSAPP */
+.wa-btn{display:block;width:100%;padding:17px 16px;border-radius:14px;border:none;background:linear-gradient(135deg,#1faa59,#25d366);color:#04240f;font-size:16px;font-weight:900;font-family:'Inter',system-ui,sans-serif;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 3px 10px rgba(0,0,0,0.45);}
+.wa-btn-sm{display:block;width:100%;padding:13px;border-radius:12px;background:rgba(37,211,102,0.14);border:1px solid rgba(37,211,102,0.45);color:#7ee2a8;font-size:14px;font-weight:700;text-align:center;text-decoration:none;font-family:'Inter',system-ui,sans-serif;cursor:pointer;}
+.wa-alt{display:block;text-align:center;font-size:12px;color:var(--muted);margin-top:12px;text-decoration:none;padding:8px;}
+.wa-alt u{color:var(--accent);}
+
+/* Pied de landing + liens discrets */
+.lp-foot{text-align:center;margin-top:26px;padding-top:20px;border-top:1px solid var(--border);}
+.link-quiet{background:none;border:none;color:var(--muted);font-size:13px;text-decoration:underline;cursor:pointer;font-family:'Inter',system-ui,sans-serif;padding:10px 6px;}
+.link-quiet:hover{color:var(--accent);}
+
+/* ESSAI / VERROUS */
+.trial-bar{background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.28);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;line-height:1.5;}
+.trial-bar button{flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:99px;padding:9px 14px;font-size:12px;font-weight:900;color:#07050d;cursor:pointer;font-family:'Inter',system-ui,sans-serif;}
+.lock-note{background:rgba(212,168,67,0.07);border:1px solid rgba(212,168,67,0.25);border-radius:14px;padding:18px 16px;text-align:center;margin-top:14px;}
+.lock-note-t{font-size:15px;font-weight:900;color:var(--accent2);margin-bottom:6px;}
+.lock-note-p{font-size:13px;color:rgba(245,240,232,0.75);line-height:1.65;margin-bottom:14px;}
+.lang-card.is-locked{opacity:0.5;}
+.lang-lock-tag{position:absolute;top:9px;right:9px;font-size:14px;}
+
+/* Économie de batterie / accessibilité : pas d'animation si l'utilisateur n'en veut pas */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+}
 </style>
 </head>
 <body>
@@ -180,31 +243,31 @@ td:first-child{font-weight:700;color:#fff;}
 <!-- LICENSE MODAL -->
 <div class="overlay" id="license-overlay" style="display:none">
   <div class="modal">
-    <span class="modal-icon">🔐</span>
-    <h2>Activation requise</h2>
-    <p>Cette section est réservée aux utilisateurs sous licence. Entrez votre code d'activation reçu sur WhatsApp après paiement.</p>
-    <input type="text" class="code-input" id="code-input" placeholder="CODE-XXXX" maxlength="12" oninput="this.value=this.value.toUpperCase()"/>
-    <div id="code-error" style="color:#e74c3c;font-size:12px;margin-bottom:8px;display:none">❌ Code invalide. Vérifiez et réessayez.</div>
-    <button class="modal-btn modal-btn-primary" onclick="validateCode()">Activer ma licence →</button>
-    <div class="modal-hint">Pas encore de code ? Contactez-nous sur WhatsApp pour commander.</div>
-    <div class="modal-demo">
-      <strong style="color:var(--accent)">Code de démonstration :</strong> DEMO-2025<br>
-      <span style="font-size:11px">Accès limité à 3 mots par catégorie</span>
-    </div>
+    <span class="modal-icon">🔑</span>
+    <h2>Activer ma licence</h2>
+    <p>Entrez le code d'activation reçu sur WhatsApp après votre paiement.</p>
+    <input type="text" class="code-input" id="code-input" placeholder="LM-XXXX-XXXX" maxlength="24"
+           autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done"
+           oninput="this.value=this.value.toUpperCase()" onkeydown="if(event.key==='Enter')validateCode()"/>
+    <div id="code-error" style="color:#e74c3c;font-size:12px;margin-bottom:8px;display:none"></div>
+    <button class="modal-btn modal-btn-primary" onclick="validateCode()">Activer →</button>
+    <button class="modal-btn" style="background:rgba(255,255,255,0.07);border:1px solid var(--border);color:var(--text)" onclick="closeActivation()">Annuler</button>
+    <div class="modal-hint">Pas encore de code ? <a href="#" id="modal-wa" target="_blank" rel="noopener" style="color:var(--accent)">Commandez sur WhatsApp</a></div>
   </div>
 </div>
 
 <!-- HEADER -->
 <header>
   <div class="header-inner">
-    <div class="logo" onclick="showHome()">
+    <div class="logo" onclick="goHomeOrLanding()">
       <span style="font-size:22px">🌍</span>
       <div>
         <div class="logo-text">LinguaMaster</div>
-        <div style="font-size:9px;color:var(--faint);letter-spacing:1.5px">5 LANGUES · TOUT EN FRANÇAIS</div>
+        <div style="font-size:9px;color:var(--faint);letter-spacing:1.5px">6 LANGUES · TOUT EN FRANÇAIS</div>
       </div>
     </div>
-    <div class="hright">
+    <!-- Stats masquées tant que l'utilisateur n'a rien commencé (voir updateHeader) -->
+    <div class="hright" id="h-stats" style="display:none">
       <div class="streak-badge">🔥 <span id="h-streak">0</span>j</div>
       <div class="xp-badge">⭐ <span id="h-xp">0</span></div>
     </div>
@@ -218,15 +281,111 @@ td:first-child{font-weight:700;color:#fff;}
 
 <div class="content">
 
-<!-- HOME -->
-<div class="screen active" id="screen-home">
-  <div class="home-hero">
-    <div style="font-size:44px;margin-bottom:12px;animation:pulse 3s ease-in-out infinite">🌍</div>
-    <h1 class="home-title">LinguaMaster</h1>
-    <p class="home-sub">5 langues, une seule app. Apprenez l'anglais, l'espagnol, le chinois, le russe et l'arabe — tout en français, sur votre mobile.</p>
+<!-- ════════════════════════════════════════
+     LANDING — écran d'entrée (découverte)
+     Aucun code demandé ici : l'activation
+     arrive seulement après achat.
+════════════════════════════════════════ -->
+<div class="screen active" id="screen-landing">
+
+  <div class="lp-hero">
+    <div class="lp-globe">🌍</div>
+    <h1 class="lp-title">LINGUAMASTER</h1>
+    <p class="lp-claim">Apprenez 6 langues depuis votre téléphone</p>
+    <p class="lp-langline">Anglais · Espagnol · Chinois<br>Russe · Arabe · Haoussa</p>
+    <p class="lp-lead">Une méthode simple et accessible pour apprendre progressivement de nouvelles langues — tout en français.</p>
+  </div>
+
+  <button class="cta-main" onclick="startTrial()">🎁 ESSAYEZ GRATUITEMENT</button>
+  <button class="cta-ghost" onclick="scrollToSec('lp-how')">Découvrez comment ça fonctionne</button>
+
+  <!-- 6 LANGUES -->
+  <div class="lp-sec">
+    <div class="lp-sec-title">🌍 6 LANGUES</div>
+    <div class="lp-langs">
+      <div class="lp-lang"><span class="lp-lang-fl">🇬🇧</span><span class="lp-lang-nm">Anglais</span></div>
+      <div class="lp-lang"><span class="lp-lang-fl">🇪🇸</span><span class="lp-lang-nm">Espagnol</span></div>
+      <div class="lp-lang"><span class="lp-lang-fl">🇨🇳</span><span class="lp-lang-nm">Chinois</span></div>
+      <div class="lp-lang"><span class="lp-lang-fl">🇷🇺</span><span class="lp-lang-nm">Russe</span></div>
+      <div class="lp-lang"><span class="lp-lang-fl">🇸🇦</span><span class="lp-lang-nm">Arabe</span></div>
+      <div class="lp-lang"><span class="lp-lang-fl">🇳🇪</span><span class="lp-lang-nm">Haoussa</span></div>
+    </div>
+  </div>
+
+  <!-- MÉTHODE -->
+  <div class="lp-sec" id="lp-how">
+    <div class="lp-sec-title">📚 APPRENEZ À VOTRE RYTHME</div>
+    <div class="lp-feats">
+      <div class="lp-feat">📚 Leçons</div>
+      <div class="lp-feat">🃏 Vocabulaire</div>
+      <div class="lp-feat">🗣️ Prononciation</div>
+      <div class="lp-feat">🧠 Exercices</div>
+    </div>
+  </div>
+
+  <!-- FORMULES -->
+  <div class="lp-sec" id="lp-prix">
+    <div class="lp-sec-title">💰 CHOISISSEZ VOTRE FORMULE</div>
+
+    <div class="price-card">
+      <div class="price-name">🟢 1 LANGUE</div>
+      <div class="price-amount">2 000 FCFA</div>
+      <div class="price-per">pour 30 jours</div>
+      <div class="price-note">La langue de votre choix, accès complet.</div>
+    </div>
+
+    <div class="price-card price-hero">
+      <div class="price-badge">⭐ MEILLEURE OFFRE</div>
+      <div class="price-name">TOUTES LES LANGUES</div>
+      <div class="price-amount">8 000 FCFA</div>
+      <div class="price-per">pour 30 jours</div>
+      <div class="price-note">Les 6 langues d'un coup — au lieu de 12 000 FCFA séparément.<br><strong style="color:var(--accent2)">Vous économisez 4 000 FCFA.</strong></div>
+    </div>
+  </div>
+
+  <!-- ACHAT -->
+  <div class="lp-sec">
+    <a class="wa-btn" id="lp-wa-all" href="#" target="_blank" rel="noopener">📱 ACHETER SUR WHATSAPP</a>
+    <a class="wa-alt" id="lp-wa-alt" href="#" target="_blank" rel="noopener">Vous êtes au Niger ? <u>Écrivez-nous ici</u></a>
+  </div>
+
+  <!-- QUESTIONS + ACTIVATION -->
+  <div class="lp-foot">
+    <a class="wa-btn-sm" id="lp-wa-q" href="#" target="_blank" rel="noopener">❓ Une question ? Écrivez-nous</a>
+    <button class="link-quiet" onclick="openActivation()" style="margin-top:14px">J'ai déjà un code d'activation</button>
+    <p style="font-size:11px;color:var(--faint);margin-top:12px;line-height:1.6">SphinxApps · SPHINX Niger</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     ÉCRAN D'OFFRE (après essai / contenu verrouillé)
+════════════════════════════════════════ -->
+<div class="screen" id="screen-offer">
+  <button class="back-btn" onclick="history.back()">← Retour</button>
+  <div style="text-align:center;margin-bottom:6px">
+    <div style="font-size:40px;margin-bottom:8px">🔓</div>
+    <h2 style="font-size:22px;color:var(--accent2);margin-bottom:8px">Débloquez tout le contenu</h2>
+    <p style="font-size:14px;color:rgba(245,240,232,0.75);line-height:1.7;max-width:330px;margin:0 auto 4px" id="offer-lead"></p>
+  </div>
+  <div class="lp-sec" id="offer-prices"></div>
+  <div class="lp-sec">
+    <a class="wa-btn" id="offer-wa-all" href="#" target="_blank" rel="noopener">📱 ACHETER SUR WHATSAPP</a>
+    <a class="wa-alt" id="offer-wa-alt" href="#" target="_blank" rel="noopener">Vous êtes au Niger ? <u>Écrivez-nous ici</u></a>
+  </div>
+  <div class="lp-foot">
+    <button class="link-quiet" onclick="openActivation()">J'ai déjà un code d'activation</button>
+  </div>
+</div>
+
+<!-- HOME — grille des langues (après essai ou activation) -->
+<div class="screen" id="screen-home">
+  <div id="home-status"></div>
+  <div class="home-hero" style="padding:18px 0 16px">
+    <h1 class="home-title" style="font-size:28px">Choisissez une langue</h1>
+    <p class="home-sub" style="margin-bottom:12px">6 langues, une seule app. Anglais, espagnol, chinois, russe, arabe et haoussa — tout en français, sur votre mobile.</p>
   </div>
   <div class="lang-grid">
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(29,78,216,0.18),rgba(29,78,216,0.06));border-color:rgba(29,78,216,0.5)" onclick="openLang('en')">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(29,78,216,0.18),rgba(29,78,216,0.06));border-color:rgba(29,78,216,0.5)" data-lang="en" onclick="openLang('en')">
       <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.4)">
         <span style="font-size:28px;font-weight:900;color:#fff;font-family:Arial,sans-serif;letter-spacing:-1px">EN</span>
       </div>
@@ -235,7 +394,7 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level">A1 → B2</div>
     </div>
 
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(234,88,12,0.18),rgba(220,38,38,0.08));border-color:rgba(234,88,12,0.5)" onclick="openLang('es')">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(234,88,12,0.18),rgba(220,38,38,0.08));border-color:rgba(234,88,12,0.5)" data-lang="es" onclick="openLang('es')">
       <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#dc2626,#ea580c);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.4)">
         <span style="font-size:28px;font-weight:900;color:#ffc400;font-family:Arial,sans-serif;letter-spacing:-1px">ES</span>
       </div>
@@ -244,7 +403,7 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level">A1 → B2</div>
     </div>
 
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.18),rgba(234,179,8,0.08));border-color:rgba(220,38,38,0.5)" onclick="openLang('zh')">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(220,38,38,0.18),rgba(234,179,8,0.08));border-color:rgba(220,38,38,0.5)" data-lang="zh" onclick="openLang('zh')">
       <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#b91c1c,#dc2626);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.4)">
         <span style="font-size:32px;font-weight:900;color:#FFDE00;font-family:'Playfair Display',serif">中</span>
       </div>
@@ -253,7 +412,7 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level">HSK 1 → HSK 3</div>
     </div>
 
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(239,68,68,0.08));border-color:rgba(37,99,235,0.5)" onclick="openLang('ru')">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(37,99,235,0.18),rgba(239,68,68,0.08));border-color:rgba(37,99,235,0.5)" data-lang="ru" onclick="openLang('ru')">
       <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;margin:0 auto 12px;box-shadow:0 6px 20px rgba(0,0,0,0.4);display:flex;flex-direction:column">
         <div style="flex:1;background:#fff;display:flex;align-items:center;justify-content:center">
           <span style="font-size:10px;font-weight:900;color:#1a1a2e;font-family:Arial">RU</span>
@@ -266,7 +425,7 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level">A1 → B1</div>
     </div>
 
-    <div class="lang-card" style="background:linear-gradient(160deg,rgba(22,163,74,0.18),rgba(234,179,8,0.06));border-color:rgba(22,163,74,0.5)" onclick="openLang('ar')">
+    <div class="lang-card" style="background:linear-gradient(160deg,rgba(22,163,74,0.18),rgba(234,179,8,0.06));border-color:rgba(22,163,74,0.5)" data-lang="ar" onclick="openLang('ar')">
       <div style="width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#15803d,#16a34a);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.4)">
         <span style="font-size:36px;font-weight:900;color:#fff;font-family:Arial">ع</span>
       </div>
@@ -275,7 +434,7 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level">Débutant → Intermédiaire</div>
     </div>
 
-    <div class="lang-card lang-5th" style="background:linear-gradient(160deg,rgba(249,115,22,0.18),rgba(234,179,8,0.08));border-color:rgba(249,115,22,0.5)" onclick="openLang('ha')">
+    <div class="lang-card lang-wide" style="background:linear-gradient(160deg,rgba(249,115,22,0.18),rgba(234,179,8,0.08));border-color:rgba(249,115,22,0.5)" data-lang="ha" onclick="openLang('ha')">
       <div style="width:72px;height:72px;border-radius:18px;overflow:hidden;margin:0 auto 12px;box-shadow:0 6px 20px rgba(0,0,0,0.4);display:flex;flex-direction:row">
         <div style="flex:1;background:#e05206"></div>
         <div style="flex:2;background:#fff;display:flex;align-items:center;justify-content:center">
@@ -288,19 +447,13 @@ td:first-child{font-weight:700;color:#fff;}
       <div class="lang-level" style="background:rgba(249,115,22,0.3);color:#fff">🌍 Exclusivité Africaine</div>
     </div>
   </div>
-  <div style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);border-radius:14px;padding:14px 16px;text-align:center">
-    <div style="color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px">🔐 Accès par licence</div>
-    <p style="color:var(--muted);font-size:12px;line-height:1.8">L'aperçu est gratuit. L'accès complet nécessite un code d'activation.<br>
-    <strong style="color:var(--accent)">2 000 FCFA / langue · 30 jours</strong><br>
-    <strong style="color:var(--accent2)">8 000 FCFA · Toutes les langues</strong><br>
-    Contactez-nous sur WhatsApp pour commander.</p>
-  </div>
+  <div id="home-cta"></div>
 </div>
 
 <!-- LANG SCREEN -->
 <div class="screen" id="screen-lang">
   <div class="lang-header" id="lang-header"></div>
-  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="lang-notice"></div>
   <div id="mod-content"></div>
 </div>
 
@@ -308,7 +461,7 @@ td:first-child{font-weight:700;color:#fff;}
 
 <script>
 /* ═══════════════════════════════
-   DATA — ALL 5 LANGUAGES
+   DATA — LES 6 LANGUES
 ═══════════════════════════════ */
 const LANGS = {
 
@@ -718,18 +871,65 @@ ha: {
    STATE & STORAGE
 ═══════════════════════════════ */
 const STORE_KEY = "linguamaster_v1";
-let STATE = {xp:0,streak:0,lastPlay:"",license:null,gdone:{},vflipped:{}};
-function loadState(){try{const d=localStorage.getItem(STORE_KEY);if(d)STATE=JSON.parse(d);}catch(e){}}
+/* license : {code, lang:"ALL"|"EN"|…, expiryDays} | null
+   trial   : {lang:"en"} | null  → essai gratuit sur UNE langue      */
+let STATE = {xp:0,streak:0,lastPlay:"",license:null,trial:null,gdone:{},vflipped:{}};
+
+function loadState(){
+  try{const d=localStorage.getItem(STORE_KEY);if(d)Object.assign(STATE,JSON.parse(d));}catch(e){}
+  // Migration : avant la v3, STATE.license était une simple chaîne de caractères.
+  if(typeof STATE.license==="string"){
+    STATE.license = LEGACY_CODES.includes(STATE.license)
+      ? {code:STATE.license,lang:"ALL",expiryDays:null}
+      : null;  // les anciens accès de démonstration repassent par l'essai gratuit
+    saveState();
+  }
+  if(!STATE.gdone)STATE.gdone={};
+  if(!STATE.vflipped)STATE.vflipped={};
+}
 function saveState(){try{localStorage.setItem(STORE_KEY,JSON.stringify(STATE));}catch(e){}}
 
-const VALID_CODES = ["LINGUA-2025","MASTER-PRO","LINGUA-001","DEMO-2025"];
-const DEMO_CODE = "DEMO-2025";
-let isDemo = false;
+/* ═══════════════════════════════
+   OFFRES & CONTACT — source unique
+   Changer un prix ou un numéro ici le change partout.
+═══════════════════════════════ */
+const PRICE_ONE = 2000;      // FCFA — une langue, 30 jours
+const PRICE_ALL = 8000;      // FCFA — les 6 langues, 30 jours
+const WA_NUMBERS = {
+  bj:{num:"2290196049800", label:"Bénin"},
+  ne:{num:"22786997142",   label:"Niger"},
+};
+const WA_PRIMARY = "bj";     // numéro du bouton d'achat principal
+const WA_SECOND  = "ne";     // numéro proposé en lien secondaire
+
+/* Séparateur de milliers sans dépendre de la locale du téléphone */
+const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");
+
+function waLink(offerText,who){
+  const n = WA_NUMBERS[who||WA_PRIMARY].num;
+  return `https://wa.me/${n}?text=${encodeURIComponent("Bonjour, je souhaite acheter LinguaMaster — "+offerText)}`;
+}
+function waQuestion(who){
+  const n = WA_NUMBERS[who||WA_PRIMARY].num;
+  return `https://wa.me/${n}?text=${encodeURIComponent("Bonjour, j'ai une question sur LinguaMaster.")}`;
+}
+/* Libellés courts pour la vente : LANGS[].native est trop verbeux
+   dans un message de commande (« Haoussa (Harshen Hausa) »). */
+const LANG_LABEL = {en:"Anglais",es:"Espagnol",zh:"Chinois",ru:"Russe",ar:"Arabe",ha:"Haoussa"};
+
+const offerAllText = ()  => `Toutes les langues à ${fmt(PRICE_ALL)} FCFA.`;
+const offerOneText = key => `${LANG_LABEL[key]} à ${fmt(PRICE_ONE)} FCFA.`;
+
+/* ═══════════════════════════════
+   ESSAI GRATUIT — ce qui est ouvert sans payer
+═══════════════════════════════ */
+const TRIAL = {vocab:5, grammar:1, quiz:3, pron:1, dialogue:false};
+
 let pendingAction = null;
 
 function addXP(n,label){
   STATE.xp+=n;saveState();
-  document.getElementById("h-xp").textContent=STATE.xp;
+  updateHeader();
   showToast(`+${n} XP — ${label}`);
 }
 function showToast(msg){
@@ -740,37 +940,125 @@ function showToast(msg){
   t.style.display="block";
   setTimeout(()=>t.style.display="none",2200);
 }
+/* Les stats restent masquées tant que l'utilisateur n'a rien commencé :
+   afficher « 🔥 0j ⭐ 0 » à un prospect ne veut rien dire. */
 function updateHeader(){
+  const started = STATE.xp>0 || Object.keys(STATE.gdone).length>0;
+  const box = document.getElementById("h-stats");
+  if(box) box.style.display = started ? "flex" : "none";
   document.getElementById("h-xp").textContent=STATE.xp;
   document.getElementById("h-streak").textContent=STATE.streak;
 }
 
 /* ═══════════════════════════════
-   LICENSE SYSTEM
+   LICENCES
+
+   ⚠️  L'algorithme ci-dessous doit rester IDENTIQUE à celui de
+   linguamaster_admin.html (générateur de codes), sinon les codes
+   vendus seront refusés.
+
+   ⚠️  Limite assumée : la validation est côté client, donc SECRET_KEY
+   est lisible par qui inspecte la source. Décision Dona du 2026-08-18 :
+   acceptable pour la phase 1 (20-50 testeurs), à remplacer par une
+   validation serveur AVANT la campagne publicitaire.
 ═══════════════════════════════ */
-function requireLicense(action){
-  if(STATE.license){action();return;}
-  pendingAction=action;
+const SECRET_KEY = "LM#SPHINX#2025#NIGER";
+/* Anciens codes distribués à la main, conservés pour ne casser personne.
+   L'ancien code de démonstration en est volontairement retiré : il était
+   affiché publiquement dans l'app et ouvrait donc l'accès à tout le monde. */
+const LEGACY_CODES = ["LINGUA-2025","MASTER-PRO","LINGUA-001"];
+const LANG_OF_CODE = {EN:"en",ES:"es",ZH:"zh",RU:"ru",AR:"ar",HA:"ha"};
+const CODE_LANGS   = ["ALL","EN","ES","ZH","RU","AR","HA"];
+
+/* Empreinte djb2 sur 4 caractères base36 (~1,7 million de combinaisons).
+   L'ancien checksum n'en avait que 89 : il était forçable à la main. */
+function codeChecksum(raw){
+  let h=5381;
+  for(let i=0;i<raw.length;i++) h=((h*33)^raw.charCodeAt(i))>>>0;
+  return h.toString(36).toUpperCase().padStart(4,"0").slice(-4);
+}
+
+/* Format : LM-<4 aléatoires><LANGUE>-<expiration base36><empreinte 4> */
+function decodeLicense(code){
+  const c=(code||"").trim().toUpperCase();
+  if(LEGACY_CODES.includes(c)) return {valid:true,lang:"ALL",expiryDays:null,daysLeft:null};
+
+  const parts=c.split("-");
+  if(parts.length!==3 || parts[0]!=="LM") return {valid:false,reason:"Format du code invalide."};
+  const middle=parts[1], rest=parts[2];
+  if(rest.length<5) return {valid:false,reason:"Code incomplet."};
+
+  const check=rest.slice(-4), expiryB36=rest.slice(0,-4);
+  const expiryDays=parseInt(expiryB36,36);
+  if(!Number.isFinite(expiryDays)) return {valid:false,reason:"Code illisible."};
+
+  let lang=null, random=null;
+  for(const l of CODE_LANGS){
+    if(middle.endsWith(l)){lang=l;random=middle.slice(0,-l.length);break;}
+  }
+  if(!lang) return {valid:false,reason:"Langue du code non reconnue."};
+  if(codeChecksum(random+expiryB36+lang+SECRET_KEY)!==check)
+    return {valid:false,reason:"Code invalide ou falsifié."};
+
+  const daysLeft = expiryDays - Math.floor(Date.now()/86400000);
+  if(daysLeft<0) return {valid:false,expired:true,lang,expiryDays,reason:"Ce code a expiré."};
+  return {valid:true,lang,expiryDays,daysLeft};
+}
+
+/* État de la licence enregistrée, ou null si aucune. */
+function licenseState(){
+  const L=STATE.license;
+  if(!L) return null;
+  if(L.expiryDays==null) return {expired:false,lang:L.lang,daysLeft:null};
+  const daysLeft = L.expiryDays - Math.floor(Date.now()/86400000);
+  return {expired:daysLeft<0, lang:L.lang, daysLeft};
+}
+
+/* "full" = accès complet · "trial" = essai limité · "none" = verrouillé */
+function accessFor(langKey){
+  const lic=licenseState();
+  if(lic && !lic.expired && (lic.lang==="ALL" || LANG_OF_CODE[lic.lang]===langKey)) return "full";
+  if(STATE.trial && STATE.trial.lang===langKey) return "trial";
+  return "none";
+}
+function isTrial(langKey){return accessFor(langKey)==="trial";}
+
+function openActivation(){
+  document.getElementById("modal-wa").href = waLink(offerAllText());
+  document.getElementById("code-error").style.display="none";
+  document.getElementById("code-input").value="";
   document.getElementById("license-overlay").style.display="flex";
+  setTimeout(()=>document.getElementById("code-input").focus(),80);
+}
+function closeActivation(){
+  document.getElementById("license-overlay").style.display="none";
+  pendingAction=null;
 }
 
 function validateCode(){
-  const code=document.getElementById("code-input").value.trim().toUpperCase();
+  const input=document.getElementById("code-input");
   const errEl=document.getElementById("code-error");
-  if(VALID_CODES.includes(code)){
-    isDemo=(code===DEMO_CODE);
-    STATE.license=code;
-    saveState();
-    document.getElementById("license-overlay").style.display="none";
-    document.getElementById("code-error").style.display="none";
-    document.getElementById("code-input").className="code-input";
-    showToast(isDemo?"🔓 Mode démo activé !":"✅ Licence activée ! Bienvenue !");
-    if(pendingAction){pendingAction();pendingAction=null;}
-  }else{
+  const res=decodeLicense(input.value);
+
+  if(!res.valid){
+    errEl.textContent="❌ "+(res.reason||"Code invalide.");
     errEl.style.display="block";
-    document.getElementById("code-input").className="code-input error";
-    setTimeout(()=>document.getElementById("code-input").className="code-input",400);
+    input.className="code-input error";
+    setTimeout(()=>input.className="code-input",400);
+    return;
   }
+
+  STATE.license={code:input.value.trim().toUpperCase(),lang:res.lang,expiryDays:res.expiryDays};
+  STATE.trial=null;                       // la licence remplace l'essai
+  saveState();
+  document.getElementById("license-overlay").style.display="none";
+  errEl.style.display="none";
+  input.className="code-input";
+
+  const scope = res.lang==="ALL" ? "les 6 langues" : LANG_LABEL[LANG_OF_CODE[res.lang]];
+  showToast(`✅ Licence activée — ${scope}`);
+  if(pendingAction){const a=pendingAction;pendingAction=null;a();}
+  else showHome();
 }
 
 /* ═══════════════════════════════
@@ -782,69 +1070,218 @@ let quizData={qs:[],idx:0,score:0,ans:null,done:false};
 let dlgData={turns:[],tidx:0,errors:0,done:false,chosen:{}};
 let wdata={idx:0,status:null};
 
-function showHome(){
+let pickingTrial=false;   // vrai pendant le choix de la langue d'essai
+
+const MODULES=[
+  {id:"vocab",label:"Vocab",icon:"🃏"},
+  {id:"grammar",label:"Grammaire",icon:"📚"},
+  {id:"pron",label:"Pronon.",icon:"🗣️"},
+  {id:"dialogue",label:"Dialogue",icon:"💬"},
+  {id:"quiz",label:"Quiz",icon:"🧠"},
+];
+
+function hideAllScreens(){
   document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById("screen-home").classList.add("active");
   document.getElementById("lang-nav").style.display="none";
-  currentLang=null;
+}
+
+/* L'utilisateur a-t-il un accès quelconque (essai ou licence non expirée) ? */
+function hasAnyAccess(){
+  const lic=licenseState();
+  return !!(STATE.trial || (lic && !lic.expired));
+}
+
+/* Chaque écran empile un état d'historique pour que le bouton retour
+   du téléphone recule d'un écran au lieu de quitter l'app.
+   push===false : on rejoue un état existant (retour natif ou démarrage). */
+function showLanding(push){
+  hideAllScreens();
+  document.getElementById("screen-landing").classList.add("active");
+  currentLang=null; currentLesson=null; pickingTrial=false;
+  if(push!==false) history.pushState({page:"landing"},"","");
+  window.scrollTo(0,0);
+}
+
+function goHomeOrLanding(push){ hasAnyAccess() ? showHome(push) : showLanding(push); }
+
+function showHome(push){
+  hideAllScreens();
+  document.getElementById("screen-home").classList.add("active");
+  currentLang=null; currentLesson=null;
+  renderHomeStatus();
+  if(push!==false) history.pushState({page:"home"},"","");
+  window.scrollTo(0,0);
+}
+
+function scrollToSec(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+/* Bandeau d'état + cadenas sur les cartes de langue */
+function renderHomeStatus(){
+  const box=document.getElementById("home-status");
+  const cta=document.getElementById("home-cta");
+  const cards=document.querySelectorAll(".lang-card[data-lang]");
+
+  const clearLocks=()=>cards.forEach(c=>{
+    c.classList.remove("is-locked");
+    const t=c.querySelector(".lang-lock-tag"); if(t) t.remove();
+  });
+
+  if(pickingTrial){
+    box.innerHTML=`<div class="trial-bar"><span>🎁 <strong>Essai gratuit</strong> — choisissez la langue que vous voulez essayer.</span></div>`;
+    clearLocks();
+    cta.innerHTML="";
+    return;
+  }
+
+  const lic=licenseState();
+  if(lic && lic.expired){
+    box.innerHTML=`<div class="trial-bar" style="background:rgba(231,76,60,0.12);border-color:rgba(231,76,60,0.4);color:#fca5a5">
+      <span>⏳ Votre accès a expiré. Renouvelez pour continuer votre apprentissage.</span>
+      <button onclick="showOffer()">Renouveler</button></div>`;
+  } else if(lic && lic.daysLeft!=null && lic.daysLeft<=7){
+    const msg = lic.daysLeft<=0 ? "Votre licence expire aujourd'hui."
+              : lic.daysLeft===1 ? "Votre licence expire demain."
+              : `Votre licence expire dans ${lic.daysLeft} jours.`;
+    box.innerHTML=`<div class="trial-bar"><span>⏳ ${msg}</span><button onclick="showOffer()">Renouveler</button></div>`;
+  } else if(!lic && STATE.trial){
+    box.innerHTML=`<div class="trial-bar">
+      <span>🎁 <strong>Essai gratuit</strong> — ${LANG_LABEL[STATE.trial.lang]}, contenu limité.</span>
+      <button onclick="showOffer()">Débloquer</button></div>`;
+  } else box.innerHTML="";
+
+  cards.forEach(card=>{
+    const locked = accessFor(card.getAttribute("data-lang"))==="none";
+    card.classList.toggle("is-locked",locked);
+    let tag=card.querySelector(".lang-lock-tag");
+    if(locked){
+      if(!tag){tag=document.createElement("span");tag.className="lang-lock-tag";card.appendChild(tag);}
+      tag.textContent="🔒";
+    } else if(tag) tag.remove();
+  });
+
+  const allUnlocked = lic && !lic.expired && lic.lang==="ALL";
+  cta.innerHTML = allUnlocked ? "" :
+    `<button class="cta-main" style="margin-top:4px" onclick="showOffer()">🔓 Débloquer les 6 langues — ${fmt(PRICE_ALL)} FCFA</button>`;
+}
+
+/* Essai gratuit : aucun code à saisir, on demande juste la langue. */
+function startTrial(){
+  if(hasAnyAccess()){showHome();return;}
+  pickingTrial=true;
+  showHome();
+}
+
+/* Écran d'offre. langKey = la langue que l'utilisateur voulait ouvrir. */
+function showOffer(langKey,push){
+  hideAllScreens();
+  document.getElementById("screen-offer").classList.add("active");
+  if(push!==false) history.pushState({page:"offer",lang:langKey||null},"","");
+
+  const lic=licenseState();
+  const lead=document.getElementById("offer-lead");
+  if(lic && lic.expired) lead.textContent="Votre accès a expiré. Renouvelez pour reprendre où vous en étiez.";
+  else if(langKey) lead.textContent=`${LANG_LABEL[langKey]} n'est pas encore débloqué. Choisissez votre formule — vous recevez votre code sur WhatsApp.`;
+  else lead.textContent="Choisissez votre formule — vous recevez votre code d'activation sur WhatsApp.";
+
+  const one = langKey || (STATE.trial && STATE.trial.lang) || null;
+  const total = PRICE_ONE*6;
+  document.getElementById("offer-prices").innerHTML=`
+    <div class="price-card">
+      <div class="price-name">🟢 1 LANGUE</div>
+      <div class="price-amount">${fmt(PRICE_ONE)} FCFA</div>
+      <div class="price-per">pour 30 jours</div>
+      ${one?`<a class="wa-btn-sm" style="margin-top:13px" href="${waLink(offerOneText(one))}" target="_blank" rel="noopener">Commander ${LANG_LABEL[one]}</a>`
+           :`<div class="price-note">La langue de votre choix, accès complet.</div>`}
+    </div>
+    <div class="price-card price-hero">
+      <div class="price-badge">⭐ MEILLEURE OFFRE</div>
+      <div class="price-name">TOUTES LES LANGUES</div>
+      <div class="price-amount">${fmt(PRICE_ALL)} FCFA</div>
+      <div class="price-per">pour 30 jours</div>
+      <div class="price-note">Les 6 langues — au lieu de ${fmt(total)} FCFA séparément.<br>
+      <strong style="color:var(--accent2)">Vous économisez ${fmt(total-PRICE_ALL)} FCFA.</strong></div>
+    </div>`;
+
+  document.getElementById("offer-wa-all").href=waLink(offerAllText());
+  document.getElementById("offer-wa-alt").href=waLink(offerAllText(),WA_SECOND);
+  window.scrollTo(0,0);
 }
 
 function openLang(langKey){
-  requireLicense(()=>_openLang(langKey));
+  // Choix de la langue d'essai
+  if(pickingTrial){
+    pickingTrial=false;
+    STATE.trial={lang:langKey};
+    saveState();
+    showToast(`🎁 Essai gratuit — ${LANG_LABEL[langKey]}`);
+    _openLang(langKey);
+    return;
+  }
+  if(accessFor(langKey)==="none"){showOffer(langKey);return;}
+  _openLang(langKey);
 }
 
-function _openLang(langKey){
-  currentLang=langKey;
+function _openLang(langKey,push){
+  currentLang=langKey; currentLesson=null;
   const L=LANGS[langKey];
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  if(push!==false) history.pushState({page:"lang",lang:langKey,mod:"vocab"},"","");
+
+  hideAllScreens();
   document.getElementById("screen-lang").classList.add("active");
 
-  // Header
   const logoStyles = {
     en:"background:linear-gradient(135deg,#1d4ed8,#3b82f6)",
     es:"background:linear-gradient(135deg,#dc2626,#ea580c)",
     zh:"background:linear-gradient(135deg,#b91c1c,#dc2626)",
     ru:"background:linear-gradient(135deg,#1e3a8a,#2563eb)",
     ar:"background:linear-gradient(135deg,#15803d,#16a34a)",
+    ha:"background:linear-gradient(135deg,#e05206,#228b22)",
   };
-  const logoIcons = {en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳",ru:"🇷🇺",ar:"🕌"};
+  const logoIcons = {en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳",ru:"🇷🇺",ar:"🕌",ha:"🇳🇪"};
+
   document.getElementById("lang-header").innerHTML=`
-    <button class="back-btn" onclick="showHome()" style="margin:0">← Accueil</button>
-    <div style="width:48px;height:48px;border-radius:12px;${logoStyles[langKey]};display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,0.4);flex-shrink:0">${logoIcons[langKey]}</div>
+    <button class="back-btn" onclick="goHomeOrLanding()" style="margin:0">← Accueil</button>
+    <div style="width:48px;height:48px;border-radius:12px;${logoStyles[langKey]};display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 3px 10px rgba(0,0,0,0.45);flex-shrink:0">${logoIcons[langKey]}</div>
     <div class="lang-header-info">
       <h2 style="color:${L.color};font-size:18px">${L.name}</h2>
       <p style="font-size:12px;color:rgba(245,240,232,0.6)">${L.native} · ${L.level}</p>
     </div>`;
 
-  // Nav
   document.getElementById("lang-nav").style.display="block";
-  const mods=[
-    {id:"vocab",label:"Vocab",icon:"🃏"},
-    {id:"grammar",label:"Grammaire",icon:"📚"},
-    {id:"pron",label:"Pronon.",icon:"🗣️"},
-    {id:"dialogue",label:"Dialogue",icon:"💬"},
-    {id:"quiz",label:"Quiz",icon:"🧠"},
-  ];
-  document.getElementById("nav-inner").innerHTML=mods.map(m=>`
-    <button class="nb${m.id===currentMod?" active":""}" style="${m.id===currentMod?`border-bottom-color:${L.color};color:${L.color}`:""}" onclick="switchMod('${m.id}')">
+  document.getElementById("nav-inner").innerHTML=MODULES.map(m=>`
+    <button class="nb" onclick="switchMod('${m.id}')">
       <span class="nb-icon">${m.icon}</span>${m.label}
     </button>`).join("");
 
-  switchMod("vocab");
+  renderLangNotice(langKey);
+  switchMod("vocab",false);
 }
 
-function switchMod(mod){
-  currentMod=mod;
+/* Rappel du périmètre de l'essai, au-dessus du contenu */
+function renderLangNotice(langKey){
+  const el=document.getElementById("lang-notice");
+  if(!el) return;
+  el.innerHTML = isTrial(langKey)
+    ? `<div class="trial-bar"><span>🎁 Essai gratuit — aperçu limité de ${LANG_LABEL[langKey]}.</span>
+       <button onclick="showOffer('${langKey}')">Débloquer</button></div>`
+    : "";
+}
+
+function switchMod(mod,push){
+  currentMod=mod; currentLesson=null;
+  if(push!==false && currentLang) history.pushState({page:"lang",lang:currentLang,mod},"","");
   const L=LANGS[currentLang];
-  // Update nav
+
   document.querySelectorAll(".nb").forEach((b,i)=>{
-    const mods=["vocab","grammar","pron","dialogue","quiz"];
-    const isActive=mods[i]===mod;
+    const isActive=MODULES[i].id===mod;
     b.classList.toggle("active",isActive);
     b.style.borderBottomColor=isActive?L.color:"transparent";
     b.style.color=isActive?L.color:"";
   });
-  // Render content
+
   const el=document.getElementById("mod-content");
   el.innerHTML="";
   if(mod==="vocab") renderVocab(L,el);
@@ -873,13 +1310,13 @@ window.speechSynthesis?.addEventListener?.("voiceschanged",()=>window.speechSynt
    VOCAB
 ═══════════════════════════════ */
 function renderVocab(L,el){
-  const maxFree=isDemo?3:L.vocab.length;
+  const trial=isTrial(currentLang);
+  const maxFree=trial?Math.min(TRIAL.vocab,L.vocab.length):L.vocab.length;
   let html=`
   <div class="module-back">
-    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <button class="back-btn" onclick="goHomeOrLanding()">← Langues</button>
     <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🃏 Vocabulaire</h3>
   </div>`;
-  if(isDemo)html+=`<div style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.3);border-radius:10px;padding:10px 14px;font-size:13px;color:#d4a843;margin-bottom:12px">🔓 Mode démo — ${maxFree} mots sur ${L.vocab.length}. Commandez la licence complète.</div>`;
   const rtl=L.rtl?"direction:rtl;":"";
   html+=`<div class="vgrid">`;
   L.vocab.slice(0,maxFree).forEach((w,i)=>{
@@ -901,7 +1338,18 @@ function renderVocab(L,el){
     html+=`</div>`;
   });
   html+=`</div>`;
+  if(trial) html+=lockNote(`${maxFree} mots sur ${L.vocab.length}`,
+    `Débloquez tout le vocabulaire de ${LANG_LABEL[currentLang]}, les leçons complètes et les dialogues.`);
   el.innerHTML=html;
+}
+
+/* Encart de fin de contenu en mode essai */
+function lockNote(seen,pitch){
+  return `<div class="lock-note">
+    <div class="lock-note-t">🔒 Aperçu gratuit — ${seen}</div>
+    <div class="lock-note-p">${pitch}</div>
+    <button class="cta-main" style="margin-bottom:0" onclick="showOffer('${currentLang}')">Voir les formules</button>
+  </div>`;
 }
 
 function flipVcard(key,el,lang,idx){
@@ -917,21 +1365,26 @@ function flipVcard(key,el,lang,idx){
 let currentLesson=null;
 function renderGrammar(L,el){
   if(currentLesson){renderLesson(L,el,currentLesson);return;}
+  const trial=isTrial(currentLang);
+  const free=trial?TRIAL.grammar:L.grammar.length;
   const done=Object.keys(STATE.gdone).filter(k=>k.startsWith(currentLang+"-")).length;
   let html=`
   <div class="module-back">
-    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <button class="back-btn" onclick="goHomeOrLanding()">← Langues</button>
     <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">📚 Grammaire</h3>
   </div>
   <p style="color:rgba(245,240,232,0.7);font-size:13px;margin-bottom:14px">${done}/${L.grammar.length} leçons terminées</p>`;
-  L.grammar.forEach(g=>{
+  L.grammar.forEach((g,i)=>{
+    const locked=i>=free;
     const isDone=STATE.gdone[currentLang+"-"+g.id];
-    html+=`<button class="lesson-row" style="${isDone?"border-color:rgba(22,163,74,0.4);background:rgba(22,163,74,0.08)":""}" onclick="openLesson('${g.id}')">
+    html+=`<button class="lesson-row" style="${locked?"opacity:0.55;":isDone?"border-color:rgba(22,163,74,0.4);background:rgba(22,163,74,0.08)":""}" onclick="${locked?`showOffer('${currentLang}')`:`openLesson('${g.id}')`}">
       <span style="font-size:20px">${g.emoji}</span>
-      <div><div class="lesson-title">${g.title}</div><div class="lesson-meta">${g.sections.length} partie(s)</div></div>
-      <span style="margin-left:auto;font-size:16px">${isDone?"✅":"›"}</span>
+      <div><div class="lesson-title">${g.title}</div><div class="lesson-meta">${locked?"Réservé aux licences":g.sections.length+" partie(s)"}</div></div>
+      <span style="margin-left:auto;font-size:16px">${locked?"🔒":isDone?"✅":"›"}</span>
     </button>`;
   });
+  if(trial) html+=lockNote(`${free} leçon sur ${L.grammar.length}`,
+    `Débloquez toutes les leçons de ${LANG_LABEL[currentLang]} et suivez votre progression.`);
   el.innerHTML=html;
 }
 
@@ -994,12 +1447,14 @@ function doneLesson(id){
    PRONUNCIATION
 ═══════════════════════════════ */
 function renderPron(L,el){
+  const trial=isTrial(currentLang);
+  const rules=trial?L.pronunciation.slice(0,TRIAL.pron):L.pronunciation;
   let html=`
   <div class="module-back">
-    <button class="back-btn" onclick="showHome()">← Langues</button>
+    <button class="back-btn" onclick="goHomeOrLanding()">← Langues</button>
     <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🗣️ Prononciation</h3>
   </div>`;
-  L.pronunciation.forEach(p=>{
+  rules.forEach(p=>{
     html+=`<div class="pron-card" style="border-color:${L.borderColor}">
       <div class="pron-rule">${p.emoji} ${p.rule}</div>
       <div class="pron-desc">${p.desc}</div>
@@ -1012,6 +1467,8 @@ function renderPron(L,el){
     html+=`</div></div>`;
   });
   html+=`<div class="tip-box" style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.2);color:var(--accent)">🏆 Méthode : Écoute → Répète → Enregistre → Compare → Corrige</div>`;
+  if(trial) html+=lockNote(`${rules.length} règle sur ${L.pronunciation.length}`,
+    `Débloquez toutes les règles de prononciation de ${LANG_LABEL[currentLang]}.`);
   el.innerHTML=html;
 }
 
@@ -1020,6 +1477,20 @@ function renderPron(L,el){
 ═══════════════════════════════ */
 function renderDialogue(L,el){
   const d=L.dialogues[0];
+  // Les dialogues sont le cœur de l'offre payante : verrouillés pendant l'essai.
+  if(isTrial(currentLang)){
+    el.innerHTML=`
+    <div class="module-back">
+      <button class="back-btn" onclick="goHomeOrLanding()">← Langues</button>
+      <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">💬 Dialogue</h3>
+    </div>
+    <div class="lock-note">
+      <div class="lock-note-t">🔒 Réservé aux licences</div>
+      <div class="lock-note-p">Les dialogues interactifs de ${LANG_LABEL[currentLang]} — conversations réelles avec corrections — font partie de l'accès complet.</div>
+      <button class="cta-main" style="margin-bottom:0" onclick="showOffer('${currentLang}')">Voir les formules</button>
+    </div>`;
+    return;
+  }
   if(dlgData.done&&dlgData.lang===currentLang){renderDlgResult(L,el);return;}
   if(dlgData.lang!==currentLang){dlgData={turns:d.turns,tidx:0,errors:0,done:false,chosen:{},lang:currentLang};}
   let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
@@ -1102,13 +1573,15 @@ function renderDlgResult(L,el){
    QUIZ
 ═══════════════════════════════ */
 function renderQuiz(L,el){
+  const trial=isTrial(currentLang);
   if(!quizData.qs.length||quizData.lang!==currentLang){
-    quizData={qs:[...L.quiz].sort(()=>Math.random()-0.5),idx:0,score:0,ans:null,done:false,lang:currentLang};
+    const pool=[...L.quiz].sort(()=>Math.random()-0.5);
+    quizData={qs:trial?pool.slice(0,TRIAL.quiz):pool,idx:0,score:0,ans:null,done:false,lang:currentLang};
   }
   if(quizData.done){renderQResult(L,el);return;}
   const q=quizData.qs[quizData.idx];
   let html=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
-    <button class="back-btn" onclick="showHome()" style="margin:0">← Langues</button>
+    <button class="back-btn" onclick="goHomeOrLanding()" style="margin:0">← Langues</button>
     <h3 style="color:${L.color};font-family:'Playfair Display',serif;font-size:18px">🧠 Quiz</h3>
     <span style="color:rgba(245,240,232,0.75);font-size:13px">${quizData.idx+1}/${quizData.qs.length} · ${quizData.score} ✅</span>
   </div>
@@ -1159,7 +1632,8 @@ function renderQResult(L,el){
     <div class="result-bar"><div class="result-fill" id="qrbar" style="background:linear-gradient(90deg,${L.color},${L.color}88);width:0%"></div></div>
     ${p>=0.8?`<p style="color:${L.color};font-size:13px;margin-bottom:14px">+50 XP bonus !</p>`:""}
     <button class="btn" style="background:linear-gradient(135deg,${L.color},${L.color}cc);color:#fff;margin:0 auto;width:auto;padding:12px 24px" onclick="quizData={};renderQuiz(LANGS[currentLang],document.getElementById('mod-content'))">🔄 Nouveau quiz</button>
-  </div>`;
+  </div>
+  ${isTrial(currentLang)?lockNote(`${quizData.qs.length} questions sur ${L.quiz.length}`,`Débloquez tous les exercices de ${LANG_LABEL[currentLang]} et gardez votre progression.`):""}`;
   setTimeout(()=>{const b=document.getElementById("qrbar");if(b)b.style.width=(p*100)+"%";},100);
 }
 
@@ -1167,95 +1641,42 @@ function renderQResult(L,el){
    INIT + HISTORY API (back button)
 ═══════════════════════════════ */
 loadState();
+
+/* Le streak ne compte que si l'utilisateur a réellement commencé à apprendre. */
 const today=new Date().toDateString();
-if(STATE.lastPlay!==today){
+if(hasAnyAccess() && STATE.lastPlay!==today){
   const yest=new Date(Date.now()-86400000).toDateString();
   STATE.streak=STATE.lastPlay===yest?(STATE.streak||0)+1:1;
   STATE.lastPlay=today;saveState();
 }
-if(STATE.license&&STATE.license===DEMO_CODE)isDemo=true;
+
+/* Liens WhatsApp de la landing (numéros et prix viennent des constantes) */
+document.getElementById("lp-wa-all").href = waLink(offerAllText());
+document.getElementById("lp-wa-alt").href = waLink(offerAllText(),WA_SECOND);
+document.getElementById("lp-wa-q").href   = waQuestion();
+
 updateHeader();
 window.speechSynthesis?.getVoices();
 
-/* ── History API : gestion du bouton retour natif ── */
-// État initial = accueil
-history.replaceState({page:"home"}, "", "");
+/* Écran de départ : la landing pour un nouveau visiteur,
+   la grille des langues pour quelqu'un qui a déjà un accès. */
+history.replaceState({page:hasAnyAccess()?"home":"landing"},"","");
+goHomeOrLanding(false);
 
-// Quand on ouvre une langue, on pousse un état
-const _origOpenLang = _openLang;
-function _openLang(langKey){
-  history.pushState({page:"lang", lang:langKey, mod:"vocab"}, "", "");
-  _origOpenLang_real(langKey);
-}
-function _origOpenLang_real(langKey){
-  currentLang=langKey;
-  const L=LANGS[langKey];
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById("screen-lang").classList.add("active");
-  const logoStyles={en:"background:linear-gradient(135deg,#1d4ed8,#3b82f6)",es:"background:linear-gradient(135deg,#dc2626,#ea580c)",zh:"background:linear-gradient(135deg,#b91c1c,#dc2626)",ru:"background:linear-gradient(135deg,#1e3a8a,#2563eb)",ar:"background:linear-gradient(135deg,#15803d,#16a34a)"};
-  const logoIcons={en:"🇬🇧",es:"🇪🇸",zh:"🇨🇳",ru:"🇷🇺",ar:"🕌"};
-  document.getElementById("lang-header").innerHTML=`
-    <button class="back-btn" onclick="goBackToHome()" style="margin:0">← Accueil</button>
-    <div style="width:48px;height:48px;border-radius:12px;${logoStyles[langKey]};display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,0.4);flex-shrink:0">${logoIcons[langKey]}</div>
-    <div class="lang-header-info">
-      <h2 style="color:${L.color};font-size:18px">${L.name}</h2>
-      <p style="font-size:12px;color:rgba(245,240,232,0.6)">${L.native} · ${L.level}</p>
-    </div>`;
-  document.getElementById("lang-nav").style.display="block";
-  const mods=[{id:"vocab",label:"Vocab",icon:"🃏"},{id:"grammar",label:"Grammaire",icon:"📚"},{id:"pron",label:"Pronon.",icon:"🗣️"},{id:"dialogue",label:"Dialogue",icon:"💬"},{id:"quiz",label:"Quiz",icon:"🧠"}];
-  document.getElementById("nav-inner").innerHTML=mods.map(m=>`
-    <button class="nb${m.id===currentMod?" active":""}" style="${m.id===currentMod?`border-bottom-color:${L.color};color:${L.color}`:""}" onclick="switchMod('${m.id}')">
-      <span class="nb-icon">${m.icon}</span>${m.label}
-    </button>`).join("");
-  switchMod("vocab");
-}
-
-// Quand on change de module, on pousse un état
-const _origSwitchMod = switchMod;
-function switchMod(mod){
-  currentMod=mod;
-  if(currentLang) history.pushState({page:"lang",lang:currentLang,mod:mod},"","");
-  const L=LANGS[currentLang];
-  document.querySelectorAll(".nb").forEach((b,i)=>{
-    const mods=["vocab","grammar","pron","dialogue","quiz"];
-    const isActive=mods[i]===mod;
-    b.classList.toggle("active",isActive);
-    b.style.borderBottomColor=isActive?L.color:"transparent";
-    b.style.color=isActive?L.color:"";
-  });
-  const el=document.getElementById("mod-content");
-  el.innerHTML="";
-  if(mod==="vocab") renderVocab(L,el);
-  else if(mod==="grammar") renderGrammar(L,el);
-  else if(mod==="pron") renderPron(L,el);
-  else if(mod==="dialogue") renderDialogue(L,el);
-  else if(mod==="quiz") renderQuiz(L,el);
-}
-
-// Retour à l'accueil (propre)
-function goBackToHome(){
-  currentLesson=null;
-  showHome();
-}
-
-// Écouter le bouton retour du navigateur/téléphone
+/* ── Bouton retour natif du téléphone ── */
 window.addEventListener("popstate", function(e){
-  const state = e.state;
-  if(!state || state.page === "home"){
-    // Retour à l'accueil
-    currentLang=null; currentLesson=null;
-    showHome();
-  } else if(state.page === "lang"){
-    // Retour dans une langue
+  const st=e.state;
+  if(!st || st.page==="landing"){showLanding(false);return;}
+  if(st.page==="home"){showHome(false);return;}
+  if(st.page==="offer"){showOffer(st.lang||undefined,false);return;}
+  if(st.page==="lang"){
     if(currentLesson){
       currentLesson=null;
       renderGrammar(LANGS[currentLang],document.getElementById("mod-content"));
-    } else if(currentLang !== state.lang){
-      _origOpenLang_real(state.lang);
+    } else if(currentLang!==st.lang){
+      _openLang(st.lang,false);
     } else {
-      // Juste changer de module
-      currentMod = state.mod || "vocab";
-      _origSwitchMod(currentMod);
+      switchMod(st.mod||"vocab",false);
     }
   }
 });
